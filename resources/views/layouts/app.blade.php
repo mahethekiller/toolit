@@ -78,34 +78,30 @@
 
     <!-- Main -->
     <main class="container py-4">
-        <div class="row">
-            <!-- Sidebar (hidden if $showSidebar is false) -->
-            @if (!isset($showSidebar) || $showSidebar)
-                <aside class="col-md-3 d-none d-md-block">
-                    <div class="tools-sidebar bg-white rounded shadow-sm p-3">
-                        <h6 class="fw-bold mb-3">🛠 Popular Tools</h6>
-                        <ul class="list-unstyled">
-                            <li><a href="{{ route('case-converter') }}" class="text-decoration-none">🔠 Case
-                                    Converter</a></li>
-                            <li><a href="{{ route('tools.wordcounter') }}" class="text-decoration-none">📝 Word
-                                    Counter</a></li>
-                            <li><a href="{{ route('tools.password') }}" class="text-decoration-none">🔑 Password
-                                    Generator</a></li>
-                            <li><a href="{{ url('/text-reverser') }}" class="text-decoration-none">↩️ Text Reverser</a>
-                            </li>
-                        </ul>
-                    </div>
-                </aside>
-                <section class="col-md-9">
-                    @yield('content')
-                </section>
-            @else
-                <section class="col-12">
-                    @yield('content')
-                </section>
-            @endif
-        </div>
-    </main>
+    <div class="row">
+        <!-- Sidebar (hidden if $showSidebar is false) -->
+        @if (!isset($showSidebar) || $showSidebar)
+            <aside class="col-md-3 d-none d-md-block">
+                <div class="tools-sidebar bg-white rounded shadow-sm p-3">
+                    <h6 class="fw-bold mb-3">🛠 Popular Tools</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('tools.case-converter') }}" class="text-decoration-none">🔠 Case Converter</a></li>
+                        <li><a href="{{ route('tools.wordcounter') }}" class="text-decoration-none">📝 Word Counter</a></li>
+                        <li><a href="{{ route('tools.password') }}" class="text-decoration-none">🔑 Password Generator</a></li>
+                        <li><a href="{{ url('/text-reverser') }}" class="text-decoration-none">↩️ Text Reverser</a></li>
+                    </ul>
+                </div>
+            </aside>
+            <section class="col-md-9">
+                @yield('content')
+            </section>
+        @else
+            <section class="col-12">
+                @yield('content')
+            </section>
+        @endif
+    </div>
+</main>
 
 
     <!-- Footer -->

@@ -14,7 +14,7 @@
                 <div class="fs-1 mb-3">🔠</div>
                 <h5 class="fw-bold">Case Converter</h5>
                 <p class="text-muted small">Convert your text to uppercase, lowercase, or title case instantly.</p>
-                <a href="{{ route('case-converter') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
+                <a href="{{ route('tools.case-converter') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
             </div>
         </div>
     </div>

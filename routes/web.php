@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\Tools\CaseConvertorController;
 use App\Http\Controllers\Tools\PasswordGeneratorController;
@@ -11,20 +12,33 @@ Route::get('/', function () {
 });
 
 
-Route::get('/tools/case-converter', [CaseConvertorController::class, 'caseConverter'])->name('case-converter');
-Route::post('/tools/case-converter', [CaseConvertorController::class, 'caseConverterProcess']);
 
+Route::prefix('tools')->name('tools.')->group(function () {
+    // Case Converter
+    Route::get('/case-converter', [CaseConvertorController::class, 'caseConverter'])
+        ->name('case-converter');
+    Route::post('/case-converter', [CaseConvertorController::class, 'caseConverterProcess']);
 
-Route::get('/tools/word-counter', [WordCounterController::class, 'index'])->name('tools.wordcounter');
+    // Word Counter
+    Route::get('/word-counter', [WordCounterController::class, 'index'])
+        ->name('wordcounter');
 
-
-Route::get('/tools/password-generator', [PasswordGeneratorController::class, 'index'])
-    ->name('tools.password');
-
-# Optional API route (only if you want server-side generation):
-Route::post('/tools/password-generator/generate', [PasswordGeneratorController::class, 'generate'])
-    ->name('tools.password.generate');
-
+    // Password Generator
+    Route::get('/password-generator', [PasswordGeneratorController::class, 'index'])
+        ->name('password');
+    Route::post('/password-generator/generate', [PasswordGeneratorController::class, 'generate'])
+        ->name('password.generate');
+});
 
 Route::get('/tools/image-compressor', [ToolController::class, 'imageCompressor']);
 Route::post('/tools/image-compressor', [ToolController::class, 'imageCompressorProcess']);
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+require __DIR__.'/auth.php';
+require __DIR__.'/admin.php';
