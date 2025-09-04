@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ToolController;
 use App\Http\Controllers\Tools\CaseConvertorController;
@@ -10,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome', ['showSidebar' => false]);
 });
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
+
 
 
 
@@ -30,8 +35,6 @@ Route::prefix('tools')->name('tools.')->group(function () {
         ->name('password.generate');
 });
 
-Route::get('/tools/image-compressor', [ToolController::class, 'imageCompressor']);
-Route::post('/tools/image-compressor', [ToolController::class, 'imageCompressorProcess']);
 
 
 Route::middleware('auth')->group(function () {

@@ -49,19 +49,34 @@
                     <a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-home me-2"></i>
                         Dashboard</a>
                 </li>
-                {{-- <li class="nav-item mb-2">
-                    <a class="nav-link" href="{{ route('admin.tools') }}"><i class="fas fa-tools me-2"></i> Manage Tools</a>
-                </li> --}}
                 <li class="nav-item mb-2">
-        <a class="nav-link" href="{{ route('admin.users.index') }}">
-            <i class="fas fa-users me-2"></i> Users
-        </a>
-    </li>
-    <li class="nav-item mb-2">
-        <a class="nav-link" href="{{ route('admin.roles.index') }}">
-            <i class="fas fa-user-shield me-2"></i> Roles
-        </a>
-    </li>
+                    <a class="nav-link" href="{{ route('admin.tools.index') }}">
+                        <i class="fas fa-tools me-2"></i> Tools
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="{{ route('admin.contact-messages.index') }}">
+                        <i class="fas fa-envelope me-2"></i> Contact Messages
+                    </a>
+                </li>
+
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="{{ route('admin.seo.index') }}">
+                        <i class="fas fa-search me-2"></i> SEO Management
+                    </a>
+                </li>
+
+
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="{{ route('admin.users.index') }}">
+                        <i class="fas fa-users me-2"></i> Users
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
+                    <a class="nav-link" href="{{ route('admin.roles.index') }}">
+                        <i class="fas fa-user-shield me-2"></i> Roles
+                    </a>
+                </li>
 
 
 
