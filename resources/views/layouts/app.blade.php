@@ -109,8 +109,10 @@
                                     Counter</a></li>
                             <li><a href="{{ route('tools.password') }}" class="text-decoration-none">🔑 Password
                                     Generator</a></li>
-                            <li><a href="{{ url('/text-reverser') }}" class="text-decoration-none">↩️ Text Reverser</a>
-                            </li>
+                            <li><a href="{{ route('tools.textreverser') }}" class="text-decoration-none">↩️ Text Reverser</a></li>
+                            <li><a href="{{ route('tools.whitespace') }}" class="text-decoration-none">✂️ Whitespace Remover</a></li>
+
+
                         </ul>
                     </div>
                 </aside>

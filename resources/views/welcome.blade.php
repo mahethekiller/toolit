@@ -47,7 +47,18 @@
                 <div class="fs-1 mb-3">↩️</div>
                 <h5 class="fw-bold">Text Reverser</h5>
                 <p class="text-muted small">Reverse your text easily for fun or formatting needs.</p>
-                <a href="{{ url('/text-reverser') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
+                <a href="{{ route('tools.textreverser') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
+            </div>
+        </div>
+    </div>
+
+     <div class="col-md-6 col-lg-4">
+        <div class="card h-100 shadow-sm border-0 rounded-4">
+            <div class="card-body text-center p-4">
+                <div class="fs-1 mb-3">✂️</div>
+                <h5 class="fw-bold">Whitespace Remover</h5>
+                <p class="text-muted small">Reverse your text easily for fun or formatting needs.</p>
+                <a href="{{ route('tools.whitespace') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
             </div>
         </div>
     </div>
