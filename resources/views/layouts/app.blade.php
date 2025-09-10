@@ -6,31 +6,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @php
-        $seo = getSeo(); // gets SEO for current page automatically
+        $seo = getSeo(); // might be null
         $domain = config('app.url');
     @endphp
 
-    <title>{{  $seo->title ?? 'ToolSite - Smart, simple, and free online tools to save your time.' }}</title>
-    <meta name="description" content="{{ $seo->description ?? 'Smart, simple, and free online tools to save your time.' }}">
-    <meta name="keywords" content="{{ $seo->keywords ?? implode(', ', array_unique(array_merge([
-        'tools',
-        'online tools',
-        'free online tools',
-        'smart tools',
-        'simple tools',
-    ], array_filter(explode(' ', $seo->title ?? ''))))) }}">
+    <!-- Dynamic SEO Tags -->
+    <title>{{ $seo->title ?? 'ToolSite - Smart, simple, and free online tools to save your time.' }}</title>
+    <meta name="description"
+        content="{{ $seo->description ?? 'Smart, simple, and free online tools to save your time.' }}">
+    <meta name="keywords"
+        content="{{ $seo->keywords ?? 'tools, online tools, free online tools, smart tools, simple tools' }}">
 
-    @if ($seo)
-        <meta property="og:title" content="{{ $seo->og_title ?? $seo->title }}">
-        <meta property="og:description" content="{{ $seo->og_description ?? $seo->description }}">
-        <meta property="og:image" content="{{ $seo->og_image ? url($seo->og_image) : url('/default-og-image.png') }}">
-        <link rel="canonical" href="{{ $seo->canonical ?? url()->current() }}">
-    @endif
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="ToolSite">
+    <meta property="og:title" content="{{ $seo->og_title ?? ($seo->title ?? 'ToolSite') }}">
+    <meta property="og:description"
+        content="{{ $seo->og_description ?? ($seo->description ?? 'Free smart online tools') }}">
+    <meta property="og:url" content="{{ $seo->canonical ?? url()->current() }}">
+    <meta property="og:image"
+        content="{{ isset($seo->og_image) && $seo->og_image ? url($seo->og_image) : url('/default-og-image.png') }}">
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $seo->title ?? 'ToolSite' }}">
+    <meta name="twitter:description"
+        content="{{ $seo->description ?? 'Smart, simple, and free online tools to save your time.' }}">
+    <meta name="twitter:image"
+        content="{{ isset($seo->og_image) && $seo->og_image ? url($seo->og_image) : url('/default-og-image.png') }}">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="{{ $seo->canonical ?? url()->current() }}">
+
+    <!-- Author -->
     <meta name="author" content="mahethekiller">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('storage/fevicon.png') }}">
-
 
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -43,6 +55,7 @@
         body {
             background-color: #f8fafc;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
         }
 
         .navbar {
@@ -52,6 +65,10 @@
         .navbar-brand {
             font-weight: bold;
             color: #0d6efd !important;
+        }
+
+        nav a {
+            font-weight: 500;
         }
 
         main {
@@ -69,14 +86,36 @@
             top: 80px;
         }
     </style>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+@php
+    $jsonLd = [
+        "@context" => "https://schema.org",
+        "@type" => "WebSite",
+        "name" => "ToolSite",
+        "url" => $domain,
+        "potentialAction" => [
+            "@type" => "SearchAction",
+            "target" => $domain . "/search?q={search_term_string}",
+            "query-input" => "required name=search_term_string"
+        ]
+    ];
+@endphp
+
+{!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT) !!}
+</script>
+
+
 </head>
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top" role="navigation">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <i class="fa-solid fa-toolbox me-2"></i> ToolSite
+            <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                <i class="fa-solid fa-toolbox me-2" aria-hidden="true"></i>
+                <span>ToolSite</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,13 +134,13 @@
     </nav>
 
     <!-- Main -->
-    <main class="container py-4">
+    <main class="container py-4" role="main">
         <div class="row">
-            <!-- Sidebar (hidden if $showSidebar is false) -->
+            <!-- Sidebar -->
             @if (!isset($showSidebar) || $showSidebar)
-                <aside class="col-md-3 d-none d-md-block">
+                <aside class="col-md-3 d-none d-md-block" aria-label="Popular Tools Sidebar">
                     <div class="tools-sidebar bg-white rounded shadow-sm p-3">
-                        <h6 class="fw-bold mb-3">🛠 Popular Tools</h6>
+                        <h2 class="h6 fw-bold mb-3">🛠 Popular Tools</h2>
                         <ul class="list-unstyled">
                             <li><a href="{{ route('tools.case-converter') }}" class="text-decoration-none">🔠 Case
                                     Converter</a></li>
@@ -109,10 +148,10 @@
                                     Counter</a></li>
                             <li><a href="{{ route('tools.password') }}" class="text-decoration-none">🔑 Password
                                     Generator</a></li>
-                            <li><a href="{{ route('tools.textreverser') }}" class="text-decoration-none">↩️ Text Reverser</a></li>
-                            <li><a href="{{ route('tools.whitespace') }}" class="text-decoration-none">✂️ Whitespace Remover</a></li>
-
-
+                            <li><a href="{{ route('tools.textreverser') }}" class="text-decoration-none">↩️ Text
+                                    Reverser</a></li>
+                            <li><a href="{{ route('tools.whitespace') }}" class="text-decoration-none">✂️ Whitespace
+                                    Remover</a></li>
                         </ul>
                     </div>
                 </aside>
@@ -127,14 +166,13 @@
         </div>
     </main>
 
-
     <!-- Footer -->
-    <footer class="border-top py-3 text-center">
+    <footer class="border-top py-3 text-center" role="contentinfo">
         <small>© {{ date('Y') }} ToolSite. All Rights Reserved.</small>
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 </body>
 
 </html>

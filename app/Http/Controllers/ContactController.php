@@ -1,34 +1,39 @@
 <?php
-
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\ContactMessage;
+use Illuminate\Http\Request;
 
 class ContactController extends Controller
 {
     public function index()
     {
-        return view('contact');
+        $num1 = rand(1, 9);
+        $num2 = rand(1, 9);
+        session(['captcha_answer' => $num1 + $num2]);
+
+        return view('contact', compact('num1', 'num2'));
     }
 
     public function send(Request $request)
     {
         $request->validate([
             'name'    => 'required|string|max:255',
-            'email'   => 'required|email|max:255',
+            'email'   => 'required|email',
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
+            'captcha' => 'required|numeric',
         ]);
 
-        // Store in database
-        ContactMessage::create([
-            'name'    => $request->name,
-            'email'   => $request->email,
-            'subject' => $request->subject,
-            'message' => $request->message,
-        ]);
+        // Check captcha
+        if ($request->captcha != session('captcha_answer')) {
+            return back()->withErrors(['captcha' => '❌ Incorrect answer to the math question.'])->withInput();
+        }
 
-        return back()->with('success', 'Your message has been stored successfully!');
+        // Save to DB
+        ContactMessage::create($request->only('name', 'email', 'subject', 'message'));
+
+        return back()->with('success', '✅ Thank you for contacting us!');
     }
+
 }

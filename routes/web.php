@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ToolsPageController;
 use App\Http\Controllers\Tools\CaseConvertorController;
 use App\Http\Controllers\Tools\PasswordGeneratorController;
 use App\Http\Controllers\Tools\TextReverserController;
@@ -36,10 +37,16 @@ Route::prefix('tools')->name('tools.')->group(function () {
     Route::get('/text-reverser', [TextReverserController::class, 'index'])->name('textreverser');
     Route::post('/text-reverser/process', [TextReverserController::class, 'process'])->name('textreverser.process');
 
-Route::get('/whitespace-remover', [WhitespaceRemoverController::class, 'index'])->name('whitespace');
+    Route::get('/whitespace-remover', [WhitespaceRemoverController::class, 'index'])->name('whitespace');
     Route::post('/whitespace-remover/process', [WhitespaceRemoverController::class, 'process'])->name('whitespace.process');
 
 });
+
+// routes/web.php
+Route::get('/tools', [ToolsPageController::class, 'index'])
+    ->name('tools.index');
+
+Route::view('/about', 'about')->name('about');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

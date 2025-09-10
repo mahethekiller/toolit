@@ -8,7 +8,7 @@
         <!-- Input Area -->
         <div class="col-lg-6 mb-4">
             <label for="input-text" class="form-label fw-bold">Your Text</label>
-            <textarea id="input-text" class="form-control" rows="8" placeholder="Paste or type your text here..."></textarea>
+            <textarea id="input-text" class="form-control" rows="10" placeholder="Paste or type your text here..."></textarea>
 
             <!-- Options -->
             <div class="mt-4">
@@ -41,56 +41,71 @@
                 </div>
             </div>
 
-            <button id="processBtn" class="btn btn-primary mt-3">
-                🧹 Clean Text
-            </button>
+            <!-- Action Button -->
+            <div class="d-grid mt-3">
+                <button class="btn btn-primary" onclick="processText()">🧹 Clean Text</button>
+            </div>
         </div>
 
         <!-- Result Section -->
         <div class="col-lg-6 mb-4">
-            <h5 class="fw-bold mb-3">Result</h5>
-            <div class="p-4 border rounded-3 bg-light d-flex justify-content-between align-items-start"
-                 style="min-height: 300px; overflow-x: auto;">
-                <div id="result-text" class="me-3 flex-grow-1 text-muted"
-                     style="white-space: pre-wrap; font-size: 1.1rem;">
-                    ✍️ Start typing and click "Clean Text" to see the result...
-                </div>
-                <button id="copyBtn" class="btn btn-outline-secondary btn-sm d-none" onclick="copyResult()">
-                    📋 Copy
-                </button>
-            </div>
+            <label for="result-text" class="form-label fw-bold">Result</label>
+            <textarea id="result-text" class="form-control bg-light" rows="10" readonly
+                      placeholder="✍️ Start typing or click clean to see the result..."></textarea>
+            <button id="copyBtn" class="btn btn-outline-secondary btn-sm mt-2 d-none" onclick="copyResult()">
+                📋 Copy
+            </button>
         </div>
     </div>
 
     <!-- JS -->
     <script>
-        document.getElementById("processBtn").addEventListener("click", function () {
-            const text = document.getElementById("input-text").value;
-            const option = document.querySelector('input[name="mode"]:checked').value;
+        const inputText = document.getElementById("input-text");
+        const resultText = document.getElementById("result-text");
 
-            fetch("{{ route('tools.whitespace.process') }}", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": "{{ csrf_token() }}"
-                },
-                body: JSON.stringify({ text, option })
-            })
-            .then(res => res.json())
-            .then(data => {
-                const resultBox = document.getElementById("result-text");
-                resultBox.textContent = data.result;
-                document.getElementById("copyBtn").classList.remove("d-none");
-            });
-        });
+        function processText() {
+            let text = inputText.value;
+            const mode = document.querySelector('input[name="mode"]:checked').value;
+
+            let output = text;
+            switch (mode) {
+                case "all":
+                    output = text.replace(/\s+/g, "");
+                    break;
+                case "extra":
+                    output = text.replace(/\s+/g, " ").trim();
+                    break;
+                case "leading-trailing":
+                    output = text.trim();
+                    break;
+                case "left":
+                    output = text.replace(/^\s+/, "");
+                    break;
+                case "right":
+                    output = text.replace(/\s+$/, "");
+                    break;
+                case "line-breaks":
+                    output = text.replace(/(\r\n|\r|\n)/g, "");
+                    break;
+            }
+
+            resultText.value = output;
+            document.getElementById("copyBtn").classList.toggle("d-none", !output.trim());
+        }
 
         function copyResult() {
-            const resultText = document.getElementById("result-text").innerText;
-            navigator.clipboard.writeText(resultText).then(() => {
-                const btn = document.getElementById("copyBtn");
-                btn.innerHTML = "✅ Copied!";
-                setTimeout(() => btn.innerHTML = "📋 Copy", 1500);
-            });
+            resultText.select();
+            document.execCommand("copy");
+
+            const btn = document.getElementById("copyBtn");
+            btn.innerHTML = "✅ Copied!";
+            setTimeout(() => btn.innerHTML = "📋 Copy", 1500);
         }
+
+        // Optional live update
+        inputText.addEventListener("input", processText);
+        document.querySelectorAll('input[name="mode"]').forEach(radio => {
+            radio.addEventListener("change", processText);
+        });
     </script>
 @endsection

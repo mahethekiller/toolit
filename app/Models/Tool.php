@@ -13,5 +13,10 @@ class Tool extends Model
         'route_name',
         'url',
         'active',
+        'description',
+    ];
+
+    protected $casts = [
+        'active' => 'boolean',
     ];
 }
