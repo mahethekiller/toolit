@@ -11,7 +11,7 @@
     @endphp
 
     <!-- Dynamic SEO Tags -->
-    <title>{{ $seo->title ?? 'ToolSite - Smart, simple, and free online tools to save your time.' }}</title>
+    <title>{{ $seo->title ?? 'Online Text Tools - Smart, simple, and free online tools to save your time.' }}</title>
     <meta name="description"
         content="{{ $seo->description ?? 'Smart, simple, and free online tools to save your time.' }}">
     <meta name="keywords"
@@ -19,8 +19,8 @@
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:site_name" content="ToolSite">
-    <meta property="og:title" content="{{ $seo->og_title ?? ($seo->title ?? 'ToolSite') }}">
+    <meta property="og:site_name" content="Online Text Tools">
+    <meta property="og:title" content="{{ $seo->og_title ?? ($seo->title ?? 'Online Text Tools') }}">
     <meta property="og:description"
         content="{{ $seo->og_description ?? ($seo->description ?? 'Free smart online tools') }}">
     <meta property="og:url" content="{{ $seo->canonical ?? url()->current() }}">
@@ -29,7 +29,7 @@
 
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{{ $seo->title ?? 'ToolSite' }}">
+    <meta name="twitter:title" content="{{ $seo->title ?? 'Online Text Tools' }}">
     <meta name="twitter:description"
         content="{{ $seo->description ?? 'Smart, simple, and free online tools to save your time.' }}">
     <meta name="twitter:image"
@@ -102,7 +102,7 @@
     $jsonLd = [
         "@context" => "https://schema.org",
         "@type" => "WebSite",
-        "name" => "ToolSite",
+        "name" => "Online Text Tools",
         "url" => $domain,
         "potentialAction" => [
             "@type" => "SearchAction",
@@ -132,7 +132,7 @@
         <div class="container">
             <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
                 <i class="fa-solid fa-toolbox me-2" aria-hidden="true"></i>
-                <span>ToolSite</span>
+                <span>Online Text Tools</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -185,7 +185,7 @@
 
     <!-- Footer -->
     <footer class="border-top py-3 text-center" role="contentinfo">
-        <small>© {{ date('Y') }} ToolSite. All Rights Reserved.</small>
+        <small>© {{ date('Y') }} Online Text Tools. All Rights Reserved.</small>
     </footer>
 
     <!-- Bootstrap JS -->
