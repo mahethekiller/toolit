@@ -44,6 +44,15 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="{{ asset('storage/fevicon.png') }}">
 
+
+    {{-- CUSTOM SCRIPTS --}}
+    @php $siteScripts = \App\Models\SiteScript::first(); @endphp
+    @if ($siteScripts && $siteScripts->head_code)
+        {!! $siteScripts->head_code !!}
+    @endif
+
+    {{-- CUSTOM SCRIPTS --}}
+
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -110,6 +119,14 @@
 </head>
 
 <body>
+
+
+    {{-- CUSTOM SCRIPTS --}}
+    @if ($siteScripts && $siteScripts->body_code)
+        {!! $siteScripts->body_code !!}
+    @endif
+    {{-- CUSTOM SCRIPTS --}}
+
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top" role="navigation">
         <div class="container">
@@ -173,6 +190,14 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+
+
+    {{-- CUSTOM SCRIPTS --}}
+    @if ($siteScripts && $siteScripts->footer_code)
+        {!! $siteScripts->footer_code !!}
+    @endif
+    {{-- CUSTOM SCRIPTS --}}
+
 </body>
 
 </html>

@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SeoController;
+use App\Http\Controllers\Admin\SiteScriptController;
 use App\Http\Controllers\Admin\ToolController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -41,5 +42,8 @@ Route::middleware(['auth', 'role:admin'])
 
         Route::resource('contact-messages', ContactMessageController::class)
             ->only(['index', 'show']);
+
+        Route::get('/admin/scripts', [SiteScriptController::class, 'edit'])->name('scripts.edit');
+        Route::post('/admin/scripts', [SiteScriptController::class, 'update'])->name('scripts.update');
 
     });
