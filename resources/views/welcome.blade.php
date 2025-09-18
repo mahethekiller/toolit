@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="text-center mb-5">
-    <h1 class="fw-bold display-5">🚀 Welcome to ToolSite</h1>
+    <h1 class="fw-bold display-5">🚀 Welcome to Online Text Tools</h1>
     <p class="text-muted lead">Smart, simple, and free online tools to save your time.</p>
 </div>
 

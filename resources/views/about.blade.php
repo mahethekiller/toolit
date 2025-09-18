@@ -1,8 +1,4 @@
 @extends('layouts.app')
-
-@section('title', 'About Us - Your Website Name')
-@section('meta_description', 'Learn more about Your Website Name, our mission, vision, and how we help our users with powerful tools and services.')
-
 @section('content')
 <div class="container py-5">
     <!-- Breadcrumb -->
@@ -22,12 +18,12 @@
     <!-- Mission and Vision -->
     <div class="row align-items-center mb-5">
         <div class="col-md-6">
-            <img src="{{ asset('images/about/mission.jpg') }}" alt="Our Mission" class="img-fluid rounded shadow">
+            <img src="{{ asset('images/our-mission-online-txt-tools.jpg') }}" alt="Our Mission" class="img-fluid rounded shadow">
         </div>
         <div class="col-md-6">
             <h2 class="fw-bold">Our Mission</h2>
             <p>
-                At <strong>Your Website Name</strong>, our mission is to make everyday tasks simpler by
+                At <strong>Online Text Tools</strong>, our mission is to make everyday tasks simpler by
                 providing easy-to-use online tools that save time and increase productivity.
             </p>
             <p>
@@ -38,7 +34,7 @@
 
     <div class="row align-items-center mb-5 flex-md-row-reverse">
         <div class="col-md-6">
-            <img src="{{ asset('images/about/vision.jpg') }}" alt="Our Vision" class="img-fluid rounded shadow">
+            <img src="{{ asset('images/our-vision-online-txt-tools.jpg') }}" alt="Our Vision" class="img-fluid rounded shadow">
         </div>
         <div class="col-md-6">
             <h2 class="fw-bold">Our Vision</h2>
