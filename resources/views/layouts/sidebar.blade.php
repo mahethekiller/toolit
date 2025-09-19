@@ -18,6 +18,11 @@
             </a>
         </li>
         <li class="nav-item mb-2">
+            <a class="nav-link text-white py-2 px-3 rounded sidebar-link" href="{{ route('admin.faqs.index') }}">
+                <i class="fas fa-tools me-2"></i> FAQ's
+            </a>
+        </li>
+        <li class="nav-item mb-2">
             <a class="nav-link text-white py-2 px-3 rounded sidebar-link"
                 href="{{ route('admin.contact-messages.index') }}">
                 <i class="fas fa-envelope me-2"></i> Contact Messages

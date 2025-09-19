@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SeoController;
 use App\Http\Controllers\Admin\SiteScriptController;
@@ -45,5 +46,8 @@ Route::middleware(['auth', 'role:admin'])
 
         Route::get('/admin/scripts', [SiteScriptController::class, 'edit'])->name('scripts.edit');
         Route::post('/admin/scripts', [SiteScriptController::class, 'update'])->name('scripts.update');
+
+        // faq
+        Route::resource('faqs', FaqController::class);
 
     });
