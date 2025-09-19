@@ -11,9 +11,9 @@
     @endphp
 
     <!-- Dynamic SEO Tags -->
-    <title>{{ $seo->title ?? 'Online Text Tools - Smart, simple, and free online tools to save your time.' }}</title>
+    <title>{{ $seo->title ?? 'Free Online Text Tools – Case Converter, Word Counter & More' }}</title>
     <meta name="description"
-        content="{{ $seo->description ?? 'Smart, simple, and free online tools to save your time.' }}">
+        content="{{ $seo->description ?? 'Use free online text tools like Case Converter, Word Counter, Password Generator, Text Reverser & Whitespace Remover. Fast, easy & no sign-up needed!' }}">
     <meta name="keywords"
         content="{{ $seo->keywords ?? 'tools, online tools, free online tools, smart tools, simple tools' }}">
 

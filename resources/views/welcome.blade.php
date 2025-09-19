@@ -13,7 +13,7 @@
 
     <div class="text-center mb-5">
         <h1 class="fw-bold display-5">🚀 Welcome to Online Text Tools</h1>
-        <p class="text-muted lead">Smart, simple, and free online tools to save your time.</p>
+        <p class="text-muted lead">Free Online Text Tools – Case Converter, Word Counter, Password Generator & More</p>
     </div>
 
     <div class="row g-4">
