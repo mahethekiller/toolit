@@ -67,8 +67,15 @@ class ToolController extends Controller
 
         // Handle icon upload
         if ($request->hasFile('icon')) {
-            $fileName = time() . '.' . $request->icon->extension();
-            $request->icon->move(public_path('uploads/tools/icons'), $fileName);
+            $fileName        = $request->icon->getClientOriginalName(); // keep original file name
+            $destinationPath = public_path('uploads/tools/icons');
+
+            // Check if file already exists
+            if (file_exists($destinationPath . '/' . $fileName)) {
+                return back()->withErrors(['icon' => '❌ The file "' . $fileName . '" already exists. Please rename the file and try again.'])->withInput();
+            }
+
+            $request->icon->move($destinationPath, $fileName);
             $tool->icon = $fileName;
         }
 
