@@ -29,8 +29,10 @@
             <p>
                 At <strong>Online Text Tools</strong>, our mission is to make content creation and editing
                 simple for everyone. We provide <strong>free online tools</strong> such as
-                <em>Case Converter</em>, <em>Word Counter</em>, <em>Password Generator</em>,
-                <em>Text Reverser</em>, and more — all designed to save time and boost productivity.
+                <a href="{{ route('tools.case-converter') }}"><em>Case Converter</em></a>,
+                <a href="{{ route('tools.wordcounter') }}"><em>Word Counter</em></a>,
+                <a href="{{ route('tools.password') }}"><em>Password Generator</em></a>,
+                <em><a href="{{ route('tools.textreverser') }}">Text Reverser</a></em>, and more — all designed to save time and boost productivity.
             </p>
             <p>
                 We focus on creating fast, reliable, and ad-free tools that help writers, students, bloggers,
