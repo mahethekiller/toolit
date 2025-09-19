@@ -11,36 +11,48 @@
         }
     </style>
 
-    <div class="text-center mb-5">
+    {{-- Hero Section --}}
+    <section class="text-center mb-5">
         <h1 class="fw-bold display-5">🚀 Welcome to Online Text Tools</h1>
-        <p class="text-muted lead">Free Online Text Tools – Case Converter, Word Counter, Password Generator & More</p>
-    </div>
+        <p class="text-muted lead">Access free online text tools like Case Converter, Word Counter, Password Generator, Text Reverser, and Whitespace Remover. Fast, easy & no sign-up required.</p>
+    </section>
 
-    <div class="row g-4">
-
+    {{-- Tools Section --}}
+    <section class="row g-4">
         @php
             $tools = \App\Models\Tool::where('active', true)->get();
         @endphp
 
         @foreach ($tools as $tool)
-            <div class="col-md-6 col-lg-4">
+            <article class="col-md-6 col-lg-4" itemscope itemtype="https://schema.org/SoftwareApplication">
                 <div class="card h-100 shadow-sm border-0 rounded-4">
                     <div class="card-body text-center p-4">
                         <div class="mb-3">
                             @if ($tool->icon)
                                 <img src="{{ asset('uploads/tools/icons/' . $tool->icon) }}"
-                                    alt="{{ $tool->icon_alt ?? $tool->name }}" class="tool-icon img-fluid">
+                                     alt="{{ $tool->icon_alt ?? $tool->name . ' – free online tool' }}"
+                                     class="tool-icon img-fluid"
+                                     loading="lazy"
+                                     itemprop="image">
                             @endif
                         </div>
-                        <h5 class="fw-bold">{{ $tool->name }}</h5>
-                        <p class="text-muted small">
-                            {{ $tool->description ?? 'Use this tool for your text and formatting needs.' }}
+                        <h2 class="fw-bold h5" itemprop="name">{{ $tool->name }}</h2>
+                        <p class="text-muted small" itemprop="description">
+                            {{ $tool->description ?? 'Use this tool for your text formatting and content needs.' }}
                         </p>
-                        <a href="{{ $tool->url }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
+                        <a href="{{ $tool->url }}" class="btn btn-primary btn-sm mt-2" itemprop="url">Try Now</a>
                     </div>
                 </div>
-            </div>
+            </article>
         @endforeach
+    </section>
+
+    {{-- Internal Links Section --}}
+    <section class="text-center mt-5">
+        <p class="text-muted small">
+            Learn more about our platform on the <a href="{{ route('about') }}">About Page</a> or reach out via our <a href="{{ route('contact') }}">Contact Page</a>.
+        </p>
+    </section>
 
 
 @endsection
