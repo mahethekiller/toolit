@@ -1,12 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
-<div class="text-center mb-5">
-    <h1 class="fw-bold display-5 mkk">🚀 Welcome to Online Text Tools</h1>
-    <p class="text-muted lead">Smart, simple, and free online tools to save your time.</p>
-</div>
-=======
     <style>
         .tool-icon {
             max-width: 80px;
@@ -16,7 +10,6 @@
             margin: 0 auto;
         }
     </style>
->>>>>>> dev
 
     <div class="text-center mb-5">
         <h1 class="fw-bold display-5">🚀 Welcome to Online Text Tools</h1>
