@@ -1,66 +1,46 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="text-center mb-5">
-    <h1 class="fw-bold display-5">🚀 Welcome to Online Text Tools</h1>
-    <p class="text-muted lead">Smart, simple, and free online tools to save your time.</p>
-</div>
+    <style>
+        .tool-icon {
+            max-width: 80px;
+            max-height: 80px;
+            object-fit: contain;
+            display: block;
+            margin: 0 auto;
+        }
+    </style>
 
-<div class="row g-4">
-    <!-- Tool Card -->
-    <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0 rounded-4">
-            <div class="card-body text-center p-4">
-                <div class="fs-1 mb-3">🔠</div>
-                <h5 class="fw-bold">Case Converter</h5>
-                <p class="text-muted small">Convert your text to uppercase, lowercase, or title case instantly.</p>
-                <a href="{{ route('tools.case-converter') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
-            </div>
-        </div>
+    <div class="text-center mb-5">
+        <h1 class="fw-bold display-5">🚀 Welcome to Online Text Tools</h1>
+        <p class="text-muted lead">Smart, simple, and free online tools to save your time.</p>
     </div>
 
-    <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0 rounded-4">
-            <div class="card-body text-center p-4">
-                <div class="fs-1 mb-3">📝</div>
-                <h5 class="fw-bold">Word Counter</h5>
-                <p class="text-muted small">Count words, characters, and spaces in your text with ease.</p>
-                <a href="{{ route('tools.wordcounter') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
-            </div>
-        </div>
-    </div>
+    <div class="row g-4">
 
-    <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0 rounded-4">
-            <div class="card-body text-center p-4">
-                <div class="fs-1 mb-3">🔑</div>
-                <h5 class="fw-bold">Password Generator</h5>
-                <p class="text-muted small">Generate strong and secure passwords with customizable options.</p>
-                <a href="{{ route('tools.password') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
-            </div>
-        </div>
-    </div>
+        @php
+            $tools = \App\Models\Tool::where('active', true)->get();
+        @endphp
 
-    <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0 rounded-4">
-            <div class="card-body text-center p-4">
-                <div class="fs-1 mb-3">↩️</div>
-                <h5 class="fw-bold">Text Reverser</h5>
-                <p class="text-muted small">Reverse your text easily for fun or formatting needs.</p>
-                <a href="{{ route('tools.textreverser') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
+        @foreach ($tools as $tool)
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 shadow-sm border-0 rounded-4">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            @if ($tool->icon)
+                                <img src="{{ asset('uploads/tools/icons/' . $tool->icon) }}"
+                                    alt="{{ $tool->icon_alt ?? $tool->name }}" class="tool-icon img-fluid">
+                            @endif
+                        </div>
+                        <h5 class="fw-bold">{{ $tool->name }}</h5>
+                        <p class="text-muted small">
+                            {{ $tool->description ?? 'Use this tool for your text and formatting needs.' }}
+                        </p>
+                        <a href="{{ $tool->url }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        @endforeach
 
-     <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0 rounded-4">
-            <div class="card-body text-center p-4">
-                <div class="fs-1 mb-3">✂️</div>
-                <h5 class="fw-bold">Whitespace Remover</h5>
-                <p class="text-muted small">Reverse your text easily for fun or formatting needs.</p>
-                <a href="{{ route('tools.whitespace') }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
-            </div>
-        </div>
-    </div>
-</div>
+
 @endsection

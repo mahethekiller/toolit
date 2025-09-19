@@ -8,6 +8,26 @@
 
 <div class="row g-4">
     <!-- Tool Card -->
+
+    @php
+        $tools = Tool::where('active', true)->get();
+    @endphp
+
+    @foreach($tools as $tool)
+        <div class="col-md-6 col-lg-4">
+            <div class="card h-100 shadow-sm border-0 rounded-4">
+                <div class="card-body text-center p-4">
+                    <div class="fs-1 mb-3">{{ $tool->icon }}</div>
+                    <h5 class="fw-bold">{{ $tool->name }}</h5>
+                    <p class="text-muted small">{{ $tool->description ?? 'Use this tool for your text and formatting needs.' }}</p>
+                    <a href="{{ $tool->url }}" class="btn btn-primary btn-sm mt-2">Try Now</a>
+                </div>
+            </div>
+        </div>
+    @endforeach
+
+
+
     <div class="col-md-6 col-lg-4">
         <div class="card h-100 shadow-sm border-0 rounded-4">
             <div class="card-body text-center p-4">
