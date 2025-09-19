@@ -14,6 +14,7 @@ class Tool extends Model
         'url',
         'active',
         'description',
+        'icon',
     ];
 
     protected $casts = [

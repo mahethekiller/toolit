@@ -9,21 +9,17 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+     public function up(): void
     {
         Schema::table('tools', function (Blueprint $table) {
-            $table->text('description')->nullable();
+            $table->string('icon_alt')->nullable()->after('icon');
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::table('tools', function (Blueprint $table) {
-            //
-            $table->dropColumn('description');
+            $table->dropColumn('icon_alt');
         });
     }
 };

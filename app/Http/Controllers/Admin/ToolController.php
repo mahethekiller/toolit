@@ -61,14 +61,23 @@ class ToolController extends Controller
             'url'         => 'required|url',
             'description' => 'nullable|string|max:500',
             'active'      => 'required|boolean',
+            'icon'        => 'nullable|mimes:jpg,jpeg,png,svg,webp|max:2048',
+            'icon_alt'    => 'nullable|string|max:255',
         ]);
 
-        $tool->update([
-            'name'        => $request->name,
-            'url'         => $request->url,
-            'description' => $request->description,
-            'active' => (bool) $request->active,
-        ]);
+        // Handle icon upload
+        if ($request->hasFile('icon')) {
+            $fileName = time() . '.' . $request->icon->extension();
+            $request->icon->move(public_path('uploads/tools/icons'), $fileName);
+            $tool->icon = $fileName;
+        }
+
+        $tool->name        = $request->name;
+        $tool->url         = $request->url;
+        $tool->description = $request->description;
+        $tool->icon_alt    = $request->icon_alt;
+        $tool->active      = (bool) $request->active;
+        $tool->save();
 
         return redirect()->route('admin.tools.index')
             ->with('success', '✅ Tool updated successfully!');
