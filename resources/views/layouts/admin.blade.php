@@ -12,6 +12,8 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
+
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -38,7 +40,7 @@
         }
     </style>
 
-     @stack('styles')
+    @stack('styles')
 </head>
 
 <body>
@@ -62,7 +64,38 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-     @stack('scripts')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/7.9.1/tinymce.min.js" integrity="sha512-09JpfVm/UE1F4k8kcVUooRJAxVMSfw/NIslGlWE/FGXb2uRO1Nt4BXAJ3LxPqNbO3Hccdu46qaBPp9wVpWAVhA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            tinymce.init({
+                selector: 'textarea.editor', // Use class selector
+                // plugins: 'image link code lists',
+                // toolbar: 'undo redo | formatselect | bold italic | alignleft aligncenter alignright | bullist numlist | removeformat | code',
+                height: 600
+            });
+        });
+    </script>
+
+    @stack('scripts')
+
+    {{-- <script src="{{ asset('js/ckeditor5/ckeditor.js') }}"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.editor').forEach((el) => {
+                ClassicEditor
+                    .create(el)
+                    .then(editor => {
+                        editor.ui.view.editable.element.style.minHeight = '200px';
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            });
+        });
+    </script> --}}
 </body>
 
 </html>

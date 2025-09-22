@@ -63,6 +63,7 @@ class ToolController extends Controller
             'active'      => 'required|boolean',
             'icon'        => 'nullable|mimes:jpg,jpeg,png,svg,webp|max:2048',
             'icon_alt'    => 'nullable|string|max:255',
+            'long_description' => 'nullable|string',
         ]);
 
         // Handle icon upload
@@ -82,6 +83,7 @@ class ToolController extends Controller
         $tool->name        = $request->name;
         $tool->url         = $request->url;
         $tool->description = $request->description;
+        $tool->long_description = $request->long_description;
         $tool->icon_alt    = $request->icon_alt;
         $tool->active      = (bool) $request->active;
         $tool->save();

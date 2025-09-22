@@ -65,6 +65,17 @@
                 @enderror
             </div>
 
+            <!-- Long Description -->
+            <div class="mb-3">
+    <label for="long_description" class="form-label fw-bold">Long Description</label>
+    <textarea
+        name="long_description"
+        id="long_description"
+        class="form-control editor"
+        rows="6">{!! old('long_description', $tool->long_description) !!}</textarea>
+</div>
+
+
 
             <!-- Active -->
             <div class="form-check">
@@ -83,4 +94,8 @@
             </div>
         </form>
     </div>
+
+
+
+
 @endsection

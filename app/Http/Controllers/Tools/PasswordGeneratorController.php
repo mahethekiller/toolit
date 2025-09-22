@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Tools;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\Tool;
 use Illuminate\Http\Request;
 
 class PasswordGeneratorController extends Controller
@@ -10,7 +12,9 @@ class PasswordGeneratorController extends Controller
     public function index()
     {
         // Purely client-side generation (JS). Server just renders the page.
-        return view('tools.password-generator');
+        $tool = Tool::where('active', true)->where('route_name', 'tools.password')->first();
+        $faqs = Faq::where('group_name', 'Password Generator')->get();
+        return view('tools.password-generator', compact('tool', 'faqs'));
     }
 
     // Optional: server-side generator if you ever want an API/POST endpoint
