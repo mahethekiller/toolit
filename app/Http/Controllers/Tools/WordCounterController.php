@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Tools;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\Tool;
 use Illuminate\Http\Request;
 
 class WordCounterController extends Controller
@@ -27,6 +29,10 @@ class WordCounterController extends Controller
             $stats['paragraphs'] = preg_match_all('/\n\s*\n/', trim($text)) + 1;
         }
 
-        return view('tools.word-counter', compact('text', 'stats'));
+
+        $tool = Tool::where('active', true)->where('route_name', 'tools.wordcounter')->first();
+        $faqs = Faq::where('group_name', 'Word Counter')->get();
+
+        return view('tools.word-counter', compact('text', 'stats', 'tool', 'faqs'));
     }
 }
