@@ -3,13 +3,17 @@
 namespace App\Http\Controllers\Tools;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\Tool;
 use Illuminate\Http\Request;
 
 class WhitespaceRemoverController extends Controller
 {
     public function index()
     {
-        return view('tools.whitespace-remover');
+        $tool = Tool::where('active', true)->where('route_name', 'tools.whitespace')->first();
+        $faqs = Faq::where('group_name', 'Whitespace Remover')->get();
+        return view('tools.whitespace-remover', compact('tool', 'faqs'));
     }
 
     public function process(Request $request)

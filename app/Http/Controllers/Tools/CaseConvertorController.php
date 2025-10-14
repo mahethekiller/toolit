@@ -2,13 +2,17 @@
 namespace App\Http\Controllers\Tools;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faq;
+use App\Models\Tool;
 use Illuminate\Http\Request;
 
 class CaseConvertorController extends Controller
 {
     public function index()
     {
-        return view('tools.case-converter');
+        $tool = Tool::where('active', true)->where('route_name', 'tools.caseConverter')->first();
+        $faqs = Faq::where('group_name', 'Case Converter')->get();
+        return view('tools.case-converter', compact('tool', 'faqs'));
     }
 
      public function caseConverter()
