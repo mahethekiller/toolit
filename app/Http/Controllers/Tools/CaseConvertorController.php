@@ -10,14 +10,16 @@ class CaseConvertorController extends Controller
 {
     public function index()
     {
-        $tool = Tool::where('active', true)->where('route_name', 'tools.caseConverter')->first();
+        $tool = Tool::where('active', true)->where('route_name', 'tools.case-converter')->first();
         $faqs = Faq::where('group_name', 'Case Converter')->get();
         return view('tools.case-converter', compact('tool', 'faqs'));
     }
 
      public function caseConverter()
     {
-        return view('tools.case-converter');
+        $tool = Tool::where('active', true)->where('route_name', 'tools.case-converter')->first();
+        $faqs = Faq::where('group_name', 'Case Converter')->get();
+        return view('tools.case-converter', compact('tool', 'faqs'));
     }
 
     public function caseConverterProcess(Request $request)

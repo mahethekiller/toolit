@@ -72,6 +72,23 @@
                             </div>
 
                         </div>
+
+
+@if (!empty($tool->long_description))
+            <div class="row">
+
+                <div class="col-md-12 mb-4 card shadow border-0 rounded-4">
+                    <div class="card-body p-4">
+                        {!! $tool->long_description !!}
+                    </div>
+                </div>
+
+            </div>
+        @endif
+        @if (!empty($faqs) && $faqs->count() > 0)
+            @include('partials.faqs', ['faqs' => $faqs])
+        @endif
+
                     </div>
                 </div>
             </div>
