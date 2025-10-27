@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container d-flex justify-content-center align-items-center min-vh-70">
-        <div class="col-lg-8">
-            <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-body p-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-4 card shadow border-0 rounded-4">
+                <div class="card-body p-4">
                     <!-- Header -->
                     <h2 class="mb-3 text-center fw-bold">↩️ Text Reverser</h2>
                     <p class="text-muted text-center mb-4">
@@ -32,6 +32,23 @@
                 </div>
             </div>
         </div>
+
+         @include('partials.tool-above-desc-ad')
+        @if (!empty($tool->long_description))
+            <div class="row">
+
+                <div class="col-md-12 mb-4 card shadow border-0 rounded-4">
+                    <div class="card-body p-4">
+                        {!! $tool->long_description !!}
+                    </div>
+                </div>
+
+            </div>
+        @endif
+        @include('partials.tool-below-desc-ad')
+        @if (!empty($faqs) && $faqs->count() > 0)
+            @include('partials.faqs', ['faqs' => $faqs])
+        @endif
     </div>
 
     <!-- Toast -->

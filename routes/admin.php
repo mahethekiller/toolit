@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\FaqController;
@@ -49,5 +50,8 @@ Route::middleware(['auth', 'role:admin'])
 
         // faq
         Route::resource('faqs', FaqController::class);
+
+        Route::resource('ads', AdController::class);
+
 
     });

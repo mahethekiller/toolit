@@ -72,7 +72,7 @@
                             </div>
 
                         </div>
-
+@include('partials.tool-above-desc-ad')
 
 @if (!empty($tool->long_description))
             <div class="row">
@@ -85,6 +85,7 @@
 
             </div>
         @endif
+        @include('partials.tool-below-desc-ad')
         @if (!empty($faqs) && $faqs->count() > 0)
             @include('partials.faqs', ['faqs' => $faqs])
         @endif

@@ -170,7 +170,34 @@
                             <li><a href="{{ route('tools.whitespace') }}" class="text-decoration-none">✂️ Whitespace
                                     Remover</a></li>
                         </ul>
+
+                        <div class="mt-4">
+                            <div class="card shadow-sm border-0 rounded-4 p-3">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-center">
+                                        <div class="mb-3">
+                                            @php
+                                                // use App\Models\Ad;
+                                                $headerAd = App\Models\Ad::where('position', 'sidebar')
+                                                    ->where('active', true)
+                                                    ->first();
+                                            @endphp
+
+                                            @if ($headerAd)
+                                                <div class="text-center my-3">
+                                                    {!! $headerAd->code !!}
+                                                </div>
+                                            @endif
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+
+
                 </aside>
                 <section class="col-md-9">
                     @yield('content')
@@ -179,7 +206,22 @@
                 <section class="col-12">
                     @yield('content')
                 </section>
+
+
             @endif
+
+             @php
+                                                // use App\Models\Ad;
+                                                $headerAd = App\Models\Ad::where('position', 'footer')
+                                                    ->where('active', true)
+                                                    ->first();
+                                            @endphp
+
+                                            @if ($headerAd)
+                                                <div class="text-center my-3">
+                                                    {!! $headerAd->code !!}
+                                                </div>
+                                            @endif
         </div>
     </main>
 

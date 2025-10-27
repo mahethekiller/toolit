@@ -64,6 +64,13 @@
         </li>
 
         <li class="nav-item mb-2">
+            <a class="nav-link text-white py-2 px-3 rounded sidebar-link"
+                href="{{ route('admin.ads.index') }}">
+                <i class="fas fa-ad me-2"></i> Ads
+            </a>
+        </li>
+
+        <li class="nav-item mb-2">
             <a class="nav-link text-white py-2 px-3 rounded sidebar-link" href="{{ route('admin.users.index') }}">
                 <i class="fas fa-users me-2"></i> Users
             </a>

@@ -49,6 +49,7 @@
 
     {{-- Internal Links Section --}}
     <section class="text-center mt-5">
+
         <p class="text-muted small">
             Learn more about our platform on the <a href="{{ route('about') }}">About Page</a> or reach out via our <a href="{{ route('contact') }}">Contact Page</a>.
         </p>
