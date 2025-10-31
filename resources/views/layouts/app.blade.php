@@ -96,6 +96,153 @@
         }
     </style>
 
+    <style>
+    /* ===============================
+   ARTICLE CONTENT STYLING
+   =============================== */
+
+.article-content {
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  color: #2c2c2c;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings */
+.article-content h1,
+.article-content h2,
+.article-content h3,
+.article-content h4,
+.article-content h5,
+.article-content h6 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  line-height: 1.3;
+  color: #1a1a1a;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.article-content h1 {
+  font-size: 2rem;
+  border-bottom: 3px solid #00a86b;
+  display: inline-block;
+  padding-bottom: 0.3rem;
+}
+
+.article-content h2 {
+  font-size: 1.6rem;
+  color: #00a86b;
+}
+
+.article-content h3 {
+  font-size: 1.3rem;
+  color: #333;
+}
+
+/* Paragraphs */
+.article-content p {
+  margin-bottom: 1.2rem;
+}
+
+/* Links */
+.article-content a {
+  color: #00a86b;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+.article-content a:hover {
+  color: #007e55;
+  text-decoration: underline;
+}
+
+/* Images */
+.article-content img {
+  max-width: 100%;
+  border-radius: 0.8rem;
+  margin: 1.5rem 0;
+  display: block;
+}
+
+/* Lists */
+.article-content ul,
+.article-content ol {
+  margin: 1.2rem 0 1.2rem 2rem;
+}
+.article-content li {
+  margin-bottom: 0.6rem;
+}
+
+/* Blockquotes */
+.article-content blockquote {
+  border-left: 5px solid #00a86b;
+  background: #f9f9f9;
+  padding: 1rem 1.5rem;
+  font-style: italic;
+  color: #555;
+  border-radius: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Code blocks */
+.article-content pre {
+  background: #1e1e1e;
+  color: #f8f8f2;
+  padding: 1rem;
+  border-radius: 0.6rem;
+  overflow-x: auto;
+  font-family: "Fira Code", monospace;
+  font-size: 0.95rem;
+}
+.article-content code {
+  background: #f3f3f3;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.3rem;
+  font-family: "Fira Code", monospace;
+  color: #d63384;
+}
+
+/* Tables */
+.article-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+.article-content th,
+.article-content td {
+  border: 1px solid #eaeaea;
+  padding: 0.8rem 1rem;
+  text-align: left;
+}
+.article-content th {
+  background: #00a86b;
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .article-content {
+    padding: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .article-content h1 {
+    font-size: 1.6rem;
+  }
+
+  .article-content h2 {
+    font-size: 1.3rem;
+  }
+}
+
+</style>
+
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
 @php

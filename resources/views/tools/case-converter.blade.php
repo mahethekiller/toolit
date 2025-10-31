@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid py-5">
-        <div class="row justify-content-center">
+    <div class="container">
+        <div class="row ">
             <div class="col-12">
                 <div class="card shadow-lg border-0 rounded-4">
                     <div class="card-body p-5">
@@ -72,27 +72,22 @@
                             </div>
 
                         </div>
-@include('partials.tool-above-desc-ad')
 
-@if (!empty($tool->long_description))
-            <div class="row">
-
-                <div class="col-md-12 mb-4 card shadow border-0 rounded-4">
-                    <div class="card-body p-4">
-                        {!! $tool->long_description !!}
-                    </div>
-                </div>
-
-            </div>
-        @endif
-        @include('partials.tool-below-desc-ad')
-        @if (!empty($faqs) && $faqs->count() > 0)
-            @include('partials.faqs', ['faqs' => $faqs])
-        @endif
 
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            @include('partials.tool-above-desc-ad')
+
+            @if (!empty($tool->long_description))
+                @include('partials.description', ['description' => $tool->long_description])
+            @endif
+            @include('partials.tool-below-desc-ad')
+            @if (!empty($faqs) && $faqs->count() > 0)
+                @include('partials.faqs', ['faqs' => $faqs])
+            @endif
         </div>
     </div>
 
