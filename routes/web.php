@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ToolsPageController;
 use App\Http\Controllers\Tools\CaseConvertorController;
@@ -53,6 +54,18 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+
+
+
+Route::get('/privacy-policy', [PageController::class, 'privacyPolicy'])->name('privacy.policy');
+Route::get('/terms-of-use', [PageController::class, 'termsOfUse'])->name('terms.use');
+Route::get('/ads-disclosure', [PageController::class, 'adsDisclosure'])->name('ads.disclosure');
+
+
+
+
 
 require __DIR__ . '/auth.php';
 require __DIR__ . '/admin.php';
