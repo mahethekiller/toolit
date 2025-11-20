@@ -68,6 +68,8 @@ Route::get('/ads-disclosure', [PageController::class, 'adsDisclosure'])->name('a
 
 
 Route::get('/portfolio/mahendra', [PortfolioController::class, 'index']);
+// Projects Page
+Route::get('/portfolio/mahendra/projects', [PortfolioController::class, 'projects'])->name('projects');
 
 
 
