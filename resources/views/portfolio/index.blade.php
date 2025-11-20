@@ -365,17 +365,6 @@
                 <img src="{{ $settings->getProfileImageUrl() }}" alt="{{ $settings->full_name }}" class="profile-img">
             </div>
 
-            <div class="col-lg-6 text-center">
-    <!-- Debug info - remove this after testing -->
-    <div style="display: none;">
-        Image Path: {{ $settings->profile_image }}<br>
-        Full URL: {{ $settings->getProfileImageUrl() }}<br>
-        Storage Exists: {{ \Storage::disk('public')->exists($settings->profile_image) ? 'Yes' : 'No' }}
-    </div>
-
-    <img src="{{ $settings->getProfileImageUrl() }}" alt="{{ $settings->full_name }}" class="profile-img"
-         onerror="this.src='https://via.placeholder.com/300'">
-</div>
         </div>
     </div>
 </section>
