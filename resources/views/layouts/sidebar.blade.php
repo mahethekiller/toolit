@@ -12,6 +12,46 @@
                 <i class="fas fa-home me-2"></i> Dashboard
             </a>
         </li>
+
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle {{ request()->routeIs('admin.experiences.*') || request()->routeIs('admin.skills.*') || request()->routeIs('admin.projects.*') ? 'active' : '' }}"
+       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="fas fa-briefcase me-2"></i>
+        Portfolio
+    </a>
+    <ul class="dropdown-menu slide-down">
+        <li class="nav-item">
+    <a class="nav-link {{ request()->routeIs('admin.settings.*') ? 'active' : '' }}"
+       href="{{ route('admin.settings.index') }}">
+        <i class="fas fa-cog me-2"></i>
+        General Settings
+    </a>
+</li>
+        <li>
+            <a class="dropdown-item {{ request()->routeIs('admin.experiences.*') ? 'active' : '' }}"
+               href="{{ route('admin.experiences.index') }}">
+                <i class="fas fa-briefcase me-2"></i>
+                Experiences
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item {{ request()->routeIs('admin.skills.*') ? 'active' : '' }}"
+               href="{{ route('admin.skills.index') }}">
+                <i class="fas fa-code me-2"></i>
+                Skills
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item {{ request()->routeIs('admin.projects.*') ? 'active' : '' }}"
+               href="{{ route('admin.projects.index') }}">
+                <i class="fas fa-project-diagram me-2"></i>
+                Projects
+            </a>
+        </li>
+    </ul>
+</li>
+
+
         <li class="nav-item mb-2">
             <a class="nav-link text-white py-2 px-3 rounded sidebar-link" href="{{ route('admin.tools.index') }}">
                 <i class="fas fa-tools me-2"></i> Tools

@@ -38,7 +38,11 @@
         .content-wrapper {
             padding: 20px;
         }
+
+
     </style>
+
+
 
     @stack('styles')
 </head>

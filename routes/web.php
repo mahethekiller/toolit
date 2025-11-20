@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ToolsPageController;
 use App\Http\Controllers\Tools\CaseConvertorController;
@@ -64,6 +65,9 @@ Route::get('/terms-of-use', [PageController::class, 'termsOfUse'])->name('terms.
 Route::get('/ads-disclosure', [PageController::class, 'adsDisclosure'])->name('ads.disclosure');
 
 
+
+
+Route::get('/portfolio/mahendra', [PortfolioController::class, 'index']);
 
 
 
