@@ -331,8 +331,12 @@
                         <a class="nav-link" href="#projects">Projects</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/portfolio/mahendra/projects') }}">All Projects</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#contact">Contact</a>
                     </li>
+
                     @auth
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.dashboard') }}">

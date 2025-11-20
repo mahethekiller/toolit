@@ -428,7 +428,7 @@
     <!-- Hero Section -->
     <section class="projects-hero">
         <div class="container">
-            <a href="{{ url('/') }}" class="btn btn-outline-light back-to-portfolio">
+            <a href="{{ url('/portfolio/mahendra') }}" class="btn btn-outline-light back-to-portfolio">
                 <i class="fas fa-arrow-left me-2"></i> Back to Portfolio
             </a>
 
