@@ -134,15 +134,16 @@
                                 </a>
                             </li>
                             <li class="mb-2">
+                                <a href="/blog" class="text-decoration-none text-light hover-text">
+                                    <i class="fas fa-blog me-2"></i>Blog
+                                </a>
+                            </li>
+                            <li class="mb-2">
                                 <a href="/about" class="text-decoration-none text-light hover-text">
                                     <i class="fas fa-info-circle me-2"></i>About
                                 </a>
                             </li>
-                            <li class="mb-2">
-                                <a href="/contact" class="text-decoration-none text-light hover-text">
-                                    <i class="fas fa-envelope me-2"></i>Contact Us
-                                </a>
-                            </li>
+
                         </ul>
                     </div>
                     <div class="col-6">
@@ -155,6 +156,11 @@
                             <li class="mb-2">
                                 <a href="{{ route('terms.use') }}" class="text-decoration-none text-light hover-text">
                                     <i class="fas fa-file-contract me-2"></i>Terms
+                                </a>
+                            </li>
+                             <li class="mb-2">
+                                <a href="/contact" class="text-decoration-none text-light hover-text">
+                                    <i class="fas fa-envelope me-2"></i>Contact Us
                                 </a>
                             </li>
                             {{-- <li class="mb-2">
