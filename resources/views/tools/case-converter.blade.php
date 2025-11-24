@@ -28,18 +28,47 @@
                                     <!-- Conversion Options -->
                                     <div class="mb-4">
                                         <label class="form-label fw-bold">Conversion Mode</label>
-                                        <div class="btn-group w-100" role="group">
-                                            <input type="radio" class="btn-check" name="mode" id="upper"
-                                                value="upper" {{ ($mode ?? '') == 'upper' ? 'checked' : '' }}>
-                                            <label class="btn btn-outline-primary" for="upper">🔼 UPPERCASE</label>
-
-                                            <input type="radio" class="btn-check" name="mode" id="lower"
-                                                value="lower" {{ ($mode ?? '') == 'lower' ? 'checked' : '' }}>
-                                            <label class="btn btn-outline-primary" for="lower">🔽 lowercase</label>
-
-                                            <input type="radio" class="btn-check" name="mode" id="title"
-                                                value="title" {{ ($mode ?? '') == 'title' ? 'checked' : '' }}>
-                                            <label class="btn btn-outline-primary" for="title">📝 Title Case</label>
+                                        <div class="row g-2">
+                                            <div class="col-6">
+                                                <input type="radio" class="btn-check" name="mode" id="upper"
+                                                    value="upper" {{ ($mode ?? '') == 'upper' ? 'checked' : '' }}>
+                                                <label class="btn btn-outline-primary w-100 mb-2" for="upper">🔼 UPPERCASE</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="radio" class="btn-check" name="mode" id="lower"
+                                                    value="lower" {{ ($mode ?? '') == 'lower' ? 'checked' : '' }}>
+                                                <label class="btn btn-outline-primary w-100 mb-2" for="lower">🔽 lowercase</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="radio" class="btn-check" name="mode" id="title"
+                                                    value="title" {{ ($mode ?? '') == 'title' ? 'checked' : '' }}>
+                                                <label class="btn btn-outline-primary w-100 mb-2" for="title">📝 Title Case</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="radio" class="btn-check" name="mode" id="sentence"
+                                                    value="sentence" {{ ($mode ?? '') == 'sentence' ? 'checked' : '' }}>
+                                                <label class="btn btn-outline-primary w-100 mb-2" for="sentence">💬 Sentence case</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="radio" class="btn-check" name="mode" id="camel"
+                                                    value="camel" {{ ($mode ?? '') == 'camel' ? 'checked' : '' }}>
+                                                <label class="btn btn-outline-primary w-100 mb-2" for="camel">🐫 camelCase</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="radio" class="btn-check" name="mode" id="pascal"
+                                                    value="pascal" {{ ($mode ?? '') == 'pascal' ? 'checked' : '' }}>
+                                                <label class="btn btn-outline-primary w-100 mb-2" for="pascal">🏛️ PascalCase</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="radio" class="btn-check" name="mode" id="snake"
+                                                    value="snake" {{ ($mode ?? '') == 'snake' ? 'checked' : '' }}>
+                                                <label class="btn btn-outline-primary w-100 mb-2" for="snake">🐍 snake_case</label>
+                                            </div>
+                                            <div class="col-6">
+                                                <input type="radio" class="btn-check" name="mode" id="kebab"
+                                                    value="kebab" {{ ($mode ?? '') == 'kebab' ? 'checked' : '' }}>
+                                                <label class="btn btn-outline-primary w-100 mb-2" for="kebab">🍢 kebab-case</label>
+                                            </div>
                                         </div>
                                     </div>
 
@@ -52,7 +81,6 @@
                                 </form>
                             </div>
 
-                            <!-- Result Section -->
                             <!-- Result Section -->
                             <div class="col-lg-6 mb-4">
                                 <h5 class="fw-bold mb-3">Result:</h5>
@@ -70,10 +98,7 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -109,6 +134,38 @@
             return str.toLowerCase().replace(/\b\w/g, char => char.toUpperCase());
         }
 
+        // Convert to Sentence case
+        function toSentenceCase(str) {
+            return str.toLowerCase().replace(/(^\s*|[.!?]\s+)\w/g, match => match.toUpperCase());
+        }
+
+        // Convert to camelCase
+        function toCamelCase(str) {
+            return str.toLowerCase()
+                .replace(/[^a-zA-Z0-9]+(.)/g, (_, char) => char.toUpperCase())
+                .replace(/[^a-zA-Z0-9]/g, '');
+        }
+
+        // Convert to PascalCase
+        function toPascalCase(str) {
+            const camel = toCamelCase(str);
+            return camel.charAt(0).toUpperCase() + camel.slice(1);
+        }
+
+        // Convert to snake_case
+        function toSnakeCase(str) {
+            return str.toLowerCase()
+                .replace(/\s+/g, '_')
+                .replace(/[^a-zA-Z0-9_]/g, '');
+        }
+
+        // Convert to kebab-case
+        function toKebabCase(str) {
+            return str.toLowerCase()
+                .replace(/\s+/g, '-')
+                .replace(/[^a-zA-Z0-9-]/g, '');
+        }
+
         // Update result instantly
         function updateResult() {
             let text = document.getElementById("text").value;
@@ -125,9 +182,32 @@
             }
 
             let output = text;
-            if (mode === "upper") output = text.toUpperCase();
-            if (mode === "lower") output = text.toLowerCase();
-            if (mode === "title") output = toTitleCase(text);
+            switch (mode) {
+                case "upper":
+                    output = text.toUpperCase();
+                    break;
+                case "lower":
+                    output = text.toLowerCase();
+                    break;
+                case "title":
+                    output = toTitleCase(text);
+                    break;
+                case "sentence":
+                    output = toSentenceCase(text);
+                    break;
+                case "camel":
+                    output = toCamelCase(text);
+                    break;
+                case "pascal":
+                    output = toPascalCase(text);
+                    break;
+                case "snake":
+                    output = toSnakeCase(text);
+                    break;
+                case "kebab":
+                    output = toKebabCase(text);
+                    break;
+            }
 
             resultText.innerText = output;
             resultText.classList.remove("text-muted");
