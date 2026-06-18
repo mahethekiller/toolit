@@ -326,13 +326,14 @@
                 e.preventDefault();
                 const planId = this.getAttribute("data-plan");
                 const planName = this.getAttribute("data-name");
+                
+                // Retrieve price in handler-wide scope
+                const priceCard = this.closest('.hf-pricing-card');
+                const priceValueEl = priceCard ? priceCard.querySelector('.hf-price-value') : null;
+                const price = priceValueEl ? priceValueEl.getAttribute(`data-${activeCycle}`) : '0.00';
 
                 // Trigger GA4 Event
                 if (typeof gtag === 'function') {
-                    const priceCard = this.closest('.hf-pricing-card');
-                    const priceValueEl = priceCard ? priceCard.querySelector('.hf-price-value') : null;
-                    const price = priceValueEl ? priceValueEl.getAttribute(`data-${activeCycle}`) : '0.00';
-
                     gtag('event', 'click_pricing_cta', {
                         'plan_id': planId,
                         'plan_name': planName,
