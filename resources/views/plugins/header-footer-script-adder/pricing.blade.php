@@ -327,6 +327,21 @@
                 const planId = this.getAttribute("data-plan");
                 const planName = this.getAttribute("data-name");
 
+                // Trigger GA4 Event
+                if (typeof gtag === 'function') {
+                    const priceCard = this.closest('.hf-pricing-card');
+                    const priceValueEl = priceCard ? priceCard.querySelector('.hf-price-value') : null;
+                    const price = priceValueEl ? priceValueEl.getAttribute(`data-${activeCycle}`) : '0.00';
+
+                    gtag('event', 'click_pricing_cta', {
+                        'plan_id': planId,
+                        'plan_name': planName,
+                        'billing_cycle': activeCycle,
+                        'price': parseFloat(price),
+                        'currency': 'USD'
+                    });
+                }
+
                 if (!fsHandler) {
                     // Fallback to direct URL if checkout script failed to configure
                     const fallbackUrl = `https://checkout.freemius.com/product/31302/plan/${planId}/?billing_cycle=${activeCycle}&trial=true`;
@@ -342,7 +357,21 @@
                     trial: true,
                     purchaseCompleted: function (response) {
                         console.log("Freemius purchase completed:", response);
-                        // Redirect to thank you or dashboard if required
+                        
+                        // Trigger standard GA4 Purchase Conversion Event
+                        if (typeof gtag === 'function') {
+                            gtag('event', 'purchase', {
+                                'transaction_id': (response.purchase ? response.purchase.id : 'fs_' + Date.now()),
+                                'value': parseFloat(price),
+                                'currency': 'USD',
+                                'items': [{
+                                    'item_id': planId,
+                                    'item_name': 'Header Footer Script Adder Pro - ' + planName,
+                                    'price': parseFloat(price),
+                                    'quantity': 1
+                                }]
+                            });
+                        }
                     },
                     cancel: function() {
                         console.log("Freemius checkout cancelled");

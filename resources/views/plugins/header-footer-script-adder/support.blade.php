@@ -165,6 +165,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             // Success
+            if (typeof gtag === 'function') {
+                gtag('event', 'submit_support_query', {
+                    'status': 'success',
+                    'plugin_slug': 'header-and-footer-script-adder'
+                });
+            }
+
             feedbackDiv.classList.remove('d-none');
             feedbackDiv.classList.add('alert-success');
             feedbackDiv.innerHTML = `<div class="d-flex align-items-center"><i class="fas fa-check-circle me-2 fs-5"></i><span>${data.message}</span></div>`;
@@ -173,6 +180,14 @@ document.addEventListener('DOMContentLoaded', function() {
             feedbackDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
         })
         .catch(err => {
+            if (typeof gtag === 'function') {
+                gtag('event', 'submit_support_query', {
+                    'status': 'error',
+                    'error_type': err.status === 422 ? 'validation' : 'server',
+                    'plugin_slug': 'header-and-footer-script-adder'
+                });
+            }
+
             feedbackDiv.classList.remove('d-none');
             feedbackDiv.classList.add('alert-danger');
 

@@ -247,6 +247,45 @@
         {{-- Section 9: Bottom CTA --}}
         @include('plugins.header-footer-script-adder.cta')
     </div>
+
+    <!-- Central GA4 Events Tracking Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Helper function to track event if gtag is active
+            function trackGA4Event(name, params = {}) {
+                if (typeof gtag === 'function') {
+                    gtag('event', name, params);
+                } else {
+                    console.log('GA4 Debug Event:', name, params);
+                }
+            }
+
+            // 1. Track Hero Trial CTA Clicks
+            const heroCta = document.getElementById('hero-trial-cta');
+            if (heroCta) {
+                heroCta.addEventListener('click', function () {
+                    trackGA4Event('click_hero_cta', {
+                        'event_category': 'Engagement',
+                        'event_label': 'Try Pro Free - 7 Day Trial'
+                    });
+                });
+            }
+
+            // 2. Track FAQ Accordion Clicks
+            const faqButtons = document.querySelectorAll('#faqAccordion .accordion-button');
+            faqButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
+                    if (isExpanded) {
+                        const question = this.textContent.trim();
+                        trackGA4Event('view_faq', {
+                            'question_text': question
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
 
 @section('footer')
