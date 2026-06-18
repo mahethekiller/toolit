@@ -393,6 +393,9 @@
                                 }]
                             });
                         }
+                        
+                        // Redirect to thank you page
+                        window.location.href = "{{ route('plugins.header-footer-script-adder.thank-you') }}";
                     },
                     cancel: function() {
                         console.log("Freemius checkout cancelled");

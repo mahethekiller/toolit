@@ -39,4 +39,19 @@ class PageController extends Controller
 
         return view('plugins.header-footer-script-adder.index', compact('seo', 'num1', 'num2'));
     }
+
+    public function headerFooterScriptAdderThankYou()
+    {
+        $seo = (object) [
+            'title' => 'Thank You for Your Purchase – Header Footer Script Adder Pro',
+            'description' => 'Thank you for upgrading to Header Footer Script Adder Pro. Get started by downloading the plugin and activating your license.',
+            'keywords' => 'thank you, script manager pro, license activation',
+            'og_title' => 'Thank You for Upgrading to Pro',
+            'og_description' => 'Get started with your new Pro features today.',
+            'og_image' => 'https://ps.w.org/header-and-footer-script-adder/assets/banner-772x250.png?rev=3564161',
+            'canonical' => route('plugins.header-footer-script-adder.thank-you')
+        ];
+
+        return view('plugins.header-footer-script-adder.thank-you', compact('seo'));
+    }
 }
