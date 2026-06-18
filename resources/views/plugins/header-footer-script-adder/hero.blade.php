@@ -19,7 +19,7 @@
                 </p>
 
                 <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 mb-3">
-                    <a href="#pricing" class="btn btn-hf-primary py-3 px-5">
+                    <a href="#pricing" id="hero-trial-cta" class="btn btn-hf-primary py-3 px-5">
                         <i class="fas fa-rocket me-2 fs-5"></i> Try Pro Free – 7 Day Trial
                     </a>
                 </div>
