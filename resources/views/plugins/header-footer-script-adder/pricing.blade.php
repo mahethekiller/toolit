@@ -332,23 +332,24 @@
                 const priceValueEl = priceCard ? priceCard.querySelector('.hf-price-value') : null;
                 const price = priceValueEl ? priceValueEl.getAttribute(`data-${activeCycle}`) : '0.00';
 
-                // Trigger GA4 Event
-                if (typeof gtag === 'function') {
-                    gtag('event', 'click_pricing_cta', {
+                // Trigger GA4/GTM Event
+                if (typeof window.trackGA4Event === 'function') {
+                    window.trackGA4Event('click_pricing_cta', {
                         'plan_id': planId,
                         'plan_name': planName,
                         'billing_cycle': activeCycle,
                         'price': parseFloat(price),
                         'currency': 'USD'
                     });
+                } else {
+                    console.log("GA4 Event Triggered (fallback): click_pricing_cta", {
+                        'plan_id': planId,
+                        'plan_name': planName,
+                        'billing_cycle': activeCycle,
+                        'price': parseFloat(price || 0),
+                        'currency': 'USD'
+                    });
                 }
-                console.log("GA4 Event Triggered: click_pricing_cta", {
-                    'plan_id': planId,
-                    'plan_name': planName,
-                    'billing_cycle': activeCycle,
-                    'price': parseFloat(price || 0),
-                    'currency': 'USD'
-                });
 
                 if (!fsHandler) {
                     // Fallback to direct URL if checkout script failed to configure
@@ -366,9 +367,9 @@
                     purchaseCompleted: function (response) {
                         console.log("Freemius purchase completed:", response);
 
-                        // Trigger standard GA4 Purchase Conversion Event
-                        if (typeof gtag === 'function') {
-                            gtag('event', 'purchase', {
+                        // Trigger standard GA4/GTM Purchase Conversion Event
+                        if (typeof window.trackGA4Event === 'function') {
+                            window.trackGA4Event('purchase', {
                                 'transaction_id': (response.purchase ? response.purchase.id : 'fs_' + Date.now()),
                                 'value': parseFloat(price),
                                 'currency': 'USD',
@@ -379,20 +380,19 @@
                                     'quantity': 1
                                 }]
                             });
-
-                            console.log("GA4 Event Triggered: purchase ENTERRRRREEEEDD")
+                        } else {
+                            console.log("GA4 Event Triggered (fallback): purchase", {
+                                'transaction_id': (response.purchase ? response.purchase.id : 'fs_' + Date.now()),
+                                'value': parseFloat(price),
+                                'currency': 'USD',
+                                'items': [{
+                                    'item_id': planId,
+                                    'item_name': 'Header Footer Script Adder Pro - ' + planName,
+                                    'price': parseFloat(price),
+                                    'quantity': 1
+                                }]
+                            });
                         }
-                        console.log("GA4 Event Triggered: purchase", {
-                            'transaction_id': (response.purchase ? response.purchase.id : 'fs_' + Date.now()),
-                            'value': parseFloat(price),
-                            'currency': 'USD',
-                            'items': [{
-                                'item_id': planId,
-                                'item_name': 'Header Footer Script Adder Pro - ' + planName,
-                                'price': parseFloat(price),
-                                'quantity': 1
-                            }]
-                        });
                     },
                     cancel: function() {
                         console.log("Freemius checkout cancelled");

@@ -248,22 +248,24 @@
         @include('plugins.header-footer-script-adder.cta')
     </div>
 
-    <!-- Central GA4 Events Tracking Script -->
+    <!-- Central GA4/GTM Events Tracking Script -->
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // Helper function to track event if gtag is active
-            function trackGA4Event(name, params = {}) {
-                if (typeof gtag === 'function') {
-                    gtag('event', name, params);
-                }
-                console.log('GA4 Event Triggered: ' + name, params);
+        // Global helper function to track events (supports both gtag.js and Google Tag Manager dataLayer)
+        window.trackGA4Event = function(name, params = {}) {
+            if (typeof gtag === 'function') {
+                gtag('event', name, params);
             }
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(Object.assign({ 'event': name }, params));
+            console.log('GA4/GTM Event Triggered: ' + name, params);
+        };
 
+        document.addEventListener('DOMContentLoaded', function () {
             // 1. Track Hero Trial CTA Clicks
             const heroCta = document.getElementById('hero-trial-cta');
             if (heroCta) {
                 heroCta.addEventListener('click', function () {
-                    trackGA4Event('click_hero_cta', {
+                    window.trackGA4Event('click_hero_cta', {
                         'event_category': 'Engagement',
                         'event_label': 'Try Pro Free - 7 Day Trial'
                     });
@@ -277,7 +279,7 @@
                     const isExpanded = this.getAttribute('aria-expanded') === 'true';
                     if (isExpanded) {
                         const question = this.textContent.trim();
-                        trackGA4Event('view_faq', {
+                        window.trackGA4Event('view_faq', {
                             'question_text': question
                         });
                     }
