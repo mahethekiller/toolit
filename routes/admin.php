@@ -49,6 +49,9 @@ Route::middleware(['auth', 'role:admin'])
         Route::resource('contact-messages', ContactMessageController::class)
             ->only(['index', 'show']);
 
+        Route::resource('plugin-queries', App\Http\Controllers\Admin\PluginQueryController::class)
+            ->only(['index', 'show', 'destroy']);
+
         Route::get('/admin/scripts', [SiteScriptController::class, 'edit'])->name('scripts.edit');
         Route::post('/admin/scripts', [SiteScriptController::class, 'update'])->name('scripts.update');
 
