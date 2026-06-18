@@ -145,6 +145,15 @@
             </div>
         </div>
     </div>
+
+    <!-- Event snippet for Page view conversion page -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        if (typeof gtag !== 'function') {
+            window.gtag = function() { dataLayer.push(arguments); };
+        }
+        gtag('event', 'conversion', {'send_to': 'AW-963171678/NMZ0CLerzOwBEN6qo8sD'});
+    </script>
 @endsection
 
 @section('footer')
