@@ -63,6 +63,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/privacy-policy', [PageController::class, 'privacyPolicy'])->name('privacy.policy');
 Route::get('/terms-of-use', [PageController::class, 'termsOfUse'])->name('terms.use');
 Route::get('/ads-disclosure', [PageController::class, 'adsDisclosure'])->name('ads.disclosure');
+Route::get('/header-and-footer-script-adder', [PageController::class, 'headerFooterScriptAdder'])->name('plugins.header-footer-script-adder');
+Route::post('/plugins/header-and-footer-script-adder/support', [App\Http\Controllers\PluginQueryController::class, 'store'])->name('plugins.header-footer-script-adder.support');
 
 
 

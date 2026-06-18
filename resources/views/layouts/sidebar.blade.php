@@ -68,6 +68,12 @@
                 <i class="fas fa-envelope me-2"></i> Contact Messages
             </a>
         </li>
+        <li class="nav-item mb-2">
+            <a class="nav-link text-white py-2 px-3 rounded sidebar-link"
+                href="{{ route('admin.plugin-queries.index') }}">
+                <i class="fas fa-plug me-2"></i> Plugin Queries
+            </a>
+        </li>
 
         <!-- SEO Dropdown (modified) -->
         <li class="nav-item mb-2">

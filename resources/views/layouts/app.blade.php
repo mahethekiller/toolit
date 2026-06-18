@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     @php
-        $seo = getSeo(); // might be null
+        $seo = $seo ?? getSeo(); // might be null
         $domain = config('app.url');
     @endphp
 
