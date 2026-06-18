@@ -171,6 +171,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     'plugin_slug': 'header-and-footer-script-adder'
                 });
             }
+            console.log("GA4 Event Triggered: submit_support_query", {
+                'status': 'success',
+                'plugin_slug': 'header-and-footer-script-adder'
+            });
 
             feedbackDiv.classList.remove('d-none');
             feedbackDiv.classList.add('alert-success');
@@ -187,6 +191,11 @@ document.addEventListener('DOMContentLoaded', function() {
                     'plugin_slug': 'header-and-footer-script-adder'
                 });
             }
+            console.log("GA4 Event Triggered: submit_support_query", {
+                'status': 'error',
+                'error_type': err.status === 422 ? 'validation' : 'server',
+                'plugin_slug': 'header-and-footer-script-adder'
+            });
 
             feedbackDiv.classList.remove('d-none');
             feedbackDiv.classList.add('alert-danger');

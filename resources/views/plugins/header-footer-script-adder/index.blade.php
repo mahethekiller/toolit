@@ -255,9 +255,8 @@
             function trackGA4Event(name, params = {}) {
                 if (typeof gtag === 'function') {
                     gtag('event', name, params);
-                } else {
-                    console.log('GA4 Debug Event:', name, params);
                 }
+                console.log('GA4 Event Triggered: ' + name, params);
             }
 
             // 1. Track Hero Trial CTA Clicks

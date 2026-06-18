@@ -27,7 +27,7 @@
                             <h3 class="h5 fw-bold mb-0 text-dark">Personal</h3>
                             <span class="badge bg-primary bg-opacity-10 text-primary px-3 py-1 rounded-pill small">1 Site</span>
                         </div>
-                        
+
                         <div class="hf-price-box mb-4">
                             <span class="fs-2 fw-bold text-dark font-heading">$</span>
                             <span class="display-4 fw-extrabold text-dark font-heading hf-price-value" data-monthly="4.99" data-annual="29.99" data-lifetime="79.99">4.99</span>
@@ -35,7 +35,7 @@
                         </div>
 
                         <p class="text-muted small mb-4">Perfect for bloggers, personal websites, and independent content creators.</p>
-                        
+
                         <hr class="my-4 border-light">
 
                         <ul class="list-unstyled mb-0 d-flex flex-column gap-3 small">
@@ -66,7 +66,7 @@
                             <h3 class="h5 fw-bold mb-0 text-dark">Plus</h3>
                             <span class="badge bg-success bg-opacity-10 text-success px-3 py-1 rounded-pill small">5 Sites</span>
                         </div>
-                        
+
                         <div class="hf-price-box mb-4">
                             <span class="fs-2 fw-bold text-dark font-heading">$</span>
                             <span class="display-4 fw-extrabold text-dark font-heading hf-price-value" data-monthly="9.99" data-annual="59.99" data-lifetime="149.99">9.99</span>
@@ -74,7 +74,7 @@
                         </div>
 
                         <p class="text-muted small mb-4">Ideal for developers, design shops, and businesses managing multiple properties.</p>
-                        
+
                         <hr class="my-4 border-light">
 
                         <ul class="list-unstyled mb-0 d-flex flex-column gap-3 small">
@@ -104,7 +104,7 @@
                             <h3 class="h5 fw-bold mb-0 text-dark">Agency</h3>
                             <span class="badge bg-dark bg-opacity-10 text-dark px-3 py-1 rounded-pill small">Unlimited</span>
                         </div>
-                        
+
                         <div class="hf-price-box mb-4">
                             <span class="fs-2 fw-bold text-dark font-heading">$</span>
                             <span class="display-4 fw-extrabold text-dark font-heading hf-price-value" data-monthly="24.99" data-annual="149.99" data-lifetime="399.99">24.99</span>
@@ -112,7 +112,7 @@
                         </div>
 
                         <p class="text-muted small mb-4">Perfect for high-growth agencies, hosting networks, and corporate users.</p>
-                        
+
                         <hr class="my-4 border-light">
 
                         <ul class="list-unstyled mb-0 d-flex flex-column gap-3 small">
@@ -273,11 +273,11 @@
                 // Remove active classes
                 billingToggleButtons.forEach(b => b.classList.remove("active", "btn-primary", "bg-primary", "text-white"));
                 billingToggleButtons.forEach(b => b.classList.add("bg-white", "text-dark"));
-                
+
                 // Set active states
                 this.classList.remove("bg-white", "text-dark");
                 this.classList.add("active", "btn-primary", "bg-primary", "text-white");
-                
+
                 activeCycle = this.getAttribute("data-cycle");
 
                 // Update pricing displays
@@ -301,7 +301,7 @@
 
         // Initialize Freemius Checkout Handler
         let fsHandler = null;
-        
+
         // Wait for FS to be loaded in client
         function initFreemius() {
             if (typeof FS === "undefined" || typeof FS.Checkout === "undefined") {
@@ -341,6 +341,13 @@
                         'currency': 'USD'
                     });
                 }
+                console.log("GA4 Event Triggered: click_pricing_cta", {
+                    'plan_id': planId,
+                    'plan_name': planName,
+                    'billing_cycle': activeCycle,
+                    'price': parseFloat(price || 0),
+                    'currency': 'USD'
+                });
 
                 if (!fsHandler) {
                     // Fallback to direct URL if checkout script failed to configure
@@ -357,7 +364,7 @@
                     trial: true,
                     purchaseCompleted: function (response) {
                         console.log("Freemius purchase completed:", response);
-                        
+
                         // Trigger standard GA4 Purchase Conversion Event
                         if (typeof gtag === 'function') {
                             gtag('event', 'purchase', {
@@ -371,7 +378,20 @@
                                     'quantity': 1
                                 }]
                             });
+
+                            console.log("GA4 Event Triggered: purchase ENTERRRRREEEEDD")
                         }
+                        console.log("GA4 Event Triggered: purchase", {
+                            'transaction_id': (response.purchase ? response.purchase.id : 'fs_' + Date.now()),
+                            'value': parseFloat(price),
+                            'currency': 'USD',
+                            'items': [{
+                                'item_id': planId,
+                                'item_name': 'Header Footer Script Adder Pro - ' + planName,
+                                'price': parseFloat(price),
+                                'quantity': 1
+                            }]
+                        });
                     },
                     cancel: function() {
                         console.log("Freemius checkout cancelled");
@@ -387,7 +407,7 @@
     .hf-billing-toggle.active {
         box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
     }
-    
+
     .hf-pricing-card {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         border: 1px solid #e2e8f0;
