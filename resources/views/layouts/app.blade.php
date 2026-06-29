@@ -107,7 +107,20 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="{{ url('/') }}">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('/tools') }}">All Tools</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTools" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Tools
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownTools">
+                            <li><a class="dropdown-item" href="{{ route('tools.case-converter') }}">🔠 Case Converter</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tools.wordcounter') }}">📝 Word Counter</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tools.password') }}">🔑 Password Generator</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tools.textreverser') }}">↩️ Text Reverser</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tools.whitespace') }}">✂️ Whitespace Remover</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{{ url('/tools') }}">All Tools</a></li>
+                        </ul>
+                    </li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/blog') }}">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/about') }}">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="{{ url('/contact') }}">Contact</a></li>
