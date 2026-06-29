@@ -21,7 +21,6 @@ class CaseConvertorController extends Controller
         $faqs = Faq::where('group_name', 'Case Converter')->get();
         return view('tools.case-converter', compact('tool', 'faqs'));
     }
-
     public function caseConverterProcess(Request $request)
     {
         $text = $request->input('text');
@@ -41,6 +40,9 @@ class CaseConvertorController extends Controller
                 $output = $text;
         }
 
-        return view('tools.case-converter', compact('text', 'output', 'mode'));
+        $tool = Tool::where('active', true)->where('route_name', 'tools.case-converter')->first();
+        $faqs = Faq::where('group_name', 'Case Converter')->get();
+
+        return view('tools.case-converter', compact('text', 'output', 'mode', 'tool', 'faqs'));
     }
 }

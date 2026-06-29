@@ -1,5 +1,14 @@
 @extends('layouts.landing')
 
+@push('head')
+
+
+    <!-- Event snippet for Page view conversion page -->
+    <script>
+      gtag('event', 'conversion', {'send_to': 'AW-963171678/NMZ0CLerzOwBEN6qo8sD'});
+    </script>
+@endpush
+
 @section('header')
     @include('plugins.header-footer-script-adder.header')
 @endsection
@@ -105,7 +114,7 @@
                         <!-- Next Steps List -->
                         <div class="text-start mb-5 bg-light p-4 rounded-4 border border-light-subtle">
                             <h3 class="h6 fw-bold text-dark font-heading mb-4 text-uppercase tracking-wider"><i class="fas fa-list-check text-primary me-2"></i> What to do next:</h3>
-                            
+
                             <div class="d-flex align-items-start mb-4">
                                 <div class="hf-step-number">1</div>
                                 <div>
@@ -145,15 +154,6 @@
             </div>
         </div>
     </div>
-
-    <!-- Event snippet for Page view conversion page -->
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        if (typeof gtag !== 'function') {
-            window.gtag = function() { dataLayer.push(arguments); };
-        }
-        gtag('event', 'conversion', {'send_to': 'AW-963171678/NMZ0CLerzOwBEN6qo8sD'});
-    </script>
 @endsection
 
 @section('footer')
