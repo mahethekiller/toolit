@@ -116,6 +116,69 @@
             </a>
         </li>
 
+        <!-- Arti Management Dropdown -->
+        <li class="nav-item mb-2">
+            <a class="nav-link text-white py-2 px-3 rounded sidebar-link d-flex justify-content-between align-items-center"
+                data-bs-toggle="collapse" href="#artiMenu" role="button" aria-expanded="false" aria-controls="artiMenu">
+                <span><i class="fas fa-om me-2"></i> Arti Management</span>
+                &nbsp;<i class="fas fa-chevron-down small"></i>
+            </a>
+
+            <!-- Collapsible Dropdown -->
+            <div class="collapse ps-4 mt-1" id="artiMenu">
+                <ul class="list-unstyled">
+                    <li>
+                        <a class="nav-link text-white py-2 px-2 rounded sidebar-link"
+                            href="{{ route('admin.arti.deities.index') }}">
+                            <i class="fas fa-dharmachakra me-2"></i> Deities
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white py-2 px-2 rounded sidebar-link"
+                            href="{{ route('admin.arti.aartis.index') }}">
+                            <i class="fas fa-music me-2"></i> Aartis
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white py-2 px-2 rounded sidebar-link"
+                            href="{{ route('admin.arti.gallery.index') }}">
+                            <i class="fas fa-image me-2"></i> Gallery Wallpapers
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white py-2 px-2 rounded sidebar-link"
+                            href="{{ route('admin.arti.users.index') }}">
+                            <i class="fas fa-users-cog me-2"></i> App Users
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white py-2 px-2 rounded sidebar-link"
+                            href="{{ route('admin.arti.users.tokens') }}">
+                            <i class="fas fa-key me-2"></i> Token Generator
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white py-2 px-2 rounded sidebar-link"
+                            href="{{ route('admin.arti.users.docs') }}">
+                            <i class="fas fa-book me-2"></i> API Documentation
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white py-2 px-2 rounded sidebar-link"
+                            href="{{ route('admin.arti.reminders.index') }}">
+                            <i class="fas fa-bell me-2"></i> Active Reminders
+                        </a>
+                    </li>
+                    <li>
+                        <a class="nav-link text-white py-2 px-2 rounded sidebar-link"
+                            href="{{ route('admin.arti.histories.index') }}">
+                            <i class="fas fa-history me-2"></i> Prayer Histories
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+
         <li class="nav-item mb-2">
             <a class="nav-link text-white py-2 px-3 rounded sidebar-link" href="{{ route('admin.users.index') }}">
                 <i class="fas fa-users me-2"></i> Users
@@ -180,12 +243,12 @@
     }
 
     /* Extra style for collapsible submenu */
-    #seoMenu .nav-link {
+    #seoMenu .nav-link, #artiMenu .nav-link {
         font-size: 0.9rem;
         background-color: #1e293b;
     }
 
-    #seoMenu .nav-link:hover {
+    #seoMenu .nav-link:hover, #artiMenu .nav-link:hover {
         background-color: #334155;
     }
 

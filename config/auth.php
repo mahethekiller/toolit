@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'arti' => [
+            'driver' => 'sanctum',
+            'provider' => 'arti_users',
+        ],
     ],
 
     /*
@@ -63,6 +67,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
+        ],
+
+        'arti_users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Arti\ArtiUser::class,
         ],
 
         // 'users' => [
