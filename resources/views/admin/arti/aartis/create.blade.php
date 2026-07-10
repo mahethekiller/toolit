@@ -81,12 +81,9 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="lyrics" class="form-label fw-bold">Lyrics (JSON Format)</label>
-                    <textarea class="form-control @error('lyrics') is-invalid @enderror" id="lyrics" name="lyrics" rows="8" placeholder='[
-  {"timestamp": 0, "text": "Sukhkarta Dukhharta Varta Vighnachi"},
-  {"timestamp": 10, "text": "Nurvi Purvi Prem Krupa Jayachi"}
-]' required>{{ old('lyrics', "[\n  {\"timestamp\": 0, \"text\": \"Lyrics Line 1\"}\n]") }}</textarea>
-                    <div class="form-text text-muted">Please provide the lyrics as a valid JSON array of objects with <code>timestamp</code> (seconds) and <code>text</code> keys.</div>
+                    <label for="lyrics" class="form-label fw-bold">Lyrics</label>
+                    <textarea class="form-control @error('lyrics') is-invalid @enderror" id="lyrics" name="lyrics" rows="8" placeholder="Sukhkarta Dukhharta Varta Vighnachi&#10;Nurvi Purvi Prem Krupa Jayachi" required>{{ old('lyrics') }}</textarea>
+                    <div class="form-text text-muted">Please provide the lyrics as plain text. Use new lines for different verses or sentences.</div>
                     @error('lyrics')
                         <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror

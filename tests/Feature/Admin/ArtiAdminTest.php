@@ -49,7 +49,7 @@ test('admin can create deity', function () {
     $this->assertDatabaseHas('arti_deities', ['name' => 'Test Deity']);
 });
 
-test('admin can create aarti with lyrics JSON', function () {
+test('admin can create aarti with plain text lyrics', function () {
     $admin = User::factory()->create();
     $admin->assignRole($this->adminRole);
 
@@ -68,10 +68,7 @@ test('admin can create aarti with lyrics JSON', function () {
             'duration' => '02:30',
             'audio_url' => 'https://example.com/audio.mp3',
             'video_url' => 'y25k2S9n_4Y',
-            'lyrics' => json_encode([
-                ['timestamp' => 0, 'text' => 'Line 1'],
-                ['timestamp' => 10, 'text' => 'Line 2']
-            ])
+            'lyrics' => "Line 1\nLine 2"
         ]);
 
     $response->assertRedirect(route('admin.arti.aartis.index'));

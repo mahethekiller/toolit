@@ -21,7 +21,7 @@ class Aarti extends Model
     ];
 
     protected $casts = [
-        'lyrics' => 'array',
+        //
     ];
 
     public function deity(): BelongsTo

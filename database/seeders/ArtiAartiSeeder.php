@@ -24,13 +24,7 @@ class ArtiAartiSeeder extends Seeder
                 'duration' => '03:15',
                 'audio_url' => 'https://example.com/audio/ganesh_aarti.mp3',
                 'video_url' => 'y25k2S9n_4Y',
-                'lyrics' => [
-                    ['timestamp' => 0, 'text' => 'Sukhkarta Dukhharta Varta Vighnachi'],
-                    ['timestamp' => 10, 'text' => 'Nurvi Purvi Prem Krupa Jayachi'],
-                    ['timestamp' => 20, 'text' => 'Sarvangi Sundar Uti Shendurachi'],
-                    ['timestamp' => 30, 'text' => 'Kanthi Jhalke Mal Muktaphalaanchi'],
-                    ['timestamp' => 40, 'text' => 'Jai Dev Jai Dev Jai Mangal Murti']
-                ]
+                'lyrics' => "Sukhkarta Dukhharta Varta Vighnachi\nNurvi Purvi Prem Krupa Jayachi\nSarvangi Sundar Uti Shendurachi\nKanthi Jhalke Mal Muktaphalaanchi\nJai Dev Jai Dev Jai Mangal Murti"
             ],
             [
                 'deity_id' => $shiva->id,
@@ -40,12 +34,7 @@ class ArtiAartiSeeder extends Seeder
                 'duration' => '04:30',
                 'audio_url' => 'https://example.com/audio/shiv_aarti.mp3',
                 'video_url' => 'https://www.youtube.com/watch?v=FPyUvMccu7A',
-                'lyrics' => [
-                    ['timestamp' => 0, 'text' => 'Om Jai Shiv Omkara, Swami Jai Shiv Omkara'],
-                    ['timestamp' => 15, 'text' => 'Brahma Vishnu Sadashiv Ardhangi Dhara'],
-                    ['timestamp' => 30, 'text' => 'Ekanan Chaturanan Panchanan Raje'],
-                    ['timestamp' => 45, 'text' => 'Hansanan Garudasan Vrishbahan Saje']
-                ]
+                'lyrics' => "Om Jai Shiv Omkara, Swami Jai Shiv Omkara\nBrahma Vishnu Sadashiv Ardhangi Dhara\nEkanan Chaturanan Panchanan Raje\nHansanan Garudasan Vrishbahan Saje"
             ],
             [
                 'deity_id' => $hanuman->id,
@@ -55,12 +44,7 @@ class ArtiAartiSeeder extends Seeder
                 'duration' => '09:45',
                 'audio_url' => 'https://example.com/audio/hanuman_chalisa.mp3',
                 'video_url' => 'https://www.youtube.com/watch?v=AETFvQonfV8',
-                'lyrics' => [
-                    ['timestamp' => 0, 'text' => 'Shree Guru Charan Saroj Raj, Nij Man Mukut Sudhaar'],
-                    ['timestamp' => 15, 'text' => 'Barnau Raghuvar Bimal Jasu, Jo Dayaku Phal Chaar'],
-                    ['timestamp' => 30, 'text' => 'Budhiheen Tanu Janike, Sumirau Pawan Kumar'],
-                    ['timestamp' => 45, 'text' => 'Bal Budhi Vidya Dehu Mohi, Harahu Kalesh Bikaar']
-                ]
+                'lyrics' => "Shree Guru Charan Saroj Raj, Nij Man Mukut Sudhaar\nBarnau Raghuvar Bimal Jasu, Jo Dayaku Phal Chaar\nBudhiheen Tanu Janike, Sumirau Pawan Kumar\nBal Budhi Vidya Dehu Mohi, Harahu Kalesh Bikaar"
             ],
             [
                 'deity_id' => $lakshmi->id,
@@ -70,12 +54,7 @@ class ArtiAartiSeeder extends Seeder
                 'duration' => '05:10',
                 'audio_url' => 'https://example.com/audio/lakshmi_aarti.mp3',
                 'video_url' => 'https://www.youtube.com/watch?v=LpZtB2t0tOM',
-                'lyrics' => [
-                    ['timestamp' => 0, 'text' => 'Om Jai Lakshmi Mata, Maiya Jai Lakshmi Mata'],
-                    ['timestamp' => 15, 'text' => 'Tumko Nishdin Dhyavat, Har Vishnu Vidhata'],
-                    ['timestamp' => 30, 'text' => 'Uma Rama Brahmani, Tum Hi Jag Mata'],
-                    ['timestamp' => 45, 'text' => 'Surya Chandrama Dhyavat, Naarad Rishi Gata']
-                ]
+                'lyrics' => "Om Jai Lakshmi Mata, Maiya Jai Lakshmi Mata\nTumko Nishdin Dhyavat, Har Vishnu Vidhata\nUma Rama Brahmani, Tum Hi Jag Mata\nSurya Chandrama Dhyavat, Naarad Rishi Gata"
             ]
         ];
 

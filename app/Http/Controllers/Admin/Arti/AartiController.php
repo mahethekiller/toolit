@@ -33,16 +33,10 @@ class AartiController extends Controller
             'duration' => 'required|string|max:255',
             'audio_url' => 'required|url|max:255',
             'video_url' => 'required|string|max:255',
-            'lyrics' => ['required', 'string', function ($attribute, $value, $fail) {
-                $decoded = json_decode($value, true);
-                if (json_last_error() !== JSON_ERROR_NONE || !is_array($decoded)) {
-                    $fail('The lyrics must be a valid JSON array.');
-                }
-            }],
+            'lyrics' => 'required|string',
         ]);
 
         $data = $request->all();
-        $data['lyrics'] = json_decode($request->lyrics, true);
 
         Aarti::create($data);
 
@@ -53,8 +47,7 @@ class AartiController extends Controller
     {
         $aarti = Aarti::findOrFail($id);
         $deities = Deity::all();
-        $lyricsJson = json_encode($aarti->lyrics, JSON_PRETTY_PRINT);
-        return view('admin.arti.aartis.edit', compact('aarti', 'deities', 'lyricsJson'));
+        return view('admin.arti.aartis.edit', compact('aarti', 'deities'));
     }
 
     public function update(Request $request, int $id): RedirectResponse
@@ -69,16 +62,10 @@ class AartiController extends Controller
             'duration' => 'required|string|max:255',
             'audio_url' => 'required|url|max:255',
             'video_url' => 'required|string|max:255',
-            'lyrics' => ['required', 'string', function ($attribute, $value, $fail) {
-                $decoded = json_decode($value, true);
-                if (json_last_error() !== JSON_ERROR_NONE || !is_array($decoded)) {
-                    $fail('The lyrics must be a valid JSON array.');
-                }
-            }],
+            'lyrics' => 'required|string',
         ]);
 
         $data = $request->all();
-        $data['lyrics'] = json_decode($request->lyrics, true);
 
         $aarti->update($data);
 
