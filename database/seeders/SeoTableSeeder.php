@@ -145,6 +145,16 @@ class SeoTableSeeder extends Seeder
                 'og_image' => 'default-og-image.png',
                 'canonical' => $domain . '/header-and-footer-script-adder',
             ],
+            [
+                'url' => '/tools/lorem-ipsum-generator',
+                'title' => 'Free Lorem Ipsum Generator – Custom Placeholder Text Tool',
+                'description' => 'Generate free Lorem Ipsum dummy text by paragraphs, words, sentences, or HTML lists. Customize HTML tags and word counts instantly online.',
+                'keywords' => 'lorem ipsum generator, dummy text generator, placeholder text, latin dummy text, lorem ipsum creator',
+                'og_title' => 'Free Lorem Ipsum Generator Tool',
+                'og_description' => 'Generate custom Lorem Ipsum placeholder text by paragraphs, words, or sentences with HTML formatting.',
+                'og_image' => 'default-og-image.png',
+                'canonical' => $domain . '/tools/lorem-ipsum-generator',
+            ],
         ];
 
         foreach ($seoRecords as $record) {

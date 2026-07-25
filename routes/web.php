@@ -7,6 +7,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\ToolsPageController;
 use App\Http\Controllers\Tools\CaseConvertorController;
+use App\Http\Controllers\Tools\LoremIpsumController;
 use App\Http\Controllers\Tools\PasswordGeneratorController;
 use App\Http\Controllers\Tools\TextReverserController;
 use App\Http\Controllers\Tools\WhitespaceRemoverController;
@@ -45,6 +46,8 @@ Route::prefix('tools')->name('tools.')->group(function () {
     Route::get('/whitespace-remover', [WhitespaceRemoverController::class, 'index'])->name('whitespace');
     Route::post('/whitespace-remover/process', [WhitespaceRemoverController::class, 'process'])->name('whitespace.process');
 
+    // Lorem Ipsum Generator
+    Route::get('/lorem-ipsum-generator', [LoremIpsumController::class, 'index'])->name('loremipsum');
 });
 
 // routes/web.php

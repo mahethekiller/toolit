@@ -182,6 +182,7 @@
                             <li><a class="dropdown-item" href="{{ route('tools.password') }}">🔑 Password Generator</a></li>
                             <li><a class="dropdown-item" href="{{ route('tools.textreverser') }}">↩️ Text Reverser</a></li>
                             <li><a class="dropdown-item" href="{{ route('tools.whitespace') }}">✂️ Whitespace Remover</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tools.loremipsum') }}">📄 Lorem Ipsum Generator</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ url('/tools') }}">All Tools</a></li>
                         </ul>
@@ -213,6 +214,8 @@
                                     Reverser</a></li>
                             <li><a href="{{ route('tools.whitespace') }}" class="text-decoration-none">✂️ Whitespace
                                     Remover</a></li>
+                            <li><a href="{{ route('tools.loremipsum') }}" class="text-decoration-none">📄 Lorem Ipsum
+                                    Generator</a></li>
                         </ul>
 
                         {{-- Sidebar Recent Blogs --}}

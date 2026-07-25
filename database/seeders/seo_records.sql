@@ -117,7 +117,16 @@ VALUES
  'Header & Footer Script Adder Plugin', 
  'Easily manage header and footer scripts, analytics, and custom code tags.', 
  'default-og-image.png', 
- 'https://www.onlinetxttools.com/header-and-footer-script-adder', NOW(), NOW())
+ 'https://www.onlinetxttools.com/header-and-footer-script-adder', NOW(), NOW()),
+
+('/tools/lorem-ipsum-generator', 
+ 'Free Lorem Ipsum Generator – Custom Placeholder Text Tool', 
+ 'Generate free Lorem Ipsum dummy text by paragraphs, words, sentences, or HTML lists. Customize HTML tags and word counts instantly online.', 
+ 'lorem ipsum generator, dummy text generator, placeholder text, latin dummy text, lorem ipsum creator', 
+ 'Free Lorem Ipsum Generator Tool', 
+ 'Generate custom Lorem Ipsum placeholder text by paragraphs, words, or sentences with HTML formatting.', 
+ 'default-og-image.png', 
+ 'https://www.onlinetxttools.com/tools/lorem-ipsum-generator', NOW(), NOW())
 
 ON DUPLICATE KEY UPDATE 
   `title` = VALUES(`title`),
