@@ -1,8 +1,11 @@
 *.log
 .DS_Store
 .env
+.env.*
 .env.backup
 .env.production
+.env.staging
+.env.local
 .phpactor.json
 .phpunit.result.cache
 /.fleet
@@ -13,13 +16,25 @@
 /.zed
 /auth.json
 /node_modules
+
+# Live & Production-only files (Do not overwrite on live)
+/public/robots.txt
+/public/sitemap.xml
+/public/sitemap*.xml
+/public/uploads/*
+!/public/uploads/.gitkeep
+
+# Storage, Database & Build Artifacts
 /public/build
 /public/hot
 /public/storage
 /storage/*.key
 /storage/pail
+/database/*.sqlite
+/database/*.sqlite-journal
 /vendor
 /blog
 Homestead.json
 Homestead.yaml
 Thumbs.db
+

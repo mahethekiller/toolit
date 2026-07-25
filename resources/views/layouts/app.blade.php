@@ -80,6 +80,68 @@
 {!! json_encode($jsonLd, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT) !!}
 </script>
 
+    {{-- WebApplication & Breadcrumb Schema for Tool Pages --}}
+    @if(request()->is('tools/*') || isset($tool))
+    @php
+        $toolName = isset($tool->name) && $tool->name ? $tool->name : ($seo->title ?? 'Online Text Tool');
+        $toolDesc = isset($tool->description) && $tool->description ? $tool->description : ($seo->description ?? 'Free online text processing tool.');
+        $toolUrl = isset($seo->canonical) && $seo->canonical ? $seo->canonical : url()->current();
+        $toolIcon = isset($tool->icon) && $tool->icon ? asset('uploads/tools/icons/' . $tool->icon) : asset('fevicon.png');
+
+        $webAppSchema = [
+            "@context" => "https://schema.org",
+            "@type" => "WebApplication",
+            "name" => $toolName,
+            "url" => $toolUrl,
+            "description" => $toolDesc,
+            "applicationCategory" => "DeveloperApplication",
+            "operatingSystem" => "All",
+            "browserRequirements" => "Requires JavaScript. Requires HTML5.",
+            "softwareVersion" => "1.0.0",
+            "image" => $toolIcon,
+            "offers" => [
+                "@type" => "Offer",
+                "price" => "0",
+                "priceCurrency" => "USD"
+            ]
+        ];
+
+        $breadcrumbSchema = [
+            "@context" => "https://schema.org",
+            "@type" => "BreadcrumbList",
+            "itemListElement" => [
+                [
+                    "@type" => "ListItem",
+                    "position" => 1,
+                    "name" => "Home",
+                    "item" => $domain
+                ],
+                [
+                    "@type" => "ListItem",
+                    "position" => 2,
+                    "name" => "Tools",
+                    "item" => url('/tools')
+                ],
+                [
+                    "@type" => "ListItem",
+                    "position" => 3,
+                    "name" => $toolName,
+                    "item" => $toolUrl
+                ]
+            ]
+        ];
+    @endphp
+
+<script type="application/ld+json">
+{!! json_encode($webAppSchema, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT) !!}
+</script>
+
+<script type="application/ld+json">
+{!! json_encode($breadcrumbSchema, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT) !!}
+</script>
+    @endif
+
+
 
 </head>
 
