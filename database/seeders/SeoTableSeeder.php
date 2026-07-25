@@ -36,6 +36,16 @@ class SeoTableSeeder extends Seeder
                 'canonical' => $domain . '/tools',
             ],
             [
+                'url' => '/blog',
+                'title' => 'Blog – Online Text Tools & Writing Guides',
+                'description' => 'Read our latest articles, guides, and tutorials on text formatting, developer productivity, writing tools, and content optimization.',
+                'keywords' => 'online text tools blog, text tools tutorials, developer guides, writing tips, content optimization',
+                'og_title' => 'Online Text Tools Blog & Developer Guides',
+                'og_description' => 'Latest tutorials and guides on text processing, formatting, and productivity.',
+                'og_image' => 'default-og-image.png',
+                'canonical' => $domain . '/blog',
+            ],
+            [
                 'url' => '/tools/case-converter',
                 'title' => 'Free Online Case Converter – Uppercase, Lowercase, Title Case',
                 'description' => 'Convert text case instantly online. Convert to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, and kebab-case for free.',
