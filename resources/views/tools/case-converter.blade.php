@@ -7,7 +7,7 @@
                 <div class="card shadow-lg border-0 rounded-4">
                     <div class="card-body p-5">
                         <!-- Header -->
-                        <h2 class="mb-3 text-center fw-bold">🔠 Case Converter</h2>
+                        <h1 class="mb-3 text-center fw-bold h2">🔠 Case Converter</h1>
                         <p class="text-muted text-center mb-5">
                             Type your text, choose a style, and see the result instantly.
                         </p>

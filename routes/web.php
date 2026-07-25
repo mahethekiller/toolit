@@ -4,6 +4,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\ToolsPageController;
 use App\Http\Controllers\Tools\CaseConvertorController;
 use App\Http\Controllers\Tools\PasswordGeneratorController;
@@ -11,6 +12,8 @@ use App\Http\Controllers\Tools\TextReverserController;
 use App\Http\Controllers\Tools\WhitespaceRemoverController;
 use App\Http\Controllers\Tools\WordCounterController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
 
 Route::get('/', function () {
     return view('welcome', ['showSidebar' => false]);

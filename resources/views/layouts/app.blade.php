@@ -42,8 +42,11 @@
     <meta name="author" content="mahethekiller">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="{{ asset('storage/fevicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('fevicon.png') }}">
 
+    <!-- Resource Preconnects -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     {{-- CUSTOM SCRIPTS --}}
     @php $siteScripts = \App\Models\SiteScript::first(); @endphp
@@ -198,7 +201,7 @@
             @if (!isset($showSidebar) || $showSidebar)
                 <aside class="col-md-3 d-none d-md-block" aria-label="Popular Tools Sidebar">
                     <div class="tools-sidebar bg-white rounded shadow-sm p-3">
-                        <h2 class="h6 fw-bold mb-3">🛠 Popular Tools</h2>
+                        <h3 class="h6 fw-bold mb-3">🛠 Popular Tools</h3>
                         <ul class="list-unstyled">
                             <li><a href="{{ route('tools.case-converter') }}" class="text-decoration-none">🔠 Case
                                     Converter</a></li>

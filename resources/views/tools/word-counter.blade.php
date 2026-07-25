@@ -7,7 +7,7 @@
             <div class="col-lg-6 mb-4">
                 <div class="card shadow border-0 rounded-4">
                     <div class="card-body p-4">
-                        <h2 class="fw-bold mb-3 text-center">📝 Word & Letter Counter</h2>
+                        <h1 class="fw-bold mb-3 text-center h2">📝 Word & Letter Counter</h1>
                         <p class="text-muted text-center mb-4">Paste or type your text below:</p>
 
                         <textarea id="text" class="form-control rounded-3 mb-3" rows="10" placeholder="Type or paste your text here...">{{ $text ?? '' }}</textarea>

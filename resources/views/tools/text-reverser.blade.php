@@ -6,7 +6,7 @@
             <div class="col-md-12 mb-4 card shadow border-0 rounded-4">
                 <div class="card-body p-4">
                     <!-- Header -->
-                    <h2 class="mb-3 text-center fw-bold">↩️ Text Reverser</h2>
+                    <h1 class="mb-3 text-center fw-bold h2">↩️ Text Reverser</h1>
                     <p class="text-muted text-center mb-4">
                         Paste or type your text below and get the reversed result instantly.
                     </p>
