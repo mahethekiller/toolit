@@ -402,6 +402,9 @@
         </div>
     </section>
 
+    {{-- Recent Blog Posts Section --}}
+    @include('partials.recent-blogs')
+
     {{-- CTA Section --}}
     <section class="container mb-5" aria-labelledby="cta-heading">
         <div class="bg-gradient-primary rounded-4 p-5 text-center text-white" style="background: linear-gradient(135deg, #4f46e5, #7c3aed);">

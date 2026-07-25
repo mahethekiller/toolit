@@ -43,4 +43,7 @@
         @endforelse
     </div>
 </div>
+
+{{-- Recent Blog Posts Section --}}
+@include('partials.recent-blogs')
 @endsection
