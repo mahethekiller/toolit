@@ -1,4 +1,4 @@
--- SQL Script to Populate/Update Unique Sitewide Meta Descriptions & Titles in 'seos' table
+-- SQL Script to Populate/Update Unique Sitewide Meta Descriptions & Titles in 'seos' table for https://www.onlinetxttools.com
 
 INSERT INTO `seos` (`url`, `title`, `description`, `keywords`, `og_title`, `og_description`, `og_image`, `canonical`, `created_at`, `updated_at`)
 VALUES
@@ -9,7 +9,7 @@ VALUES
  'Free Online Text Tools – Fast & Secure Browser Utilities', 
  'Free online text processing tools for developers, writers, and content creators. Instant browser-based text utilities.', 
  'default-og-image.png', 
- '/', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/', NOW(), NOW()),
 
 ('/tools', 
  'All Free Online Text Processing Tools | ToolIt', 
@@ -18,7 +18,7 @@ VALUES
  'All Free Online Text Tools – Full Suite', 
  'Browse our complete directory of free online text tools including case converters, word counters, and password generators.', 
  'default-og-image.png', 
- '/tools', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/tools', NOW(), NOW()),
 
 ('/tools/case-converter', 
  'Free Online Case Converter – Uppercase, Lowercase, Title Case', 
@@ -27,7 +27,7 @@ VALUES
  'Free Online Case Converter Tool', 
  'Convert text case instantly: UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, and kebab-case.', 
  'default-og-image.png', 
- '/tools/case-converter', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/tools/case-converter', NOW(), NOW()),
 
 ('/tools/word-counter', 
  'Free Word Counter & Character Counter Tool', 
@@ -36,7 +36,7 @@ VALUES
  'Free Online Word & Character Counter', 
  'Count words, characters, sentences, and paragraphs in real time. Free client-side word count tool.', 
  'default-og-image.png', 
- '/tools/word-counter', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/tools/word-counter', NOW(), NOW()),
 
 ('/tools/password-generator', 
  'Free Strong Password Generator – Secure & Customizable', 
@@ -45,7 +45,7 @@ VALUES
  'Free Strong & Secure Password Generator', 
  'Generate custom random secure passwords instantly inside your browser. 100% private & secure.', 
  'default-og-image.png', 
- '/tools/password-generator', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/tools/password-generator', NOW(), NOW()),
 
 ('/tools/text-reverser', 
  'Free Online Text Reverser – Reverse Words & Letters', 
@@ -54,7 +54,7 @@ VALUES
  'Free Online Text Reverser', 
  'Reverse text strings, words, and letters instantly online.', 
  'default-og-image.png', 
- '/tools/text-reverser', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/tools/text-reverser', NOW(), NOW()),
 
 ('/tools/whitespace-remover', 
  'Free Whitespace Remover & Line Trim Tool', 
@@ -63,7 +63,7 @@ VALUES
  'Free Whitespace & Extra Space Remover', 
  'Clean up extra spaces, line breaks, and tabs from your text or code instantly.', 
  'default-og-image.png', 
- '/tools/whitespace-remover', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/tools/whitespace-remover', NOW(), NOW()),
 
 ('/about', 
  'About Online Text Tools – Our Mission & Features', 
@@ -72,7 +72,7 @@ VALUES
  'About Online Text Tools', 
  'Learn more about our mission to provide fast, free, and privacy-first text tools.', 
  'default-og-image.png', 
- '/about', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/about', NOW(), NOW()),
 
 ('/contact', 
  'Contact Us – Online Text Tools Support & Feedback', 
@@ -81,7 +81,7 @@ VALUES
  'Contact Online Text Tools Support', 
  'Have questions or feedback? Contact the Online Text Tools team directly.', 
  'default-og-image.png', 
- '/contact', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/contact', NOW(), NOW()),
 
 ('/privacy-policy', 
  'Privacy Policy – Online Text Tools', 
@@ -90,7 +90,7 @@ VALUES
  'Privacy Policy – Online Text Tools', 
  'Read our commitment to user privacy and 100% browser-side data security.', 
  'default-og-image.png', 
- '/privacy-policy', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/privacy-policy', NOW(), NOW()),
 
 ('/terms-of-use', 
  'Terms of Use – Online Text Tools', 
@@ -99,7 +99,7 @@ VALUES
  'Terms of Use – Online Text Tools', 
  'Review the terms and acceptable usage guidelines for Online Text Tools.', 
  'default-og-image.png', 
- '/terms-of-use', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/terms-of-use', NOW(), NOW()),
 
 ('/ads-disclosure', 
  'Advertising & Ads Disclosure – Online Text Tools', 
@@ -108,7 +108,7 @@ VALUES
  'Ads Disclosure – Online Text Tools', 
  'Learn how advertising supports keeping our text tools completely free.', 
  'default-og-image.png', 
- '/ads-disclosure', NOW(), NOW()),
+ 'https://www.onlinetxttools.com/ads-disclosure', NOW(), NOW()),
 
 ('/header-and-footer-script-adder', 
  'Header & Footer Script Adder Plugin – Custom Script Tool', 
@@ -117,7 +117,7 @@ VALUES
  'Header & Footer Script Adder Plugin', 
  'Easily manage header and footer scripts, analytics, and custom code tags.', 
  'default-og-image.png', 
- '/header-and-footer-script-adder', NOW(), NOW())
+ 'https://www.onlinetxttools.com/header-and-footer-script-adder', NOW(), NOW())
 
 ON DUPLICATE KEY UPDATE 
   `title` = VALUES(`title`),

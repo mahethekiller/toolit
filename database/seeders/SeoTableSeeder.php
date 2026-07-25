@@ -12,6 +12,8 @@ class SeoTableSeeder extends Seeder
      */
     public function run(): void
     {
+        $domain = 'https://www.onlinetxttools.com';
+
         $seoRecords = [
             [
                 'url' => '/',
@@ -21,7 +23,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Free Online Text Tools – Fast & Secure Browser Utilities',
                 'og_description' => 'Free online text processing tools for developers, writers, and content creators. Instant browser-based text utilities.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/'),
+                'canonical' => $domain . '/',
             ],
             [
                 'url' => '/tools',
@@ -31,7 +33,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'All Free Online Text Tools – Full Suite',
                 'og_description' => 'Browse our complete directory of free online text tools including case converters, word counters, and password generators.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/tools'),
+                'canonical' => $domain . '/tools',
             ],
             [
                 'url' => '/tools/case-converter',
@@ -41,7 +43,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Free Online Case Converter Tool',
                 'og_description' => 'Convert text case instantly: UPPERCASE, lowercase, Title Case, camelCase, PascalCase, snake_case, and kebab-case.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/tools/case-converter'),
+                'canonical' => $domain . '/tools/case-converter',
             ],
             [
                 'url' => '/tools/word-counter',
@@ -51,7 +53,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Free Online Word & Character Counter',
                 'og_description' => 'Count words, characters, sentences, and paragraphs in real time. Free client-side word count tool.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/tools/word-counter'),
+                'canonical' => $domain . '/tools/word-counter',
             ],
             [
                 'url' => '/tools/password-generator',
@@ -61,7 +63,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Free Strong & Secure Password Generator',
                 'og_description' => 'Generate custom random secure passwords instantly inside your browser. 100% private & secure.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/tools/password-generator'),
+                'canonical' => $domain . '/tools/password-generator',
             ],
             [
                 'url' => '/tools/text-reverser',
@@ -71,7 +73,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Free Online Text Reverser',
                 'og_description' => 'Reverse text strings, words, and letters instantly online.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/tools/text-reverser'),
+                'canonical' => $domain . '/tools/text-reverser',
             ],
             [
                 'url' => '/tools/whitespace-remover',
@@ -81,7 +83,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Free Whitespace & Extra Space Remover',
                 'og_description' => 'Clean up extra spaces, line breaks, and tabs from your text or code instantly.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/tools/whitespace-remover'),
+                'canonical' => $domain . '/tools/whitespace-remover',
             ],
             [
                 'url' => '/about',
@@ -91,7 +93,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'About Online Text Tools',
                 'og_description' => 'Learn more about our mission to provide fast, free, and privacy-first text tools.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/about'),
+                'canonical' => $domain . '/about',
             ],
             [
                 'url' => '/contact',
@@ -101,7 +103,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Contact Online Text Tools Support',
                 'og_description' => 'Have questions or feedback? Contact the Online Text Tools team directly.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/contact'),
+                'canonical' => $domain . '/contact',
             ],
             [
                 'url' => '/privacy-policy',
@@ -111,7 +113,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Privacy Policy – Online Text Tools',
                 'og_description' => 'Read our commitment to user privacy and 100% browser-side data security.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/privacy-policy'),
+                'canonical' => $domain . '/privacy-policy',
             ],
             [
                 'url' => '/terms-of-use',
@@ -121,7 +123,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Terms of Use – Online Text Tools',
                 'og_description' => 'Review the terms and acceptable usage guidelines for Online Text Tools.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/terms-of-use'),
+                'canonical' => $domain . '/terms-of-use',
             ],
             [
                 'url' => '/ads-disclosure',
@@ -131,7 +133,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Ads Disclosure – Online Text Tools',
                 'og_description' => 'Learn how advertising supports keeping our text tools completely free.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/ads-disclosure'),
+                'canonical' => $domain . '/ads-disclosure',
             ],
             [
                 'url' => '/header-and-footer-script-adder',
@@ -141,7 +143,7 @@ class SeoTableSeeder extends Seeder
                 'og_title' => 'Header & Footer Script Adder Plugin',
                 'og_description' => 'Easily manage header and footer scripts, analytics, and custom code tags.',
                 'og_image' => 'default-og-image.png',
-                'canonical' => url('/header-and-footer-script-adder'),
+                'canonical' => $domain . '/header-and-footer-script-adder',
             ],
         ];
 
