@@ -17,7 +17,7 @@
                 <!-- Unit Type -->
                 <div class="col-md-3">
                     <label for="unitType" class="form-label fw-semibold text-dark small mb-1">Generate By</label>
-                    <select id="unitType" class="form-select rounded-3">
+                    <select id="unitType" class="form-select rounded-3 border-secondary-subtle">
                         <option value="paragraphs" selected>Paragraphs</option>
                         <option value="words">Words</option>
                         <option value="sentences">Sentences</option>
@@ -28,7 +28,7 @@
                 <!-- Quantity -->
                 <div class="col-md-3">
                     <label for="unitQuantity" class="form-label fw-semibold text-dark small mb-1">Quantity</label>
-                    <input type="number" id="unitQuantity" class="form-control rounded-3" value="3" min="1" max="100">
+                    <input type="number" id="unitQuantity" class="form-control rounded-3 border-secondary-subtle" value="3" min="1" max="100">
                 </div>
 
                 <!-- Quick Presets -->
@@ -271,4 +271,15 @@ document.addEventListener('DOMContentLoaded', function() {
     generateLorem();
 });
 </script>
+
+<style>
+    #unitType, #unitQuantity, #loremOutput {
+        border: 1px solid #cbd5e1 !important;
+        background-color: #ffffff;
+    }
+    #unitType:focus, #unitQuantity:focus, #loremOutput:focus {
+        border-color: #4f46e5 !important;
+        box-shadow: 0 0 0 0.25rem rgba(79, 70, 229, 0.2) !important;
+    }
+</style>
 @endsection
