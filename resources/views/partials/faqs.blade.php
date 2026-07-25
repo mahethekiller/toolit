@@ -1,4 +1,4 @@
- <div class="article-content">
+<div class="article-content">
      <h2 class="mt-5 mb-4 text-center fw-bold">Frequently Asked Questions</h2>
 
      <div class="accordion" id="faqAccordion" itemscope itemtype="https://schema.org/FAQPage">
@@ -30,6 +30,30 @@
 
 
  </div>
+
+ @if(!empty($faqs) && count($faqs) > 0)
+ @php
+     $faqJsonLd = [
+         "@context" => "https://schema.org",
+         "@type" => "FAQPage",
+         "mainEntity" => []
+     ];
+
+     foreach ($faqs as $faq) {
+         $faqJsonLd["mainEntity"][] = [
+             "@type" => "Question",
+             "name" => strip_tags($faq->question),
+             "acceptedAnswer" => [
+                 "@type" => "Answer",
+                 "text" => strip_tags($faq->answer)
+             ]
+         ];
+     }
+ @endphp
+ <script type="application/ld+json">
+ {!! json_encode($faqJsonLd, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT) !!}
+ </script>
+ @endif
 
  <style>
 

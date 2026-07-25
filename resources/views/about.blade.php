@@ -9,6 +9,28 @@
         </ol>
     </nav>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "{{ url('/') }}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "About",
+          "item": "{{ url('/about') }}"
+        }
+      ]
+    }
+    </script>
+
+
     <!-- Hero Section -->
     <div class="text-center mb-5">
         <h1 class="fw-bold">About Online Text Tools</h1>
