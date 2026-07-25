@@ -20,15 +20,6 @@ VALUES
  'default-og-image.png', 
  'https://www.onlinetxttools.com/tools', NOW(), NOW()),
 
-('/blog', 
- 'Blog – Online Text Tools & Writing Guides', 
- 'Read our latest articles, guides, and tutorials on text formatting, developer productivity, writing tools, and content optimization.', 
- 'online text tools blog, text tools tutorials, developer guides, writing tips, content optimization', 
- 'Online Text Tools Blog & Developer Guides', 
- 'Latest tutorials and guides on text processing, formatting, and productivity.', 
- 'default-og-image.png', 
- 'https://www.onlinetxttools.com/blog', NOW(), NOW()),
-
 ('/tools/case-converter', 
  'Free Online Case Converter – Uppercase, Lowercase, Title Case', 
  'Convert text case instantly online. Convert to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case, and kebab-case for free.', 

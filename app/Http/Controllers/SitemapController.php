@@ -14,7 +14,6 @@ class SitemapController extends Controller
         $staticUrls = [
             ['loc' => $baseUrl . '/', 'priority' => '1.0', 'changefreq' => 'daily'],
             ['loc' => $baseUrl . '/tools', 'priority' => '0.9', 'changefreq' => 'weekly'],
-            ['loc' => $baseUrl . '/blog', 'priority' => '0.8', 'changefreq' => 'daily'],
             ['loc' => $baseUrl . '/about', 'priority' => '0.7', 'changefreq' => 'monthly'],
             ['loc' => $baseUrl . '/contact', 'priority' => '0.7', 'changefreq' => 'monthly'],
             ['loc' => $baseUrl . '/privacy-policy', 'priority' => '0.5', 'changefreq' => 'monthly'],
