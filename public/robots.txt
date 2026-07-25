@@ -2,5 +2,18 @@ User-agent: *
 Disallow: /admin/
 Disallow: /dashboard
 Disallow: /profile
+Disallow: /blog/wp-admin/
+Allow: /blog/wp-admin/admin-ajax.php
 
 Sitemap: https://www.onlinetxttools.com/sitemap.xml
+Sitemap: https://www.onlinetxttools.com/blog/sitemap.xml
+Sitemap: https://www.onlinetxttools.com/blog/post-sitemap.xml
+
+# START YOAST BLOCK
+# ---------------------------
+User-agent: *
+Disallow:
+
+Sitemap: https://www.onlinetxttools.com/blog/sitemap_index.xml
+# ---------------------------
+# END YOAST BLOCK
