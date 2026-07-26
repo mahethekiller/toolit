@@ -259,6 +259,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const toastEl = document.getElementById('copyToast');
             const toast = new bootstrap.Toast(toastEl);
             toast.show();
+            if (window.trackToolExecution) {
+                window.trackToolExecution('{{ $tool->route_name }}');
+            }
         });
     });
 

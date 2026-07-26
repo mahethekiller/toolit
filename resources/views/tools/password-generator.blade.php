@@ -243,6 +243,9 @@
                 $('passwordOutput').value = pwd;
                 enableResultButtons(!!pwd);
                 updateStrength();
+                if (window.trackToolExecution) {
+                    window.trackToolExecution('{{ $tool->route_name }}');
+                }
             }
 
             $('length').addEventListener('input', (e) => {

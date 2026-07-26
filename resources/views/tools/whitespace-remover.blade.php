@@ -109,6 +109,10 @@
             const btn = document.getElementById("copyBtn");
             btn.innerHTML = "✅ Copied!";
             setTimeout(() => btn.innerHTML = "📋 Copy", 1500);
+
+            if (window.trackToolExecution) {
+                window.trackToolExecution('{{ $tool->route_name }}');
+            }
         }
 
         // Optional live update

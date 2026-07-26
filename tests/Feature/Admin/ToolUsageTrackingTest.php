@@ -63,3 +63,21 @@ test('admin can access analytics dashboard', function () {
     $response->assertStatus(200);
     $response->assertSee('Tool Usage Analytics');
 });
+
+test('client-side execution tracking endpoint logs execution', function () {
+    // Post to the client-side tracking endpoint
+    $response = $this->postJson(route('tools.track-execution'), [
+        'route_name' => 'tools.case-converter'
+    ]);
+
+    $response->assertStatus(200);
+    $response->assertJson(['status' => 'success']);
+
+    // Verify database logging
+    $this->assertDatabaseCount('tool_usages', 1);
+
+    $usage = ToolUsage::first();
+    expect($usage)->not->toBeNull();
+    expect($usage->route_name)->toBe('tools.case-converter');
+    expect($usage->action)->toBe('execute');
+});

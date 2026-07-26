@@ -29,6 +29,11 @@ class TrackToolUsage
 
             $routeName = $request->route()?->getName();
             
+            // Skip logging for the execution tracking endpoint itself
+            if ($routeName === 'tools.track-execution') {
+                return $response;
+            }
+            
             // Resolve the tool from route name
             $tool = null;
             if ($routeName) {

@@ -48,6 +48,10 @@ Route::prefix('tools')->name('tools.')->middleware('track.tools')->group(functio
 
     // Lorem Ipsum Generator
     Route::get('/lorem-ipsum-generator', [LoremIpsumController::class, 'index'])->name('loremipsum');
+
+    // Client-side Execution Logging
+    Route::post('/track-execution', [\App\Http\Controllers\Tools\TrackExecutionController::class, 'store'])
+        ->name('track-execution');
 });
 
 // routes/web.php

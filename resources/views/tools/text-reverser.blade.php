@@ -76,6 +76,9 @@
                     delay: 2000
                 });
                 toast.show();
+                if (window.trackToolExecution) {
+                    window.trackToolExecution('{{ $tool->route_name }}');
+                }
             });
         }
 

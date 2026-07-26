@@ -261,6 +261,21 @@
     @endif
     {{-- CUSTOM SCRIPTS --}}
 
+    <!-- Client-side Tool Execution Tracker -->
+    <script>
+        window.trackToolExecution = function(routeName) {
+            fetch('{{ route('tools.track-execution') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                },
+                body: JSON.stringify({ route_name: routeName })
+            })
+            .then(response => response.json())
+            .catch(error => console.error('Execution log failed:', error));
+        };
+    </script>
 </body>
 
 </html>
