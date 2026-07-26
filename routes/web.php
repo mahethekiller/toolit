@@ -23,7 +23,7 @@ Route::get('/', function () {
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
-Route::prefix('tools')->name('tools.')->group(function () {
+Route::prefix('tools')->name('tools.')->middleware('track.tools')->group(function () {
     // Case Converter
     Route::get('/case-converter', [CaseConvertorController::class, 'caseConverter'])
         ->name('case-converter');

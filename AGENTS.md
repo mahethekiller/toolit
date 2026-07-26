@@ -26,3 +26,12 @@
      `https://www.onlinetxttools.com/blog/wp-json/wp/v2/posts?per_page=3&_embed=1`
    - **Caching & Timeouts**: Always wrap API calls in Laravel `Cache::remember('recent_wp_posts', 3600, ...)` with a 3-second connection timeout (`Http::timeout(3)`).
    - **Fallback Mechanism**: Always provide fallback sample data so local development environments and offline states render seamlessly without breaking page loads.
+
+---
+
+## Project Reference Guide (`PROJECT.md`)
+
+1. **System Documentation**:
+   - Refer to [PROJECT.md](file:///e:/xampp82/htdocs/toolsite/toolit/PROJECT.md) (or [PROJECT.md](file:///e:/xampp82/htdocs/toolsite/PROJECT.md) in the workspace root) to understand the folder structure, controllers, models, routes, database schemas, and conventions of the project.
+2. **Maintenance of Documentation**:
+   - Whenever any structural changes, new tools, database migrations, model updates, or configuration changes are made, the agent **MUST** update `PROJECT.md` in both locations (`/toolit/PROJECT.md` and the workspace root `/PROJECT.md`) to keep the documentation synchronized and accurate for future tasks.

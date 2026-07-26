@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\SiteScriptController;
 use App\Http\Controllers\Admin\SkillController;
 use App\Http\Controllers\Admin\ToolController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ToolAnalyticsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
@@ -76,5 +77,7 @@ Route::middleware(['auth', 'role:admin'])
     // Settings
     Route::resource('settings', SettingController::class)->only(['index', 'update']);
 
+    // Tool Analytics
+    Route::get('/tool-analytics', [ToolAnalyticsController::class, 'index'])->name('tool-analytics.index');
 
     });

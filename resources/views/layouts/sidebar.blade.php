@@ -53,8 +53,13 @@
 
 
         <li class="nav-item mb-2">
-            <a class="nav-link text-white py-2 px-3 rounded sidebar-link" href="{{ route('admin.tools.index') }}">
+            <a class="nav-link text-white py-2 px-3 rounded sidebar-link {{ request()->routeIs('admin.tools.*') ? 'active' : '' }}" href="{{ route('admin.tools.index') }}">
                 <i class="fas fa-tools me-2"></i> Tools
+            </a>
+        </li>
+        <li class="nav-item mb-2">
+            <a class="nav-link text-white py-2 px-3 rounded sidebar-link {{ request()->routeIs('admin.tool-analytics.*') ? 'active' : '' }}" href="{{ route('admin.tool-analytics.index') }}">
+                <i class="fas fa-chart-line me-2"></i> Tool Analytics
             </a>
         </li>
         <li class="nav-item mb-2">
