@@ -23,6 +23,16 @@ Route::get('/', function () {
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
+Route::get('/app-ads.txt', function () {
+    return response("google.com, pub-7746616500591109, DIRECT, f08c47fec0942fa0\n", 200)
+        ->header('Content-Type', 'text/plain');
+});
+
+Route::get('/contact/app-ads.txt', function () {
+    return response("google.com, pub-7746616500591109, DIRECT, f08c47fec0942fa0\n", 200)
+        ->header('Content-Type', 'text/plain');
+});
+
 Route::prefix('tools')->name('tools.')->middleware('track.tools')->group(function () {
     // Case Converter
     Route::get('/case-converter', [CaseConvertorController::class, 'caseConverter'])
