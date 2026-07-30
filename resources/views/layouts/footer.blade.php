@@ -205,10 +205,10 @@
 
         <!-- Bottom Bar -->
         <div class="row align-items-center">
-            <div class="col-md-6 mb-3 mb-md-0">
-                <div class="d-flex align-items-center">
+                <div class="d-flex align-items-center flex-wrap gap-2">
                     <span class="text-light me-2">© <?php echo date('Y'); ?> OnlineTXTtools.com</span>
                     <span class="badge bg-primary">Free Text Tools</span>
+                    <a href="{{ route('data.deletion') }}" class="text-light-soft text-decoration-underline small ms-2">Data Deletion Policy</a>
                 </div>
                 <small class="text-light-soft d-block mt-1">
                     Made with ❤️ for developers, writers, and content creators

@@ -21,6 +21,11 @@ class PageController extends Controller
         return view('pages.ads-disclosure');
     }
 
+    public function dataDeletion()
+    {
+        return view('pages.data-deletion');
+    }
+
     public function headerFooterScriptAdder()
     {
         $seo = (object) [
