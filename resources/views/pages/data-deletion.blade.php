@@ -73,9 +73,10 @@
 
         <div class="app-card">
             <p><strong>App Name:</strong> Arrow Tap Away: Block Puzzle</p>
-            <p><strong>Developer Name:</strong> Mahendra Kumar</p>
+            <p><strong>Developer Name:</strong> MEHENDRA KUMAR</p>
             <p><strong>Package ID:</strong> com.arrowgame.blockpuzzle</p>
-            <p><strong>Developer Email:</strong> mahethekiller@gmail.com</p>
+            <p><strong>Support Email:</strong> mahethekiller@gmail.com</p>
+            <p><strong>Developer Address:</strong> MOH SWAROOP NAGAR POST MIDANIYA, THANA KOTWALI SADAR, Lakhimpur Kheri, Uttar Pradesh 262701, India</p>
         </div>
 
         <h2>How to Request Account &amp; Data Deletion</h2>
@@ -93,7 +94,7 @@
         </ol>
 
         <h2>What Data Will Be Deleted</h2>
-        <p>Upon receiving your request, we will permanently delete the following data from our servers (Firebase Realtime Database &amp; Auth):</p>
+        <p>Upon receiving your request, developer <strong>MEHENDRA KUMAR</strong> will permanently delete the following data from our servers (Firebase Realtime Database &amp; Auth):</p>
         <ul>
             <li><strong>User Account &amp; Profile:</strong> Your Google Sign-In UID, email address, display name, and avatar URL.</li>
             <li><strong>Leaderboard &amp; High Scores:</strong> All recorded high scores, level progress, and leaderboard rankings.</li>
@@ -112,7 +113,7 @@
         </div>
 
         <div class="footer">
-            <p>&copy; 2026 Arrow Tap Away: Block Puzzle. All rights reserved.</p>
+            <p>&copy; 2026 MEHENDRA KUMAR | Arrow Tap Away: Block Puzzle. All rights reserved.</p>
         </div>
     </div>
 </body>
