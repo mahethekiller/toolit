@@ -101,25 +101,43 @@
     </div>
 
     <!-- Long Description & Guides Section -->
-    <div class="bg-white rounded-4 shadow-sm p-4 p-md-5 mb-5 border border-light">
-        <h2 class="h4 fw-bold mb-3 text-dark">What is Lorem Ipsum?</h2>
-        <p class="text-secondary leading-relaxed">
-            <strong>Lorem Ipsum</strong> is simply dummy text used by the printing, typesetting, and web design industries. It has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-        </p>
+    @if (!empty($tool->long_description))
+        @include('partials.description', ['description' => $tool->long_description])
+    @else
+        <div class="card shadow-sm border-0 rounded-4 my-4">
+            <div class="card-body p-4 p-md-5 article-content">
+                <h2 class="h3 fw-bold mb-3">Free Online Lorem Ipsum Placeholder Text Generator</h2>
+                <p class="lead">When designing website mockups, graphic layouts, or print prototypes, real copy is often unavailable. Our free <strong>Online Lorem Ipsum Generator Tool</strong> allows designers, web developers, and publishers to generate clean Latin placeholder text by paragraphs, words, sentences, or HTML lists instantly.</p>
 
-        <h3 class="h5 fw-bold mt-4 mb-2 text-dark">Why Do We Use It?</h3>
-        <p class="text-secondary leading-relaxed">
-            It is a long-established fact that a reader will be distracted by the readable content of a page when looking at its layout. Using Lorem Ipsum provides a natural distribution of letters and word lengths, making design compositions look like real readable English without drawing attention away from the visual aesthetic.
-        </p>
+                <h3 class="h4 fw-bold mt-4 mb-3">What is Lorem Ipsum and Why is it Used?</h3>
+                <p>Lorem Ipsum has been the graphic design industry standard dummy text since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. The standard passage originates from sections 1.10.32 and 1.10.33 of <em>"de Finibus Bonorum et Malorum"</em> (The Extremes of Good and Evil) written by Cicero in 45 BC.</p>
+                <p>The primary advantage of using Lorem Ipsum is that it features a normal, balanced distribution of letter lengths and word frequencies. Using actual readable English content during early layout stages distracts reviewers, who end up reading the content rather than focusing on visual hierarchy, typography, line height, and UI layout balance.</p>
 
-        <h3 class="h5 fw-bold mt-4 mb-2 text-dark">Where Does It Come From?</h3>
-        <p class="text-secondary leading-relaxed mb-0">
-            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, traced the origin to sections 1.10.32 and 1.10.33 of <em>"de Finibus Bonorum et Malorum"</em> (The Extremes of Good and Evil) by Cicero.
-        </p>
-    </div>
+                <h3 class="h4 fw-bold mt-4 mb-3">Customization Features & Formatting Options</h3>
+                <ul>
+                    <li><strong>Generate by Paragraphs:</strong> Produce full paragraphs of dummy text perfect for blog post wireframes and landing page content blocks.</li>
+                    <li><strong>Generate by Words or Sentences:</strong> Specify exact word counts or sentence counts to fit constrained UI components like cards, hero titles, and badges.</li>
+                    <li><strong>HTML Markup Generation:</strong> Wrap output automatically in <code>&lt;p&gt;</code>, <code>&lt;li&gt;</code>, or heading tags for quick copy-pasting directly into frontend code (React, Vue, HTML5).</li>
+                </ul>
+
+                <h3 class="h4 fw-bold mt-4 mb-3">How to Use the Generator</h3>
+                <ol class="mb-4">
+                    <li>Select your generation type (Paragraphs, Words, or Sentences).</li>
+                    <li>Enter the desired quantity.</li>
+                    <li>Toggle optional settings (such as starting with "Lorem ipsum dolor sit amet...").</li>
+                    <li>Click <strong>Generate</strong> to instantly copy or view your customized placeholder text.</li>
+                </ol>
+
+                <h3 class="h4 fw-bold mt-4 mb-3">Free & Client-Side Execution</h3>
+                <p>Generate as much placeholder text as you need for your web development and graphic design projects completely free, with no sign-up or server latency.</p>
+            </div>
+        </div>
+    @endif
 
     <!-- Dynamic FAQs Partial -->
-    @include('partials.faqs')
+    @if (!empty($faqs) && $faqs->count() > 0)
+        @include('partials.faqs', ['faqs' => $faqs])
+    @endif
 </div>
 
 <!-- Toast Feedback -->

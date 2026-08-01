@@ -243,5 +243,27 @@ Isolated tables prefixed with `arti_` specifically for the mobile app backend ba
 2.  **Create Controller**: Create the corresponding controller under `app/Http/Controllers/Tools/`.
 3.  **Add Routes**: Register GET and POST routes in `routes/web.php` inside the `tools` prefix group.
 4.  **Register Tool in DB**: Insert a row in the `tools` database table (preferably via a migration/seeder or admin panel) with name, route_name, and active = true.
-5.  **Configure SEO Metadata**: Insert a row in the `seos` table matching the new URL to define title, description, and keywords.
-6.  **Add FAQs**: Insert any related FAQs in the `faqs` table under the corresponding group name.
+5. Configure SEO Metadata: Insert a row in the `seos` table matching the new URL to define title, description, and keywords.
+6. Add FAQs: Insert any related FAQs in the `faqs` table under the corresponding group name.
+
+---
+
+## 5. Live Database Synchronization & Standalone Seeder
+- **Live Database Source**: `C:\Users\mahet\Downloads\u684753928_tools.sql`
+- **Import Status**: Successfully imported all live content tables into local SQLite database (`toolit/database/database.sqlite`):
+  - `tools` (6 active tools with full descriptions)
+  - `seos` (19 dynamic route metadata records)
+  - `faqs` (30 tool FAQ Q&As)
+  - `ads` (1 ad configuration record)
+  - `site_scripts` (1 site-wide script container record)
+  - `portfolio_settings`, `portfolio_experiences`, `portfolio_skills`, `portfolio_projects` (full developer portfolio data)
+  - `arti_deities`, `arti_aartis` (Arti mobile application data)
+
+- **Standalone Production Seeder**: `AdsenseContentSeeder.php` (`database/seeders/AdsenseContentSeeder.php`)
+  - **Purpose**: High-value content expansion (500–1000+ words per tool), complete FAQ seeding (30+ Q&As), and SEO metadata optimization.
+  - **Live Production Command**:
+    ```bash
+    php artisan db:seed --class=AdsenseContentSeeder
+    ```
+
+
