@@ -23,6 +23,11 @@ Route::get('/', function () {
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'send'])->name('contact.send');
 
+Route::get('/ads.txt', function () {
+    return response("google.com, pub-7746616500591109, DIRECT, f08c47fec0942fa0\n", 200)
+        ->header('Content-Type', 'text/plain');
+});
+
 Route::get('/app-ads.txt', function () {
     return response("google.com, pub-7746616500591109, DIRECT, f08c47fec0942fa0\n", 200)
         ->header('Content-Type', 'text/plain');
