@@ -143,7 +143,11 @@
                                     <i class="fas fa-info-circle me-2"></i>About
                                 </a>
                             </li>
-
+                            <li class="mb-2">
+                                <a href="{{ route('how-we-process-data') }}" class="text-decoration-none text-light hover-text">
+                                    <i class="fas fa-microchip me-2"></i>Data Processing
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-6">
@@ -158,16 +162,16 @@
                                     <i class="fas fa-file-contract me-2"></i>Terms
                                 </a>
                             </li>
+                            <li class="mb-2">
+                                <a href="{{ route('faqs') }}" class="text-decoration-none text-light hover-text">
+                                    <i class="fas fa-question-circle me-2"></i>FAQs
+                                </a>
+                            </li>
                              <li class="mb-2">
                                 <a href="/contact" class="text-decoration-none text-light hover-text">
                                     <i class="fas fa-envelope me-2"></i>Contact Us
                                 </a>
                             </li>
-                            {{-- <li class="mb-2">
-                                <a href="/sitemap" class="text-decoration-none text-light hover-text">
-                                    <i class="fas fa-sitemap me-2"></i>Sitemap
-                                </a>
-                            </li> --}}
                         </ul>
                     </div>
                 </div>

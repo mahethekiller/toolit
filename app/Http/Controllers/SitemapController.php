@@ -19,6 +19,8 @@ class SitemapController extends Controller
             ['loc' => $baseUrl . '/privacy-policy', 'priority' => '0.5', 'changefreq' => 'monthly'],
             ['loc' => $baseUrl . '/terms-of-use', 'priority' => '0.5', 'changefreq' => 'monthly'],
             ['loc' => $baseUrl . '/ads-disclosure', 'priority' => '0.5', 'changefreq' => 'monthly'],
+            ['loc' => $baseUrl . '/how-we-process-data', 'priority' => '0.7', 'changefreq' => 'monthly'],
+            ['loc' => $baseUrl . '/faqs', 'priority' => '0.7', 'changefreq' => 'monthly'],
             ['loc' => $baseUrl . '/header-and-footer-script-adder', 'priority' => '0.7', 'changefreq' => 'monthly'],
         ];
 

@@ -22,7 +22,7 @@ Contains the request handling logic, organized into:
 *   **`Api/`**: Backend JSON APIs (including the `Api/Arti/` folder for the Arti mobile application).
 *   **`Auth/`**: Standard authentication controllers.
 *   **`ContactController.php`**: Handles contact page logic and queries.
-*   **`PageController.php`**: Handles static pages (Privacy Policy, Terms of Use, Ads Disclosure, Data Deletion Policy, etc.).
+*   **`PageController.php`**: Handles static pages (Privacy Policy, Terms of Use, Ads Disclosure, Data Deletion Policy, How We Process Data, FAQ Hub, etc.).
 *   **`PortfolioController.php`**: Controls the developer portfolio views.
 *   **`SitemapController.php`**: Dynamically generates `/sitemap.xml` for all tools and page routes.
 *   **`ToolsPageController.php`**: Renders the tools index page `/tools`.

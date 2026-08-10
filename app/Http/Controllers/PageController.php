@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Faq;
 
 class PageController extends Controller
 {
@@ -24,6 +25,36 @@ class PageController extends Controller
     public function dataDeletion()
     {
         return view('pages.data-deletion');
+    }
+
+    public function howWeProcessData()
+    {
+        $seo = (object) [
+            'title' => 'How We Process Data – Client-Side Privacy | onlinetxttools.com',
+            'description' => 'Learn how all text tools on onlinetxttools.com process your data 100% locally in your web browser. No databases, no logs, and complete client-side security.',
+            'keywords' => 'data processing, client-side tools, private text tools, local text processing, secure web utilities',
+            'og_title' => 'How We Process Data – Client-Side Privacy',
+            'og_description' => 'Find out how our browser-based text tools guarantee complete data confidentiality by executing 100% locally.',
+            'canonical' => route('how-we-process-data')
+        ];
+
+        return view('pages.how-we-process-data', compact('seo'));
+    }
+
+    public function faqsHub()
+    {
+        $seo = (object) [
+            'title' => 'Frequently Asked Questions (FAQ) Hub | onlinetxttools.com',
+            'description' => 'Browse our unified FAQ Hub. Get answers to common questions about case conversion, word counting, security, and client-side processing.',
+            'keywords' => 'text tools faq, online text tools help, faq hub, general questions text tools',
+            'og_title' => 'Frequently Asked Questions (FAQ) Hub',
+            'og_description' => 'Have questions? Get quick, comprehensive answers about how our online utilities function.',
+            'canonical' => route('faqs')
+        ];
+
+        $faqs = Faq::all()->groupBy('group_name');
+
+        return view('pages.faqs', compact('seo', 'faqs'));
     }
 
     public function headerFooterScriptAdder()
