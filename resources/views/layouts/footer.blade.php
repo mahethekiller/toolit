@@ -65,6 +65,42 @@
                             </div>
                         </a>
                     </li>
+                    <li class="mb-3">
+                        <a href="{{ route('tools.json-formatter') }}"
+                           class="text-decoration-none text-light hover-text d-block p-2 rounded hover-bg">
+                            <div class="d-flex align-items-center">
+                                <span class="fs-5 me-3">🔤</span>
+                                <div>
+                                    <strong>JSON Formatter</strong>
+                                    <small class="d-block text-light-soft">Validate, format, and expand raw JSON strings instantly</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="{{ route('tools.duplicate-line-remover') }}"
+                           class="text-decoration-none text-light hover-text d-block p-2 rounded hover-bg">
+                            <div class="d-flex align-items-center">
+                                <span class="fs-5 me-3">✂️</span>
+                                <div>
+                                    <strong>Duplicate Line Remover</strong>
+                                    <small class="d-block text-light-soft">Find, isolate, and remove duplicate lines from lists or text</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="{{ route('tools.url-encoder-decoder') }}"
+                           class="text-decoration-none text-light hover-text d-block p-2 rounded hover-bg">
+                            <div class="d-flex align-items-center">
+                                <span class="fs-5 me-3">🔗</span>
+                                <div>
+                                    <strong>URL Encoder & Decoder</strong>
+                                    <small class="d-block text-light-soft">Convert strings into safe query parameters and decode URLs</small>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
                 </ul>
             </div>
 
