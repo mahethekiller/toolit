@@ -12,6 +12,9 @@ use App\Http\Controllers\Tools\PasswordGeneratorController;
 use App\Http\Controllers\Tools\TextReverserController;
 use App\Http\Controllers\Tools\WhitespaceRemoverController;
 use App\Http\Controllers\Tools\WordCounterController;
+use App\Http\Controllers\Tools\JsonFormatterController;
+use App\Http\Controllers\Tools\DuplicateLineRemoverController;
+use App\Http\Controllers\Tools\UrlEncoderDecoderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/sitemap.xml', [SitemapController::class, 'index'])->name('sitemap');
@@ -63,6 +66,15 @@ Route::prefix('tools')->name('tools.')->middleware('track.tools')->group(functio
 
     // Lorem Ipsum Generator
     Route::get('/lorem-ipsum-generator', [LoremIpsumController::class, 'index'])->name('loremipsum');
+
+    // JSON Formatter
+    Route::get('/json-formatter', [JsonFormatterController::class, 'index'])->name('json-formatter');
+
+    // Duplicate Line Remover
+    Route::get('/duplicate-line-remover', [DuplicateLineRemoverController::class, 'index'])->name('duplicate-line-remover');
+
+    // URL Encoder Decoder
+    Route::get('/url-encoder-decoder', [UrlEncoderDecoderController::class, 'index'])->name('url-encoder-decoder');
 
     // Client-side Execution Logging
     Route::post('/track-execution', [\App\Http\Controllers\Tools\TrackExecutionController::class, 'store'])

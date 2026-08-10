@@ -17,7 +17,7 @@ Inside the `toolit/` directory:
 
 ### `app/Http/Controllers/`
 Contains the request handling logic, organized into:
-*   **`Tools/`**: Specific text tool controllers (e.g., `CaseConvertorController.php`, `LoremIpsumController.php`, `PasswordGeneratorController.php`, `TextReverserController.php`, `WhitespaceRemoverController.php`, `WordCounterController.php`).
+*   **`Tools/`**: Specific text tool controllers (e.g., `CaseConvertorController.php`, `LoremIpsumController.php`, `PasswordGeneratorController.php`, `TextReverserController.php`, `WhitespaceRemoverController.php`, `WordCounterController.php`, `JsonFormatterController.php`, `DuplicateLineRemoverController.php`, `UrlEncoderDecoderController.php`).
 *   **`Admin/`**: Backend admin dashboard controllers (including `ToolAnalyticsController.php` for tracking metrics).
 *   **`Api/`**: Backend JSON APIs (including the `Api/Arti/` folder for the Arti mobile application).
 *   **`Auth/`**: Standard authentication controllers.
@@ -264,6 +264,13 @@ Isolated tables prefixed with `arti_` specifically for the mobile app backend ba
   - **Live Production Command**:
     ```bash
     php artisan db:seed --class=AdsenseContentSeeder
+    ```
+
+- **New Tools Seeder**: `NewToolsSeeder.php` (`database/seeders/NewToolsSeeder.php`)
+  - **Purpose**: Seeding metadata, 5 FAQs per tool, and SEO headers for JSON Formatter, Duplicate Line Remover, and URL Encoder/Decoder.
+  - **Live Production Command**:
+    ```bash
+    php artisan db:seed --class=NewToolsSeeder
     ```
 
 

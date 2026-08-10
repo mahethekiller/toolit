@@ -183,6 +183,9 @@
                             <li><a class="dropdown-item" href="{{ route('tools.textreverser') }}">↩️ Text Reverser</a></li>
                             <li><a class="dropdown-item" href="{{ route('tools.whitespace') }}">✂️ Whitespace Remover</a></li>
                             <li><a class="dropdown-item" href="{{ route('tools.loremipsum') }}">📄 Lorem Ipsum Generator</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tools.json-formatter') }}">🔤 JSON Formatter</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tools.duplicate-line-remover') }}">✂️ Duplicate Line Remover</a></li>
+                            <li><a class="dropdown-item" href="{{ route('tools.url-encoder-decoder') }}">🔗 URL Encoder & Decoder</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ url('/tools') }}">All Tools</a></li>
                         </ul>
@@ -204,18 +207,15 @@
                     <div class="tools-sidebar bg-white rounded shadow-sm p-3">
                         <h3 class="h6 fw-bold mb-3">🛠 Popular Tools</h3>
                         <ul class="list-unstyled">
-                            <li><a href="{{ route('tools.case-converter') }}" class="text-decoration-none">🔠 Case
-                                    Converter</a></li>
-                            <li><a href="{{ route('tools.wordcounter') }}" class="text-decoration-none">📝 Word
-                                    Counter</a></li>
-                            <li><a href="{{ route('tools.password') }}" class="text-decoration-none">🔑 Password
-                                    Generator</a></li>
-                            <li><a href="{{ route('tools.textreverser') }}" class="text-decoration-none">↩️ Text
-                                    Reverser</a></li>
-                            <li><a href="{{ route('tools.whitespace') }}" class="text-decoration-none">✂️ Whitespace
-                                    Remover</a></li>
-                            <li><a href="{{ route('tools.loremipsum') }}" class="text-decoration-none">📄 Lorem Ipsum
-                                    Generator</a></li>
+                            <li><a href="{{ route('tools.case-converter') }}" class="text-decoration-none">🔠 Case Converter</a></li>
+                            <li><a href="{{ route('tools.wordcounter') }}" class="text-decoration-none">📝 Word Counter</a></li>
+                            <li><a href="{{ route('tools.password') }}" class="text-decoration-none">🔑 Password Generator</a></li>
+                            <li><a href="{{ route('tools.textreverser') }}" class="text-decoration-none">↩️ Text Reverser</a></li>
+                            <li><a href="{{ route('tools.whitespace') }}" class="text-decoration-none">✂️ Whitespace Remover</a></li>
+                            <li><a href="{{ route('tools.loremipsum') }}" class="text-decoration-none">📄 Lorem Ipsum Generator</a></li>
+                            <li><a href="{{ route('tools.json-formatter') }}" class="text-decoration-none">🔤 JSON Formatter</a></li>
+                            <li><a href="{{ route('tools.duplicate-line-remover') }}" class="text-decoration-none">✂️ Duplicate Line Remover</a></li>
+                            <li><a href="{{ route('tools.url-encoder-decoder') }}" class="text-decoration-none">🔗 URL Encoder Decoder</a></li>
                         </ul>
 
                         {{-- Sidebar Recent Blogs --}}
