@@ -160,8 +160,8 @@
                         🚀 Free Online Text Tools for Professionals
                     </h1>
                     <p class="lead mb-4 opacity-90 fs-5" itemprop="description">
-                        Professional text processing tools for developers, writers, students, and content creators.
-                        <strong>No registration required</strong> - start using instantly with enterprise-level features, completely free!
+                        Secure, client-side text processing suite for developers, content writers, and students.
+                        Format code, clean whitespace, convert text casing, and generate secure credentials instantly without uploading your sensitive data to external servers.
                     </p>
                     <div class="d-flex flex-wrap justify-content-center gap-3 mb-4" role="list" aria-label="Key features">
                         <span class="badge bg-white text-dark px-3 py-2 shadow-sm" role="listitem">⚡ Instant Browser Processing</span>
@@ -230,8 +230,8 @@
                 </div>
                 <h3 class="h4 fw-bold text-center mb-3">Maximum Security & Privacy</h3>
                 <p class="text-muted text-center">
-                    Your sensitive data <strong>never leaves your computer</strong>. All processing happens locally in your browser,
-                    ensuring complete privacy and security for confidential documents and passwords.
+                    Your sensitive data <strong>never leaves your computer</strong>. All processing happens locally in your browser. 
+                    Learn more about our local execution on our <a href="{{ route('how-we-process-data') }}" class="text-primary fw-semibold">Data Processing</a> page.
                 </p>
             </div>
             <div class="col-md-4">
@@ -404,6 +404,76 @@
 
     {{-- Recent Blog Posts Section --}}
     @include('partials.recent-blogs')
+
+    {{-- Homepage FAQ Section --}}
+    @php
+        $homeFaqs = [
+            [
+                'q' => 'Is it safe to paste confidential text or code into these tools?',
+                'a' => 'Yes, it is 100% secure. Unlike conventional online formatters that transmit your inputs to remote servers, all calculations on Online Text Tools run client-side directly inside your device\'s web browser. Your data never leaves your computer.'
+            ],
+            [
+                'q' => 'Why are these text processing tools completely free?',
+                'a' => 'Our local browser-side execution architecture keeps our hosting and server processing costs incredibly low. Because we do not run heavy computational scripts on our servers, we can offer all text utilities to you completely free, supported only by minimal web advertisements.'
+            ],
+            [
+                'q' => 'Do these tools work offline?',
+                'a' => 'Yes! Once you load the homepage, the core formatting, text conversion, character counting, and password generation scripts are stored in your browser memory. You can turn off your internet connection and the tools will continue to work perfectly.'
+            ],
+            [
+                'q' => 'Do you keep history logs of what is processed?',
+                'a' => 'No. We do not maintain user databases, do not log input logs, and do not track the strings you process. All operations run in volatile memory and are permanently deleted as soon as you close the browser tab.'
+            ]
+        ];
+
+        $faqSchemaList = [];
+        foreach ($homeFaqs as $faq) {
+            $faqSchemaList[] = [
+                "@type" => "Question",
+                "name" => $faq['q'],
+                "acceptedAnswer" => [
+                    "@type" => "Answer",
+                    "text" => $faq['a']
+                ]
+            ];
+        }
+        $homeFaqSchema = [
+            "@context" => "https://schema.org",
+            "@type" => "FAQPage",
+            "mainEntity" => $faqSchemaList
+        ];
+    @endphp
+    <script type="application/ld+json">
+    {!! json_encode($homeFaqSchema, JSON_UNESCAPED_SLASHES|JSON_PRETTY_PRINT) !!}
+    </script>
+
+    <section class="container mb-5" aria-labelledby="home-faq-heading">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center mb-5">
+                    <h2 id="home-faq-heading" class="fw-bold h1 section-title gradient-text">Common Questions About Our Platform</h2>
+                    <p class="text-muted">Answers to general questions about security, hosting, and operations.</p>
+                </div>
+
+                <div class="accordion accordion-flush shadow-sm rounded-4 overflow-hidden border" id="homeFaqAccordion">
+                    @foreach($homeFaqs as $index => $faq)
+                        <div class="accordion-item">
+                            <h3 class="accordion-header">
+                                <button class="accordion-button collapsed fw-semibold py-3" type="button" data-bs-toggle="collapse" data-bs-target="#home-faq-collapse-{{ $index }}" aria-expanded="false">
+                                    {{ $faq['q'] }}
+                                </button>
+                            </h3>
+                            <div id="home-faq-collapse-{{ $index }}" class="accordion-collapse collapse" data-bs-parent="#homeFaqAccordion">
+                                <div class="accordion-body text-muted leading-relaxed">
+                                    {{ $faq['a'] }}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
 
     {{-- CTA Section --}}
     <section class="container mb-5" aria-labelledby="cta-heading">
