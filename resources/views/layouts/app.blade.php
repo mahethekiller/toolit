@@ -276,6 +276,9 @@
             .catch(error => console.error('Execution log failed:', error));
         };
     </script>
+
+    <!-- Adsterra Tag -->
+    <script src="https://pl31240140.profitableratecpmnetwork.com/0f/f4/7a/0ff47ad624620cb9d03f2146f51b1acc.js"></script>
 </body>
 
 </html>
