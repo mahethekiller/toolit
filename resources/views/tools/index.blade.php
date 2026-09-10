@@ -17,8 +17,22 @@
         <p class="text-muted">A collection of handy tools you can use directly from your browser.</p>
     </div>
 
+    @php
+        $toolsGridAd = App\Models\Ad::where('position', 'tools_grid')->where('active', true)->first();
+    @endphp
+
     <div class="row g-4">
         @forelse($tools as $tool)
+            @if ($loop->iteration == 4 && $toolsGridAd && !empty(trim($toolsGridAd->code)))
+                <div class="col-md-4">
+                    <div class="card shadow-sm border-0 h-100 rounded-4 p-3 d-flex flex-column justify-content-center align-items-center text-center bg-light-subtle">
+                        <span class="text-uppercase text-muted" style="font-size: 10px; letter-spacing: 1px; display: block; margin-bottom: 6px;">Advertisement</span>
+                        <div class="w-100 d-flex align-items-center justify-content-center" style="min-height: 250px; overflow: hidden;">
+                            {!! $toolsGridAd->code !!}
+                        </div>
+                    </div>
+                </div>
+            @endif
             <div class="col-md-4">
                 <div class="card shadow-sm border-0 h-100 rounded-4 hover-shadow">
                     <div class="card-body d-flex flex-column justify-content-between text-center">

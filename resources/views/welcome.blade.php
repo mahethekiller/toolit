@@ -263,9 +263,25 @@
         <div class="row g-4">
             @php
                 $tools = \App\Models\Tool::where('active', true)->get();
+                $homeAd = \App\Models\Ad::where(function($q) {
+                    $q->where('position', 'home_grid')->orWhere('position', 'sidebar');
+                })->where('active', true)->first();
             @endphp
 
             @foreach ($tools as $tool)
+                @if ($loop->iteration == 4 && $homeAd && !empty(trim($homeAd->code)))
+                    <div class="col-md-6 col-lg-4">
+                        <article class="card h-100 feature-card shadow-sm border-0 rounded-4 text-center p-3 d-flex flex-column justify-content-center align-items-center">
+                            <div class="tool-badge bg-secondary">
+                                SPONSORED
+                            </div>
+                            <span class="text-uppercase text-muted" style="font-size: 10px; letter-spacing: 1px; display: block; margin-bottom: 6px;">Advertisement</span>
+                            <div class="w-100 d-flex align-items-center justify-content-center" style="min-height: 280px; overflow: hidden;">
+                                {!! $homeAd->code !!}
+                            </div>
+                        </article>
+                    </div>
+                @endif
                 <div class="col-md-6 col-lg-4" itemprop="itemListElement" itemscope itemtype="https://schema.org/SoftwareApplication">
                     <article class="card h-100 feature-card shadow-sm border-0 rounded-4">
                         <div class="tool-badge">

@@ -222,8 +222,8 @@
                         @include('partials.sidebar-recent-blogs')
                     </div>
 
-
-
+                    {{-- Sidebar Ad Slot --}}
+                    @include('partials.sidebar-ad')
                 </aside>
                 <section class="col-md-9">
                     @yield('content')

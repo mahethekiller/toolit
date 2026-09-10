@@ -12,8 +12,17 @@
         </div>
 
         <div class="mb-3">
-            <label class="form-label">Position (Optional)</label>
-            <input type="text" name="position" class="form-control" placeholder="e.g., header, sidebar, footer">
+            <label class="form-label">Position (Slot Key)</label>
+            <input type="text" name="position" class="form-control" list="positionList" placeholder="e.g., sidebar, toola, home_grid">
+            <datalist id="positionList">
+                <option value="sidebar">Tool Desktop Sidebar</option>
+                <option value="toola">Post-Tool Break (Mobile / In-flow)</option>
+                <option value="toolb">Below Tool Guide / Above FAQ</option>
+                <option value="home_grid">Homepage Tools Grid</option>
+                <option value="tools_grid">All Tools Catalog Grid</option>
+                <option value="footer">Page Footer Banner</option>
+            </datalist>
+            <small class="text-muted d-block mt-1">Available slots: <code>sidebar</code>, <code>toola</code>, <code>toolb</code>, <code>home_grid</code>, <code>tools_grid</code>, <code>footer</code></small>
         </div>
 
         <div class="mb-3">

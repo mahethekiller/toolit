@@ -30,6 +30,7 @@ class DatabaseSeeder extends Seeder
             ArtiGallerySeeder::class,
             ToolSeeder::class,
             SeoTableSeeder::class,
+            AdSeeder::class,
         ]);
     }
 }
