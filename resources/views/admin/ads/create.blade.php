@@ -15,14 +15,16 @@
             <label class="form-label">Position (Slot Key)</label>
             <input type="text" name="position" class="form-control" list="positionList" placeholder="e.g., sidebar, toola, home_grid">
             <datalist id="positionList">
-                <option value="sidebar">Tool Desktop Sidebar</option>
+                <option value="header">Top Header Leaderboard (728x90)</option>
+                <option value="sidebar">Tool Desktop Sidebar (1:1 / 300x250)</option>
                 <option value="toola">Post-Tool Break (Mobile / In-flow)</option>
                 <option value="toolb">Below Tool Guide / Above FAQ</option>
-                <option value="home_grid">Homepage Tools Grid</option>
-                <option value="tools_grid">All Tools Catalog Grid</option>
-                <option value="footer">Page Footer Banner</option>
+                <option value="home_divider">Homepage Section Divider (728x90)</option>
+                <option value="home_grid">Homepage Tools Grid (1:1 Native)</option>
+                <option value="tools_grid">All Tools Catalog Grid (1:1 Native)</option>
+                <option value="footer">Page Footer Banner (728x90)</option>
             </datalist>
-            <small class="text-muted d-block mt-1">Available slots: <code>sidebar</code>, <code>toola</code>, <code>toolb</code>, <code>home_grid</code>, <code>tools_grid</code>, <code>footer</code></small>
+            <small class="text-muted d-block mt-1">Available slots: <code>header</code>, <code>sidebar</code>, <code>toola</code>, <code>toolb</code>, <code>home_divider</code>, <code>home_grid</code>, <code>tools_grid</code>, <code>footer</code></small>
         </div>
 
         <div class="mb-3">

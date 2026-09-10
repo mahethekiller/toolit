@@ -14,6 +14,17 @@ class AdSeeder extends Seeder
     {
         $adCode = '<script async="async" data-cfasync="false" src="https://pl31240142.profitableratecpmnetwork.com/9bbd04007e4d66bed8bcc2f5a0fc36d9/invoke.js"></script><div id="container-9bbd04007e4d66bed8bcc2f5a0fc36d9"></div>';
 
+        $leaderboardCode = '<script>
+  atOptions = {
+    \'key\' : \'e99f37155d2bae6b009d35c97184ae10\',
+    \'format\' : \'iframe\',
+    \'height\' : 90,
+    \'width\' : 728,
+    \'params\' : {}
+  };
+</script>
+<script src="https://www.highrevenueformat.com/e99f37155d2bae6b009d35c97184ae10/invoke.js"></script>';
+
         $placements = [
             [
                 'position' => 'sidebar',
@@ -37,6 +48,30 @@ class AdSeeder extends Seeder
                 'position' => 'tools_grid',
                 'name'     => 'Tools Catalog Grid 1:1 Native Banner',
                 'code'     => $adCode,
+                'active'   => 1,
+            ],
+            [
+                'position' => 'header',
+                'name'     => 'Top Header 728x90 Leaderboard Banner',
+                'code'     => $leaderboardCode,
+                'active'   => 1,
+            ],
+            [
+                'position' => 'footer',
+                'name'     => 'Footer 728x90 Leaderboard Banner',
+                'code'     => $leaderboardCode,
+                'active'   => 1,
+            ],
+            [
+                'position' => 'home_divider',
+                'name'     => 'Homepage Section Divider 728x90 Leaderboard Banner',
+                'code'     => $leaderboardCode,
+                'active'   => 1,
+            ],
+            [
+                'position' => 'toolb',
+                'name'     => 'Tool Below Guide 728x90 Leaderboard Banner',
+                'code'     => $leaderboardCode,
                 'active'   => 1,
             ],
         ];

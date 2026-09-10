@@ -109,19 +109,22 @@ Configures advertisements displayed on the site.
 *   `id` (BIGINT, Primary Key, Auto Increment)
 *   `name` (VARCHAR) - Internal reference title.
 *   `position` (VARCHAR, Nullable) - Ad layout slot key:
+    *   `header`: Top header leaderboard ad slot (728x90) below navbar (`layouts/app.blade.php`).
     *   `sidebar`: Tool desktop sidebar ad slot (`partials/sidebar-ad.blade.php`).
     *   `toola`: Post-tool action break slot above the guide (`partials/tool-above-desc-ad.blade.php`).
     *   `toolb`: Mid-content slot below the guide and above FAQs (`partials/tool-below-desc-ad.blade.php`).
+    *   `home_divider`: Homepage section divider ad slot (728x90) between hero and tools (`welcome.blade.php`).
     *   `home_grid`: In-feed sponsored card within homepage tool grid (`welcome.blade.php`).
     *   `tools_grid`: In-feed sponsored card within `/tools` catalog grid (`tools/index.blade.php`).
-    *   `footer`: Bottom banner above the footer (`layouts/app.blade.php`).
+    *   `footer`: Bottom banner above the footer (728x90) (`layouts/app.blade.php`).
 *   `code` (TEXT) - Ad HTML/JS script block.
 *   `active` (BOOLEAN) - Display status (default: true).
 *   `timestamps`
 *   **Adsterra & Multi-placement Rules**:
     *   Adsterra Native Banner units require unique DOM container IDs (`container-XXXXX`).
     *   On tool pages, `sidebar-ad.blade.php` and `tool-above-desc-ad.blade.php` include an intelligent responsive injector when sharing the same unit code: desktop screens (≥768px) dynamically inject the container into the sidebar, while mobile screens (<768px) inject it below the tool. This completely eliminates duplicate DOM ID collisions and guarantees 100% visible ad impressions on all screen sizes.
-    *   `AdSeeder.php` seeds default 1:1 native placements for `sidebar`, `toola`, `home_grid`, and `tools_grid`.
+    *   728x90 Leaderboard units (`header`, `footer`, `home_divider`, `toolb`) use responsive `d-none d-md-flex` containers to prevent horizontal page overflow and maintain 100% Google Mobile-Friendly compliance.
+    *   `AdSeeder.php` seeds default placements for `sidebar`, `toola`, `home_grid`, `tools_grid`, `header`, `footer`, `home_divider`, and `toolb`.
 
 #### `site_scripts`
 Stores site-wide tracking and analytics scripts.

@@ -247,6 +247,19 @@
         </div>
     </section>
 
+    {{-- Homepage Section Divider Ad (728x90) --}}
+    @php
+        $homeDividerAd = \App\Models\Ad::where('position', 'home_divider')->where('active', true)->first();
+    @endphp
+    @if ($homeDividerAd && !empty(trim($homeDividerAd->code)))
+        <div class="container my-5 text-center d-none d-md-flex flex-column align-items-center justify-content-center">
+            <span class="text-uppercase text-muted" style="font-size: 10px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Advertisement</span>
+            <div style="min-height: 90px; width: 728px; max-width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                {!! $homeDividerAd->code !!}
+            </div>
+        </div>
+    @endif
+
     {{-- Tools Section --}}
     <section id="tools" class="container mb-5" aria-labelledby="tools-heading" itemscope itemtype="https://schema.org/ItemList">
         <div class="row mb-5">

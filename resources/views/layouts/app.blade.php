@@ -198,6 +198,19 @@
         </div>
     </nav>
 
+    {{-- Top Header Leaderboard Ad (728x90) --}}
+    @php
+        $topHeaderAd = \App\Models\Ad::where('position', 'header')->where('active', true)->first();
+    @endphp
+    @if ($topHeaderAd && !empty(trim($topHeaderAd->code)))
+        <div class="header-ad-wrapper d-none d-md-flex flex-column align-items-center justify-content-center pt-3 pb-1 text-center">
+            <span class="text-uppercase text-muted" style="font-size: 10px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Advertisement</span>
+            <div style="min-height: 90px; width: 728px; max-width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                {!! $topHeaderAd->code !!}
+            </div>
+        </div>
+    @endif
+
     <!-- Main -->
     <main class="container py-4" role="main">
         <div class="row">
@@ -236,14 +249,17 @@
 
             @endif
 
+            {{-- Footer Leaderboard Ad (728x90) --}}
             @php
-                // use App\Models\Ad;
-                $headerAd = App\Models\Ad::where('position', 'footer')->where('active', true)->first();
+                $footerAd = \App\Models\Ad::where('position', 'footer')->where('active', true)->first();
             @endphp
 
-            @if ($headerAd)
-                <div class="text-center my-3">
-                    {!! $headerAd->code !!}
+            @if ($footerAd && !empty(trim($footerAd->code)))
+                <div class="footer-ad-wrapper d-none d-md-flex flex-column align-items-center justify-content-center text-center my-4">
+                    <span class="text-uppercase text-muted" style="font-size: 10px; letter-spacing: 1px; display: block; margin-bottom: 4px;">Advertisement</span>
+                    <div style="min-height: 90px; width: 728px; max-width: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        {!! $footerAd->code !!}
+                    </div>
                 </div>
             @endif
         </div>
