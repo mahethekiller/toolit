@@ -28,8 +28,13 @@ body {
 
         /* Sidebar */
         .tools-sidebar {
+            position: static;
+        }
+
+        .sidebar-ad-card {
             position: sticky;
-            top: 80px;
+            top: 90px;
+            z-index: 10;
         }
 
 

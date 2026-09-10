@@ -12,5 +12,16 @@
             @endif
         </div>
     </div>
+
+    <style>
+        .tools-sidebar {
+            position: static !important;
+        }
+        .sidebar-ad-card {
+            position: sticky !important;
+            top: 90px !important;
+            z-index: 10;
+        }
+    </style>
 @endif
 
