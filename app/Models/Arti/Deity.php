@@ -9,7 +9,19 @@ class Deity extends Model
 {
     protected $table = 'arti_deities';
 
-    protected $fillable = ['name', 'description', 'image_url'];
+    protected $fillable = [
+        'slug',
+        'name',
+        'name_devanagari',
+        'title_sub',
+        'day_of_week',
+        'day_hindi',
+        'theme_color',
+        'accent_color',
+        'icon',
+        'description',
+        'image_url'
+    ];
 
     public function aartis(): HasMany
     {

@@ -225,10 +225,10 @@ Past projects and works.
 ---
 
 ### Arti API Isolation Tables
-Isolated tables prefixed with `arti_` specifically for the mobile app backend backend.
+Isolated tables prefixed with `arti_` specifically for the mobile app backend.
 
-*   **`arti_deities`**: Stores divine entities (`id`, `name`, `description`, `image_url`, `timestamps`).
-*   **`arti_aartis`**: Stores lyrics and links for specific prayers (`id`, `deity_id`, `title`, `subtitle`, `category`, `duration`, `audio_url`, `video_url`, `lyrics` [changed from JSON to TEXT], `timestamps`).
+*   **`arti_deities`**: Stores divine entities (`id`, `slug`, `name`, `name_devanagari`, `title_sub`, `day_of_week`, `day_hindi`, `theme_color`, `accent_color`, `icon`, `description`, `image_url`, `timestamps`).
+*   **`arti_aartis`**: Stores lyrics and metadata for sacred prayers (`id`, `slug`, `deity_id`, `deity_name`, `deity_devanagari`, `title`, `title_devanagari`, `subtitle`, `category`, `image_url`, `duration`, `timing`, `timing_devanagari`, `duration_minutes`, `significance`, `significance_devanagari`, `meaning_short`, `audio_url`, `video_url`, `lyrics`, `lyrics_json`, `lyrics_transliteration`, `is_popular`, `timestamps`).
 *   **`arti_users`**: Separate user directory for the mobile application (`id`, `name`, `email`, `password`, `gotra`, `rashi`, `streak_count`, `last_prayer_date`, `timestamps`).
 *   **`arti_favorites`**: Pivot table marking user favorite aartis (`id`, `user_id`, `aart_id`, `timestamps`).
 *   **`arti_gallery_images`**: Wallpaper links mapping to seeded deities (`id`, `deity_id`, `title`, `image_url`, `download_count`, `timestamps`).
@@ -284,6 +284,14 @@ Isolated tables prefixed with `arti_` specifically for the mobile app backend ba
   - **Live Production Command**:
     ```bash
     php artisan db:seed --class=NewToolsSeeder
+    ```
+
+- **Sacred Aarti Collection Seeder**: `ArtiDatabaseSeeder.php` (`database/seeders/ArtiDatabaseSeeder.php`)
+  - **Purpose**: Complete seeding of 15 deities and 44 sacred aartis with Devanagari lyrics, transliterations, timestamps, significance, and local images.
+  - **Migration**: `2026_09_14_180000_update_arti_tables_for_sacred_aarti_collection.php`
+  - **Live Production Command**:
+    ```bash
+    php artisan db:seed --class=ArtiDatabaseSeeder
     ```
 
 
