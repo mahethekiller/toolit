@@ -11,8 +11,14 @@ class ArtiDatabaseSeeder extends Seeder
 {
     public function run(): void
     {
-        $categoriesPath = 'd:/SOFTWARES/xampp82new/htdocs/androidapps/arti/src/assets/data/categories.json';
-        $artiesPath = 'd:/SOFTWARES/xampp82new/htdocs/androidapps/arti/src/assets/data/arties.json';
+        $categoriesPath = database_path('data/categories.json');
+        $artiesPath = database_path('data/arties.json');
+
+        if (!File::exists($categoriesPath) || !File::exists($artiesPath)) {
+            // Fallback to external source directory if project data files are missing
+            $categoriesPath = 'E:/xampp82/htdocs/artiappnew/src/assets/data/categories.json';
+            $artiesPath = 'E:/xampp82/htdocs/artiappnew/src/assets/data/arties.json';
+        }
 
         if (!File::exists($categoriesPath) || !File::exists($artiesPath)) {
             $this->command->error('Data JSON files not found!');

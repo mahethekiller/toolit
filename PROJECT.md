@@ -59,8 +59,9 @@ Renders views using Laravel Blade template engine:
 
 ### `database/`
 *   **`database.sqlite`**: Active database file.
+*   **`data/`**: Static JSON data source files (`categories.json`, `arties.json`) for seeding.
 *   **`migrations/`**: All database schemas.
-*   **`seeders/`**: Seeders for default tools, SEO configs, and portfolio details.
+*   **`seeders/`**: Seeders for default tools, SEO configs, portfolio details, and Arti collection (`ArtiDatabaseSeeder.php`).
 
 ---
 
