@@ -34,12 +34,14 @@ class Aarti extends Model
         'lyrics_hinglish',
         'lyrics_hindi_plain',
         'is_popular',
+        'is_active',
     ];
 
     protected $casts = [
         'lyrics_json' => 'array',
         'lyrics_transliteration' => 'array',
         'is_popular' => 'boolean',
+        'is_active' => 'boolean',
         'duration_minutes' => 'integer',
     ];
 

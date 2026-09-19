@@ -36,9 +36,11 @@ class AartiController extends Controller
             'lyrics' => 'required|string',
             'lyrics_hinglish' => 'nullable|string',
             'lyrics_hindi_plain' => 'nullable|string',
+            'is_active' => 'boolean',
         ]);
 
         $data = $request->all();
+        $data['is_active'] = $request->has('is_active');
 
         Aarti::create($data);
 
@@ -67,9 +69,11 @@ class AartiController extends Controller
             'lyrics' => 'required|string',
             'lyrics_hinglish' => 'nullable|string',
             'lyrics_hindi_plain' => 'nullable|string',
+            'is_active' => 'boolean',
         ]);
 
         $data = $request->all();
+        $data['is_active'] = $request->has('is_active');
 
         $aarti->update($data);
 
@@ -82,5 +86,21 @@ class AartiController extends Controller
         $aarti->delete();
 
         return redirect()->route('admin.arti.aartis.index')->with('success', 'Aarti deleted successfully.');
+    }
+
+    public function bulkToggle(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'aarti_ids' => 'required|array',
+            'aarti_ids.*' => 'exists:arti_aartis,id',
+            'action' => 'required|in:enable,disable'
+        ]);
+
+        $isActive = $request->action === 'enable';
+
+        Aarti::whereIn('id', $request->aarti_ids)->update(['is_active' => $isActive]);
+
+        $statusText = $isActive ? 'enabled' : 'disabled';
+        return redirect()->route('admin.arti.aartis.index')->with('success', "Selected aartis have been {$statusText}.");
     }
 }

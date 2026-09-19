@@ -173,7 +173,9 @@
       "duration": "03:15",
       "audio_url": "http://localhost/storage/uploads/audio/shiv_aarti.mp3",
       "video_url": "abc123xyz",
-      "lyrics": "Om Jai Shiv Omkara...\n..."
+      "lyrics": "Om Jai Shiv Omkara...\n...",
+      "lyrics_hinglish": "Om Jai Shiv Omkara...\n...",
+      "lyrics_hindi_plain": "ॐ जय शिव ओमकारा...\n..."
     }
   ]
 }</code></pre>

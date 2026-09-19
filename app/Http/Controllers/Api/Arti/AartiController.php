@@ -21,6 +21,8 @@ class AartiController extends Controller
             $query->where('category', $request->category);
         }
 
+        $query->where('is_active', true);
+
         $aartis = $query->with('deity')->get();
 
         return response()->json([
@@ -33,7 +35,7 @@ class AartiController extends Controller
     {
         $aarti = Aarti::with('deity')->find($id);
 
-        if (!$aarti) {
+        if (!$aarti || !$aarti->is_active) {
             return response()->json([
                 'status' => 'error',
                 'message' => 'Aarti not found'

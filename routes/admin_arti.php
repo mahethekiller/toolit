@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin/arti')->name('admin.arti.')->group(function () {
     Route::resource('deities', DeityController::class);
+    Route::post('aartis/bulk-toggle', [AartiController::class, 'bulkToggle'])->name('aartis.bulk_toggle');
     Route::resource('aartis', AartiController::class);
     Route::resource('gallery', GalleryController::class);
     

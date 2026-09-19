@@ -107,6 +107,12 @@
                     @enderror
                 </div>
 
+                <div class="mb-4 form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="is_active" name="is_active" value="1" {{ old('is_active', true) ? 'checked' : '' }}>
+                    <label class="form-check-label fw-bold" for="is_active">Active</label>
+                    <div class="form-text text-muted">If inactive, this Aarti will not be accessible via the API or mobile app.</div>
+                </div>
+
                 <div class="d-flex justify-content-end gap-2 mt-4">
                     <a href="{{ route('admin.arti.aartis.index') }}" class="btn btn-light">Cancel</a>
                     <button type="submit" class="btn btn-primary">Create Aarti</button>
