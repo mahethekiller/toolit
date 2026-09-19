@@ -89,6 +89,24 @@
                     @enderror
                 </div>
 
+                <div class="mb-3">
+                    <label for="lyrics_hinglish" class="form-label fw-bold">Lyrics Hinglish</label>
+                    <textarea class="form-control @error('lyrics_hinglish') is-invalid @enderror" id="lyrics_hinglish" name="lyrics_hinglish" rows="8" placeholder="Sukhkarta Dukhharta Varta Vighnachi...">{{ old('lyrics_hinglish') }}</textarea>
+                    <div class="form-text text-muted">Please provide the Hinglish version of the lyrics.</div>
+                    @error('lyrics_hinglish')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="lyrics_hindi_plain" class="form-label fw-bold">Lyrics Hindi Plain</label>
+                    <textarea class="form-control @error('lyrics_hindi_plain') is-invalid @enderror" id="lyrics_hindi_plain" name="lyrics_hindi_plain" rows="8" placeholder="सुखकर्ता दुखहर्ता वार्ता विघ्नाची...">{{ old('lyrics_hindi_plain') }}</textarea>
+                    <div class="form-text text-muted">Please provide the Hindi plain text version of the lyrics.</div>
+                    @error('lyrics_hindi_plain')
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
+                    @enderror
+                </div>
+
                 <div class="d-flex justify-content-end gap-2 mt-4">
                     <a href="{{ route('admin.arti.aartis.index') }}" class="btn btn-light">Cancel</a>
                     <button type="submit" class="btn btn-primary">Create Aarti</button>

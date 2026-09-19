@@ -31,6 +31,8 @@ class Aarti extends Model
         'lyrics',
         'lyrics_json',
         'lyrics_transliteration',
+        'lyrics_hinglish',
+        'lyrics_hindi_plain',
         'is_popular',
     ];
 

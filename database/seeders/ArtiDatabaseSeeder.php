@@ -64,12 +64,22 @@ class ArtiDatabaseSeeder extends Seeder
             $catId = $a['category_id'] ?? 'special';
             $deityId = $deityMap[$catId] ?? ($deityMap['special'] ?? 1);
 
-            // Plain text version of lyrics for backward compatibility
+            // Plain text version of lyrics for backward compatibility (Hindi Plain)
             $plainLyrics = '';
             if (!empty($a['lyrics_devanagari']) && is_array($a['lyrics_devanagari'])) {
                 foreach ($a['lyrics_devanagari'] as $sec) {
                     if (!empty($sec['lines'])) {
                         $plainLyrics .= implode("\n", $sec['lines']) . "\n\n";
+                    }
+                }
+            }
+
+            // Plain text version of Hinglish lyrics
+            $hinglishPlain = '';
+            if (!empty($a['lyrics_transliteration']) && is_array($a['lyrics_transliteration'])) {
+                foreach ($a['lyrics_transliteration'] as $sec) {
+                    if (!empty($sec['lines'])) {
+                        $hinglishPlain .= implode("\n", $sec['lines']) . "\n\n";
                     }
                 }
             }
@@ -104,6 +114,8 @@ class ArtiDatabaseSeeder extends Seeder
                     'lyrics' => trim($plainLyrics),
                     'lyrics_json' => $a['lyrics_devanagari'] ?? [],
                     'lyrics_transliteration' => $a['lyrics_transliteration'] ?? [],
+                    'lyrics_hinglish' => trim($hinglishPlain),
+                    'lyrics_hindi_plain' => trim($plainLyrics),
                     'is_popular' => !empty($a['popular']),
                 ]
             );

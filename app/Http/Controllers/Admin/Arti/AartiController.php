@@ -34,6 +34,8 @@ class AartiController extends Controller
             'audio_url' => 'required|url|max:255',
             'video_url' => 'required|string|max:255',
             'lyrics' => 'required|string',
+            'lyrics_hinglish' => 'nullable|string',
+            'lyrics_hindi_plain' => 'nullable|string',
         ]);
 
         $data = $request->all();
@@ -63,6 +65,8 @@ class AartiController extends Controller
             'audio_url' => 'required|url|max:255',
             'video_url' => 'required|string|max:255',
             'lyrics' => 'required|string',
+            'lyrics_hinglish' => 'nullable|string',
+            'lyrics_hindi_plain' => 'nullable|string',
         ]);
 
         $data = $request->all();
