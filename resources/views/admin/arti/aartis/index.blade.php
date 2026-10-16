@@ -92,6 +92,9 @@
                 <button type="submit" name="action" value="disable" class="btn btn-sm btn-outline-secondary">
                     <i class="fas fa-ban me-1"></i> Disable Selected
                 </button>
+                <button type="submit" name="action" value="delete" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to permanently delete the selected aartis? This action cannot be undone.');">
+                    <i class="fas fa-trash me-1"></i> Delete Selected
+                </button>
             </div>
             @if(request()->hasAny(['search', 'deity_id', 'category', 'status', 'media']))
                 <div class="small text-muted">
@@ -208,6 +211,15 @@
         document.getElementById('select-all').addEventListener('change', function() {
             const checkboxes = document.querySelectorAll('.aarti-checkbox');
             checkboxes.forEach(cb => cb.checked = this.checked);
+        });
+
+        document.getElementById('bulk-form').addEventListener('submit', function(e) {
+            const checked = document.querySelectorAll('.aarti-checkbox:checked');
+            if (checked.length === 0) {
+                e.preventDefault();
+                alert('Please select at least one Aarti to perform this bulk action.');
+                return false;
+            }
         });
     </script>
 

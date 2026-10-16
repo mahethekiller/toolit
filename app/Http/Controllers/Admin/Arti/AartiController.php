@@ -61,7 +61,7 @@ class AartiController extends Controller
             }
         }
 
-        $aartis = $query->latest('id')->paginate(15)->withQueryString();
+        $aartis = $query->orderByDesc('is_active')->latest('id')->paginate(15)->withQueryString();
         $deities = Deity::orderBy('name')->get();
         $categories = Aarti::whereNotNull('category')->where('category', '!=', '')->distinct()->orderBy('category')->pluck('category');
 
@@ -234,8 +234,14 @@ class AartiController extends Controller
         $request->validate([
             'aarti_ids' => 'required|array',
             'aarti_ids.*' => 'exists:arti_aartis,id',
-            'action' => 'required|in:enable,disable'
+            'action' => 'required|in:enable,disable,delete'
         ]);
+
+        if ($request->action === 'delete') {
+            $count = count($request->aarti_ids);
+            Aarti::whereIn('id', $request->aarti_ids)->delete();
+            return redirect()->back()->with('success', "{$count} selected " . ($count === 1 ? 'aarti has' : 'aartis have') . " been deleted successfully.");
+        }
 
         $isActive = $request->action === 'enable';
 
