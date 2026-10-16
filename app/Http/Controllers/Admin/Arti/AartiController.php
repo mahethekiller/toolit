@@ -11,10 +11,60 @@ use Illuminate\View\View;
 
 class AartiController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $aartis = Aarti::with('deity')->paginate(10);
-        return view('admin.arti.aartis.index', compact('aartis'));
+        $query = Aarti::with('deity');
+
+        if ($request->filled('search')) {
+            $search = trim($request->input('search'));
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', "%{$search}%")
+                  ->orWhere('subtitle', 'like', "%{$search}%")
+                  ->orWhere('lyrics', 'like', "%{$search}%")
+                  ->orWhere('lyrics_hinglish', 'like', "%{$search}%")
+                  ->orWhere('lyrics_hindi_plain', 'like', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('deity_id')) {
+            $query->where('deity_id', $request->input('deity_id'));
+        }
+
+        if ($request->filled('category')) {
+            $query->where('category', $request->input('category'));
+        }
+
+        if ($request->filled('status')) {
+            $status = $request->input('status');
+            if ($status === 'active') {
+                $query->where('is_active', true);
+            } elseif ($status === 'inactive') {
+                $query->where('is_active', false);
+            }
+        }
+
+        if ($request->filled('media')) {
+            $media = $request->input('media');
+            if ($media === 'has_audio') {
+                $query->whereNotNull('audio_url')->where('audio_url', '!=', '');
+            } elseif ($media === 'no_audio') {
+                $query->where(function ($q) {
+                    $q->whereNull('audio_url')->orWhere('audio_url', '');
+                });
+            } elseif ($media === 'has_video') {
+                $query->whereNotNull('video_url')->where('video_url', '!=', '');
+            } elseif ($media === 'no_video') {
+                $query->where(function ($q) {
+                    $q->whereNull('video_url')->orWhere('video_url', '');
+                });
+            }
+        }
+
+        $aartis = $query->latest('id')->paginate(15)->withQueryString();
+        $deities = Deity::orderBy('name')->get();
+        $categories = Aarti::whereNotNull('category')->where('category', '!=', '')->distinct()->orderBy('category')->pluck('category');
+
+        return view('admin.arti.aartis.index', compact('aartis', 'deities', 'categories'));
     }
 
     public function create(): View
@@ -31,8 +81,8 @@ class AartiController extends Controller
             'subtitle' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'duration' => 'required|string|max:255',
-            'audio_url' => 'required|url|max:255',
-            'video_url' => 'required|string|max:255',
+            'audio_url' => 'nullable|url|max:255',
+            'video_url' => 'nullable|string|max:255',
             'lyrics' => 'required|string',
             'lyrics_hinglish' => 'nullable|string',
             'lyrics_hindi_plain' => 'nullable|string',
@@ -64,8 +114,8 @@ class AartiController extends Controller
             'subtitle' => 'required|string|max:255',
             'category' => 'required|string|max:255',
             'duration' => 'required|string|max:255',
-            'audio_url' => 'required|url|max:255',
-            'video_url' => 'required|string|max:255',
+            'audio_url' => 'nullable|url|max:255',
+            'video_url' => 'nullable|string|max:255',
             'lyrics' => 'required|string',
             'lyrics_hinglish' => 'nullable|string',
             'lyrics_hindi_plain' => 'nullable|string',
@@ -85,7 +135,7 @@ class AartiController extends Controller
         $aarti = Aarti::findOrFail($id);
         $aarti->delete();
 
-        return redirect()->route('admin.arti.aartis.index')->with('success', 'Aarti deleted successfully.');
+        return redirect()->back()->with('success', 'Aarti deleted successfully.');
     }
 
     public function bulkToggle(Request $request): RedirectResponse
@@ -101,6 +151,6 @@ class AartiController extends Controller
         Aarti::whereIn('id', $request->aarti_ids)->update(['is_active' => $isActive]);
 
         $statusText = $isActive ? 'enabled' : 'disabled';
-        return redirect()->route('admin.arti.aartis.index')->with('success', "Selected aartis have been {$statusText}.");
+        return redirect()->back()->with('success', "Selected aartis have been {$statusText}.");
     }
 }

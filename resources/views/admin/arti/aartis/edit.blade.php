@@ -64,8 +64,8 @@
                     </div>
 
                     <div class="col-md-6 mb-3">
-                        <label for="video_url" class="form-label fw-bold">Video URL (ID)</label>
-                        <input type="text" class="form-control @error('video_url') is-invalid @enderror" id="video_url" name="video_url" value="{{ old('video_url', $aarti->video_url) }}" required>
+                        <label for="video_url" class="form-label fw-bold">Video URL (ID) <span class="text-muted fw-normal">(Optional)</span></label>
+                        <input type="text" class="form-control @error('video_url') is-invalid @enderror" id="video_url" name="video_url" value="{{ old('video_url', $aarti->video_url) }}">
                         @error('video_url')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -73,8 +73,8 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="audio_url" class="form-label fw-bold">Audio URL</label>
-                    <input type="url" class="form-control @error('audio_url') is-invalid @enderror" id="audio_url" name="audio_url" value="{{ old('audio_url', $aarti->audio_url) }}" required>
+                    <label for="audio_url" class="form-label fw-bold">Audio URL <span class="text-muted fw-normal">(Optional)</span></label>
+                    <input type="url" class="form-control @error('audio_url') is-invalid @enderror" id="audio_url" name="audio_url" value="{{ old('audio_url', $aarti->audio_url) }}">
                     @error('audio_url')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
