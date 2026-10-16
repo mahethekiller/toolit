@@ -21,7 +21,9 @@
                         <select class="form-select @error('deity_id') is-invalid @enderror" id="deity_id" name="deity_id" required>
                             <option value="">Select a deity</option>
                             @foreach($deities as $deity)
-                                <option value="{{ $deity->id }}" {{ old('deity_id') == $deity->id ? 'selected' : '' }}>{{ $deity->name }} ({{ $deity->name_devanagari ?? $deity->name }})</option>
+                                <option value="{{ $deity->id }}" data-slug="{{ $deity->slug ?? Str::slug($deity->name) }}" {{ old('deity_id') == $deity->id ? 'selected' : '' }}>
+                                    {{ $deity->name }} ({{ $deity->name_devanagari ?? $deity->name }})
+                                </option>
                             @endforeach
                         </select>
                         @error('deity_id')
@@ -31,9 +33,40 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="category" class="form-label fw-bold">Category <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('category') is-invalid @enderror" id="category" name="category" value="{{ old('category', 'Popular') }}" placeholder="e.g. Popular, Morning, Evening, Special" required>
+                        <div class="input-group">
+                            <select class="form-select" id="category_select" style="max-width: 45%;">
+                                <option value="">-- Choose Deity / Category --</option>
+                                <optgroup label="Associated Deities">
+                                    @foreach($deities as $deity)
+                                        @php $dSlug = $deity->slug ?? Str::slug($deity->name); @endphp
+                                        <option value="{{ $dSlug }}" {{ old('category') === $dSlug ? 'selected' : '' }}>
+                                            {{ $deity->name }} ({{ $dSlug }})
+                                        </option>
+                                    @endforeach
+                                </optgroup>
+                                <optgroup label="Common Categories">
+                                    <option value="Popular" {{ old('category', 'Popular') === 'Popular' ? 'selected' : '' }}>Popular</option>
+                                    <option value="Morning" {{ old('category') === 'Morning' ? 'selected' : '' }}>Morning</option>
+                                    <option value="Evening" {{ old('category') === 'Evening' ? 'selected' : '' }}>Evening</option>
+                                    <option value="special" {{ old('category') === 'special' ? 'selected' : '' }}>Special</option>
+                                </optgroup>
+                                <option value="__custom__">✏️ Type Custom...</option>
+                            </select>
+                            <input type="text" class="form-control @error('category') is-invalid @enderror" id="category" name="category" list="category_datalist" value="{{ old('category', 'Popular') }}" placeholder="Select from dropdown or type..." required>
+                        </div>
+                        <datalist id="category_datalist">
+                            @foreach($deities as $deity)
+                                @php $dSlug = $deity->slug ?? Str::slug($deity->name); @endphp
+                                <option value="{{ $dSlug }}">{{ $deity->name }}</option>
+                            @endforeach
+                            <option value="Popular">Popular</option>
+                            <option value="Morning">Morning</option>
+                            <option value="Evening">Evening</option>
+                            <option value="special">Special</option>
+                        </datalist>
+                        <div class="form-text text-muted">Select an Associated Deity value or type any custom category name.</div>
                         @error('category')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback d-block">{{ $message }}</div>
                         @enderror
                     </div>
                 </div>
@@ -247,5 +280,51 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const categorySelect = document.getElementById('category_select');
+            const categoryInput = document.getElementById('category');
+            const deitySelect = document.getElementById('deity_id');
+
+            if (categorySelect && categoryInput) {
+                categorySelect.addEventListener('change', function() {
+                    if (this.value === '__custom__') {
+                        categoryInput.value = '';
+                        categoryInput.focus();
+                    } else if (this.value) {
+                        categoryInput.value = this.value;
+                    }
+                });
+
+                categoryInput.addEventListener('input', function() {
+                    const val = this.value.trim().toLowerCase();
+                    let matched = false;
+                    for (let i = 0; i < categorySelect.options.length; i++) {
+                        const opt = categorySelect.options[i];
+                        if (opt.value && opt.value.toLowerCase() === val) {
+                            categorySelect.value = opt.value;
+                            matched = true;
+                            break;
+                        }
+                    }
+                    if (!matched && categorySelect.value !== '__custom__') {
+                        categorySelect.value = '';
+                    }
+                });
+            }
+
+            if (deitySelect && categorySelect && categoryInput) {
+                deitySelect.addEventListener('change', function() {
+                    const selectedOption = this.options[this.selectedIndex];
+                    const deitySlug = selectedOption.getAttribute('data-slug');
+                    if (deitySlug) {
+                        categorySelect.value = deitySlug;
+                        categoryInput.value = deitySlug;
+                    }
+                });
+            }
+        });
+    </script>
 </div>
 @endsection
