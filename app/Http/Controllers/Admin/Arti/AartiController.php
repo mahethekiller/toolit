@@ -7,6 +7,7 @@ use App\Models\Arti\Aarti;
 use App\Models\Arti\Deity;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class AartiController extends Controller
@@ -78,19 +79,64 @@ class AartiController extends Controller
         $request->validate([
             'deity_id' => 'required|exists:arti_deities,id',
             'title' => 'required|string|max:255',
-            'subtitle' => 'required|string|max:255',
+            'title_devanagari' => 'nullable|string|max:255',
+            'slug' => 'nullable|string|max:255|unique:arti_aartis,slug',
+            'subtitle' => 'nullable|string|max:255',
             'category' => 'required|string|max:255',
-            'duration' => 'required|string|max:255',
-            'audio_url' => 'nullable|url|max:255',
+            'deity_name' => 'nullable|string|max:255',
+            'deity_devanagari' => 'nullable|string|max:255',
+            'image_url' => 'nullable|string|max:255',
+            'image_file' => 'nullable|image|max:2048',
+            'duration' => 'nullable|string|max:255',
+            'duration_minutes' => 'nullable|integer',
+            'timing' => 'nullable|string|max:255',
+            'timing_devanagari' => 'nullable|string|max:255',
+            'significance' => 'nullable|string',
+            'significance_devanagari' => 'nullable|string',
+            'meaning_short' => 'nullable|string',
+            'audio_url' => 'nullable|string|max:255',
             'video_url' => 'nullable|string|max:255',
             'lyrics' => 'required|string',
             'lyrics_hinglish' => 'nullable|string',
             'lyrics_hindi_plain' => 'nullable|string',
+            'is_popular' => 'boolean',
             'is_active' => 'boolean',
         ]);
 
-        $data = $request->all();
+        $data = $request->except(['image_file']);
         $data['is_active'] = $request->has('is_active');
+        $data['is_popular'] = $request->has('is_popular');
+
+        if (empty($data['slug'])) {
+            $data['slug'] = Str::slug($request->title);
+        }
+
+        $deity = Deity::find($request->deity_id);
+        if ($deity) {
+            if (empty($data['deity_name'])) {
+                $data['deity_name'] = $deity->name;
+            }
+            if (empty($data['deity_devanagari'])) {
+                $data['deity_devanagari'] = $deity->name_devanagari;
+            }
+        }
+
+        if (empty($data['subtitle'])) {
+            $data['subtitle'] = ($data['deity_name'] ?? '') . ' • ' . ($request->timing ?? 'Daily Aarti');
+        }
+
+        if (empty($data['duration'])) {
+            $data['duration'] = !empty($data['duration_minutes']) ? ($data['duration_minutes'] . ' min') : '3 min';
+        }
+
+        if (empty($data['lyrics_hindi_plain'])) {
+            $data['lyrics_hindi_plain'] = $data['lyrics'];
+        }
+
+        if ($request->hasFile('image_file')) {
+            $path = $request->file('image_file')->store('uploads/aartis', 'public');
+            $data['image_url'] = '/storage/' . $path;
+        }
 
         Aarti::create($data);
 
@@ -111,19 +157,64 @@ class AartiController extends Controller
         $request->validate([
             'deity_id' => 'required|exists:arti_deities,id',
             'title' => 'required|string|max:255',
-            'subtitle' => 'required|string|max:255',
+            'title_devanagari' => 'nullable|string|max:255',
+            'slug' => 'nullable|string|max:255|unique:arti_aartis,slug,' . $id,
+            'subtitle' => 'nullable|string|max:255',
             'category' => 'required|string|max:255',
-            'duration' => 'required|string|max:255',
-            'audio_url' => 'nullable|url|max:255',
+            'deity_name' => 'nullable|string|max:255',
+            'deity_devanagari' => 'nullable|string|max:255',
+            'image_url' => 'nullable|string|max:255',
+            'image_file' => 'nullable|image|max:2048',
+            'duration' => 'nullable|string|max:255',
+            'duration_minutes' => 'nullable|integer',
+            'timing' => 'nullable|string|max:255',
+            'timing_devanagari' => 'nullable|string|max:255',
+            'significance' => 'nullable|string',
+            'significance_devanagari' => 'nullable|string',
+            'meaning_short' => 'nullable|string',
+            'audio_url' => 'nullable|string|max:255',
             'video_url' => 'nullable|string|max:255',
             'lyrics' => 'required|string',
             'lyrics_hinglish' => 'nullable|string',
             'lyrics_hindi_plain' => 'nullable|string',
+            'is_popular' => 'boolean',
             'is_active' => 'boolean',
         ]);
 
-        $data = $request->all();
+        $data = $request->except(['image_file']);
         $data['is_active'] = $request->has('is_active');
+        $data['is_popular'] = $request->has('is_popular');
+
+        if (empty($data['slug'])) {
+            $data['slug'] = Str::slug($request->title);
+        }
+
+        $deity = Deity::find($request->deity_id);
+        if ($deity) {
+            if (empty($data['deity_name'])) {
+                $data['deity_name'] = $deity->name;
+            }
+            if (empty($data['deity_devanagari'])) {
+                $data['deity_devanagari'] = $deity->name_devanagari;
+            }
+        }
+
+        if (empty($data['subtitle'])) {
+            $data['subtitle'] = ($data['deity_name'] ?? '') . ' • ' . ($request->timing ?? 'Daily Aarti');
+        }
+
+        if (empty($data['duration'])) {
+            $data['duration'] = !empty($data['duration_minutes']) ? ($data['duration_minutes'] . ' min') : '3 min';
+        }
+
+        if (empty($data['lyrics_hindi_plain'])) {
+            $data['lyrics_hindi_plain'] = $data['lyrics'];
+        }
+
+        if ($request->hasFile('image_file')) {
+            $path = $request->file('image_file')->store('uploads/aartis', 'public');
+            $data['image_url'] = '/storage/' . $path;
+        }
 
         $aarti->update($data);
 

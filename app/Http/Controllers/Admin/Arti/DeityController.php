@@ -8,6 +8,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+use Illuminate\Support\Str;
+
 class DeityController extends Controller
 {
     public function index(): View
@@ -25,12 +27,24 @@ class DeityController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255|unique:arti_deities',
+            'slug' => 'nullable|string|max:255|unique:arti_deities,slug',
+            'name_devanagari' => 'nullable|string|max:255',
+            'title_sub' => 'nullable|string|max:255',
+            'day_of_week' => 'nullable|string|max:50',
+            'day_hindi' => 'nullable|string|max:50',
+            'theme_color' => 'nullable|string|max:50',
+            'accent_color' => 'nullable|string|max:50',
+            'icon' => 'nullable|string|max:50',
             'description' => 'required|string|max:1000',
-            'image_url' => 'required_without:image_file|nullable|url|max:255',
+            'image_url' => 'required_without:image_file|nullable|string|max:255',
             'image_file' => 'required_without:image_url|nullable|image|max:2048',
         ]);
 
         $data = $request->except(['image_file']);
+
+        if (empty($data['slug'])) {
+            $data['slug'] = Str::slug($request->name);
+        }
 
         if ($request->hasFile('image_file')) {
             $path = $request->file('image_file')->store('uploads/deities', 'public');
@@ -54,12 +68,24 @@ class DeityController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255|unique:arti_deities,name,' . $id,
+            'slug' => 'nullable|string|max:255|unique:arti_deities,slug,' . $id,
+            'name_devanagari' => 'nullable|string|max:255',
+            'title_sub' => 'nullable|string|max:255',
+            'day_of_week' => 'nullable|string|max:50',
+            'day_hindi' => 'nullable|string|max:50',
+            'theme_color' => 'nullable|string|max:50',
+            'accent_color' => 'nullable|string|max:50',
+            'icon' => 'nullable|string|max:50',
             'description' => 'required|string|max:1000',
-            'image_url' => 'required_without:image_file|nullable|url|max:255',
+            'image_url' => 'required_without:image_file|nullable|string|max:255',
             'image_file' => 'nullable|image|max:2048',
         ]);
 
         $data = $request->except(['image_file']);
+
+        if (empty($data['slug'])) {
+            $data['slug'] = Str::slug($request->name);
+        }
 
         if ($request->hasFile('image_file')) {
             $path = $request->file('image_file')->store('uploads/deities', 'public');
@@ -76,6 +102,6 @@ class DeityController extends Controller
         $deity = Deity::findOrFail($id);
         $deity->delete();
 
-        return redirect()->route('admin.arti.deities.index')->with('success', 'Deity deleted successfully.');
+        return redirect()->back()->with('success', 'Deity deleted successfully.');
     }
 }
